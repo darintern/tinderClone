@@ -13,6 +13,10 @@
 		8E00C1E722E965D2008C98D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E00C1E522E965D2008C98D1 /* LaunchScreen.storyboard */; };
 		8E00C1F222E965D2008C98D1 /* tChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C1F122E965D2008C98D1 /* tChatTests.swift */; };
 		8E00C1FD22E965D2008C98D1 /* tChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C1FC22E965D2008C98D1 /* tChatUITests.swift */; };
+		8E00C20B22E96FC6008C98D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E00C20A22E96FC6008C98D1 /* GoogleService-Info.plist */; };
+		D5E620DEF7CD011C73E81F32 /* Pods_tChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4740AEAAFB968A31468220A4 /* Pods_tChatUITests.framework */; };
+		EB9900C8B57A124DC9DD936E /* Pods_tChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 201D76F6BD50E34EF8B5D94C /* Pods_tChatTests.framework */; };
+		F2879D946E42682E01A150DF /* Pods_tChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99813ADFE621623F353C8A0D /* Pods_tChat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08C9CAA8A5B56B6E46CAD9EB /* Pods-tChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-tChatUITests/Pods-tChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		198E64F59FA851477156A571 /* Pods-tChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChatTests.release.xcconfig"; path = "Target Support Files/Pods-tChatTests/Pods-tChatTests.release.xcconfig"; sourceTree = "<group>"; };
+		201D76F6BD50E34EF8B5D94C /* Pods_tChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4740AEAAFB968A31468220A4 /* Pods_tChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		577087F30DB8FB895E8F023D /* Pods-tChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChatUITests.release.xcconfig"; path = "Target Support Files/Pods-tChatUITests/Pods-tChatUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6B302E96ECA6E1C5C99AB4C6 /* Pods-tChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChatTests.debug.xcconfig"; path = "Target Support Files/Pods-tChatTests/Pods-tChatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B6BB35F406DB74A399698F7 /* Pods-tChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChat.debug.xcconfig"; path = "Target Support Files/Pods-tChat/Pods-tChat.debug.xcconfig"; sourceTree = "<group>"; };
 		8E00C1D922E965CE008C98D1 /* tChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E00C1DC22E965CE008C98D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E00C1DE22E965CE008C98D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +56,9 @@
 		8E00C1F822E965D2008C98D1 /* tChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E00C1FC22E965D2008C98D1 /* tChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tChatUITests.swift; sourceTree = "<group>"; };
 		8E00C1FE22E965D2008C98D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E00C20A22E96FC6008C98D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		95D894AAB730A9F0B666E3F8 /* Pods-tChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChat.release.xcconfig"; path = "Target Support Files/Pods-tChat/Pods-tChat.release.xcconfig"; sourceTree = "<group>"; };
+		99813ADFE621623F353C8A0D /* Pods_tChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2879D946E42682E01A150DF /* Pods_tChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB9900C8B57A124DC9DD936E /* Pods_tChatTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +82,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5E620DEF7CD011C73E81F32 /* Pods_tChatUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41B0051B234209C55D511D67 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99813ADFE621623F353C8A0D /* Pods_tChat.framework */,
+				201D76F6BD50E34EF8B5D94C /* Pods_tChatTests.framework */,
+				4740AEAAFB968A31468220A4 /* Pods_tChatUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8E00C1D022E965CE008C98D1 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +106,8 @@
 				8E00C1F022E965D2008C98D1 /* tChatTests */,
 				8E00C1FB22E965D2008C98D1 /* tChatUITests */,
 				8E00C1DA22E965CE008C98D1 /* Products */,
+				FC16C9CB2B7476EF3009552B /* Pods */,
+				41B0051B234209C55D511D67 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +124,7 @@
 		8E00C1DB22E965CE008C98D1 /* tChat */ = {
 			isa = PBXGroup;
 			children = (
+				8E00C20A22E96FC6008C98D1 /* GoogleService-Info.plist */,
 				8E00C1DC22E965CE008C98D1 /* AppDelegate.swift */,
 				8E00C1DE22E965CE008C98D1 /* ViewController.swift */,
 				8E00C1E322E965D2008C98D1 /* Assets.xcassets */,
@@ -122,6 +152,20 @@
 			path = tChatUITests;
 			sourceTree = "<group>";
 		};
+		FC16C9CB2B7476EF3009552B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8B6BB35F406DB74A399698F7 /* Pods-tChat.debug.xcconfig */,
+				95D894AAB730A9F0B666E3F8 /* Pods-tChat.release.xcconfig */,
+				6B302E96ECA6E1C5C99AB4C6 /* Pods-tChatTests.debug.xcconfig */,
+				198E64F59FA851477156A571 /* Pods-tChatTests.release.xcconfig */,
+				08C9CAA8A5B56B6E46CAD9EB /* Pods-tChatUITests.debug.xcconfig */,
+				577087F30DB8FB895E8F023D /* Pods-tChatUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E00C20122E965D2008C98D1 /* Build configuration list for PBXNativeTarget "tChat" */;
 			buildPhases = (
+				AB3798909EBA23DDF0DD29BB /* [CP] Check Pods Manifest.lock */,
 				8E00C1D522E965CE008C98D1 /* Sources */,
 				8E00C1D622E965CE008C98D1 /* Frameworks */,
 				8E00C1D722E965CE008C98D1 /* Resources */,
+				21BC6AD3BE8101CD96530C5B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -146,6 +192,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E00C20422E965D2008C98D1 /* Build configuration list for PBXNativeTarget "tChatTests" */;
 			buildPhases = (
+				CD4D83DBA793A8026711B8C1 /* [CP] Check Pods Manifest.lock */,
 				8E00C1E922E965D2008C98D1 /* Sources */,
 				8E00C1EA22E965D2008C98D1 /* Frameworks */,
 				8E00C1EB22E965D2008C98D1 /* Resources */,
@@ -164,6 +211,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E00C20722E965D2008C98D1 /* Build configuration list for PBXNativeTarget "tChatUITests" */;
 			buildPhases = (
+				B71B4748E1933DB72E5000EA /* [CP] Check Pods Manifest.lock */,
 				8E00C1F422E965D2008C98D1 /* Sources */,
 				8E00C1F522E965D2008C98D1 /* Frameworks */,
 				8E00C1F622E965D2008C98D1 /* Resources */,
@@ -227,6 +275,7 @@
 			files = (
 				8E00C1E722E965D2008C98D1 /* LaunchScreen.storyboard in Resources */,
 				8E00C1E422E965D2008C98D1 /* Assets.xcassets in Resources */,
+				8E00C20B22E96FC6008C98D1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +294,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21BC6AD3BE8101CD96530C5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tChat/Pods-tChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tChat/Pods-tChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tChat/Pods-tChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB3798909EBA23DDF0DD29BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B71B4748E1933DB72E5000EA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tChatUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD4D83DBA793A8026711B8C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tChatTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E00C1D522E965CE008C98D1 /* Sources */ = {
@@ -417,6 +552,7 @@
 		};
 		8E00C20222E965D2008C98D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B6BB35F406DB74A399698F7 /* Pods-tChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -436,6 +572,7 @@
 		};
 		8E00C20322E965D2008C98D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95D894AAB730A9F0B666E3F8 /* Pods-tChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
@@ -455,6 +592,7 @@
 		};
 		8E00C20522E965D2008C98D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B302E96ECA6E1C5C99AB4C6 /* Pods-tChatTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -475,6 +613,7 @@
 		};
 		8E00C20622E965D2008C98D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 198E64F59FA851477156A571 /* Pods-tChatTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -495,6 +634,7 @@
 		};
 		8E00C20822E965D2008C98D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08C9CAA8A5B56B6E46CAD9EB /* Pods-tChatUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -514,6 +654,7 @@
 		};
 		8E00C20922E965D2008C98D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 577087F30DB8FB895E8F023D /* Pods-tChatUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
