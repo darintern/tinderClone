@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8E00C21922E9FE29008C98D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C21822E9FE29008C98D1 /* AppDelegate.swift */; };
 		8E00C21B22E9FE29008C98D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C21A22E9FE29008C98D1 /* ViewController.swift */; };
-		8E00C21E22E9FE29008C98D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E00C21C22E9FE29008C98D1 /* Main.storyboard */; };
 		8E00C22022E9FE2A008C98D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E00C21F22E9FE2A008C98D1 /* Assets.xcassets */; };
 		8E00C22322E9FE2A008C98D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E00C22122E9FE2A008C98D1 /* LaunchScreen.storyboard */; };
 		8E00C22B22E9FECB008C98D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E00C22A22E9FECB008C98D1 /* GoogleService-Info.plist */; };
@@ -21,7 +20,6 @@
 		8E00C21522E9FE29008C98D1 /* tChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E00C21822E9FE29008C98D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E00C21A22E9FE29008C98D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8E00C21D22E9FE29008C98D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E00C21F22E9FE2A008C98D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E00C22222E9FE2A008C98D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E00C22422E9FE2A008C98D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 			children = (
 				8E00C21822E9FE29008C98D1 /* AppDelegate.swift */,
 				8E00C21A22E9FE29008C98D1 /* ViewController.swift */,
-				8E00C21C22E9FE29008C98D1 /* Main.storyboard */,
 				8E00C21F22E9FE2A008C98D1 /* Assets.xcassets */,
 				8E00C22122E9FE2A008C98D1 /* LaunchScreen.storyboard */,
 				8E00C22422E9FE2A008C98D1 /* Info.plist */,
@@ -88,7 +85,6 @@
 				DE6B9CCB23CFA8F9927B2694 /* Pods-tChat.debug.xcconfig */,
 				2E2B8D73BEF68E1E83F8D776 /* Pods-tChat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -155,7 +151,6 @@
 				8E00C22322E9FE2A008C98D1 /* LaunchScreen.storyboard in Resources */,
 				8E00C22B22E9FECB008C98D1 /* GoogleService-Info.plist in Resources */,
 				8E00C22022E9FE2A008C98D1 /* Assets.xcassets in Resources */,
-				8E00C21E22E9FE29008C98D1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,14 +211,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8E00C21C22E9FE29008C98D1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8E00C21D22E9FE29008C98D1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8E00C22122E9FE2A008C98D1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
