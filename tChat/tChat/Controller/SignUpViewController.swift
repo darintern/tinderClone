@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
         }
 
         
-        Auth.auth().createUser(withEmail: "email114421321@mail.ru", password: "1234567") {
+        Auth.auth().createUser(withEmail: "aibol00@mail.ru", password: "123456") {
             (authDataRes, err) in
             if err != nil {
                 print(err?.localizedDescription)
