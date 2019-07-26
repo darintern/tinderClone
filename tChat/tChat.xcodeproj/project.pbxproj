@@ -14,6 +14,10 @@
 		8E00C22B22E9FECB008C98D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E00C22A22E9FECB008C98D1 /* GoogleService-Info.plist */; };
 		8E00C23522EAC0DC008C98D1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23422EAC0DC008C98D1 /* SignInViewController.swift */; };
 		8E00C23722EAC3DB008C98D1 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23622EAC3DB008C98D1 /* ResetPasswordViewController.swift */; };
+		8E00C23B22EAEA42008C98D1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23A22EAEA42008C98D1 /* MainTabBarController.swift */; };
+		8E00C23D22EAEA73008C98D1 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23C22EAEA73008C98D1 /* PeopleViewController.swift */; };
+		8E00C23F22EAEA96008C98D1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */; };
+		8E00C24122EAEAA1008C98D1 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24022EAEAA1008C98D1 /* MeViewController.swift */; };
 		93F065A5CF322AC79D5B5E31 /* Pods_tChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +32,10 @@
 		8E00C22A22E9FECB008C98D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E00C23422EAC0DC008C98D1 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		8E00C23622EAC3DB008C98D1 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		8E00C23A22EAEA42008C98D1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8E00C23C22EAEA73008C98D1 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		8E00C24022EAEAA1008C98D1 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE6B9CCB23CFA8F9927B2694 /* Pods-tChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChat.debug.xcconfig"; path = "Target Support Files/Pods-tChat/Pods-tChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +112,10 @@
 				8E00C23422EAC0DC008C98D1 /* SignInViewController.swift */,
 				8E00C21A22E9FE29008C98D1 /* SignUpViewController.swift */,
 				8E00C23622EAC3DB008C98D1 /* ResetPasswordViewController.swift */,
+				8E00C23A22EAEA42008C98D1 /* MainTabBarController.swift */,
+				8E00C23C22EAEA73008C98D1 /* PeopleViewController.swift */,
+				8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */,
+				8E00C24022EAEAA1008C98D1 /* MeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -258,9 +270,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E00C21B22E9FE29008C98D1 /* SignUpViewController.swift in Sources */,
+				8E00C23F22EAEA96008C98D1 /* MessagesViewController.swift in Sources */,
+				8E00C24122EAEAA1008C98D1 /* MeViewController.swift in Sources */,
 				8E00C21922E9FE29008C98D1 /* AppDelegate.swift in Sources */,
+				8E00C23B22EAEA42008C98D1 /* MainTabBarController.swift in Sources */,
 				8E00C23522EAC0DC008C98D1 /* SignInViewController.swift in Sources */,
 				8E00C23722EAC3DB008C98D1 /* ResetPasswordViewController.swift in Sources */,
+				8E00C23D22EAEA73008C98D1 /* PeopleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
