@@ -13,7 +13,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import SnapKit
 
-class ViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
     let avatar: UIImageView = {
         let iv = UIImageView()
@@ -147,7 +147,7 @@ class ViewController: UIViewController {
 
 
 
-extension ViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+extension SignUpViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             avatar.image = imageSelected
