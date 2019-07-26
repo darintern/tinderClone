@@ -24,7 +24,7 @@ class SignInViewController: UIViewController {
     
     //MARK - Actions
     func signInDidTaped() {
-        Auth.auth().signIn(withEmail: "aibol00@mail.ru", password: "123456") {
+        Auth.auth().signIn(withEmail: "aibolseed@gmail.com", password: "7kPwWCD33CyQdih") {
             (authData, err) in
             if err != nil {
                 print(err)
