@@ -27,12 +27,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        if Auth.auth().currentUser != nil {
-            window?.rootViewController = MainTabBarController()
-        }
-        else {
-            window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
-        }
+        window?.rootViewController = MainTabBarController()
+//        if Auth.auth().currentUser != nil {
+//            window?.rootViewController = MainTabBarController()
+//        }
+//        else {
+//            window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
+//        }
         
     }
 

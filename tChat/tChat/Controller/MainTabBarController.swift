@@ -19,19 +19,25 @@ class MainTabBarController: UITabBarController {
     
     func setupTabBar() {
         
-        let usersVC = PeopleViewController()
+        let usersVC = UINavigationController(rootViewController: PeopleViewController())
         usersVC.tabBarItem.title = "Users"
         usersVC.tabBarItem.image = UIImage(named: "icon_users")
+        
         
         let messagesVC = MessagesViewController()
         messagesVC.tabBarItem.title = "Messages"
         messagesVC.tabBarItem.image = UIImage(named: "icon_messages")
+    
         
         let meVC = MeViewController()
         meVC.tabBarItem.title = "Me"
         meVC.tabBarItem.image = UIImage(named: "icon_profile")
         
-        viewControllers = [messagesVC, usersVC, meVC]
+        viewControllers = [usersVC, messagesVC, meVC]
         
+    }
+    
+    @objc func logoutDidTaped() {
+        print("logout")
     }
 }
