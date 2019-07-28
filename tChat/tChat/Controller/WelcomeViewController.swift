@@ -80,6 +80,33 @@ class WelcomeViewController: UIViewController {
         termsOfServiceLabel.attributedText = attributedTermsText
         termsOfServiceLabel.numberOfLines = 0
         
+        let origFacebookImage = UIImage(named: "icon-facebook")
+        let tintedFacebookImage = origFacebookImage?.withRenderingMode(.alwaysTemplate)
+        
+        signInFacebookBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        signInFacebookBtn.backgroundColor = UIColor(red: 58/255, green: 85/255, blue: 159/255, alpha: 1)
+        signInFacebookBtn.layer.cornerRadius = 5
+        signInFacebookBtn.clipsToBounds = true
+        signInFacebookBtn.setImage(tintedFacebookImage, for: .normal)
+        signInFacebookBtn.imageView?.contentMode = .scaleAspectFit
+        signInFacebookBtn.tintColor = .white
+        signInFacebookBtn.imageEdgeInsets = UIEdgeInsets(top: 12, left: -15, bottom: 12, right: 0)
+        
+        
+        signInGoogleBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        signInGoogleBtn.layer.cornerRadius = 5
+        signInGoogleBtn.imageView?.contentMode = .scaleAspectFit
+        signInGoogleBtn.backgroundColor = UIColor(red: 223/255, green: 74/255, blue: 50/255, alpha: 1)
+        signInGoogleBtn.imageEdgeInsets = UIEdgeInsets(top: 12, left: -35, bottom: 12, right: 0)
+        signInGoogleBtn.tintColor = .white
+        signInGoogleBtn.clipsToBounds = true
+        signInGoogleBtn.setImage(UIImage(named: "icon-google"), for: .normal)
+        
+        createAccountBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        createAccountBtn.layer.cornerRadius = 5
+        createAccountBtn.backgroundColor = .black
+        createAccountBtn.clipsToBounds = true
+        
         
         view.addSubview(titleLabel)
         view.addSubview(signInGoogleBtn)
