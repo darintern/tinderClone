@@ -19,6 +19,7 @@
 		8E00C23F22EAEA96008C98D1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */; };
 		8E00C24122EAEAA1008C98D1 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24022EAEAA1008C98D1 /* MeViewController.swift */; };
 		8E00C24522ED736F008C98D1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24422ED736F008C98D1 /* WelcomeViewController.swift */; };
+		8E00C24822EDC1BF008C98D1 /* EXT-WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24722EDC1BF008C98D1 /* EXT-WelcomeViewController.swift */; };
 		93F065A5CF322AC79D5B5E31 /* Pods_tChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		8E00C24022EAEAA1008C98D1 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		8E00C24422ED736F008C98D1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		8E00C24722EDC1BF008C98D1 /* EXT-WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-WelcomeViewController.swift"; sourceTree = "<group>"; };
 		BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE6B9CCB23CFA8F9927B2694 /* Pods-tChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChat.debug.xcconfig"; path = "Target Support Files/Pods-tChat/Pods-tChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 		8E00C21722E9FE29008C98D1 /* tChat */ = {
 			isa = PBXGroup;
 			children = (
+				8E00C24622EDC19B008C98D1 /* Helpers */,
 				8E00C23122EAB54C008C98D1 /* Storyboard */,
 				8E00C23022EAB540008C98D1 /* Assets */,
 				8E00C22F22EAB52F008C98D1 /* plist */,
@@ -146,6 +149,22 @@
 				8E00C22122E9FE2A008C98D1 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		8E00C24622EDC19B008C98D1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8E00C24922EDC49A008C98D1 /* Extensions */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8E00C24922EDC49A008C98D1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8E00C24722EDC1BF008C98D1 /* EXT-WelcomeViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AE2742ED549057EB1F68123C /* Pods */ = {
@@ -279,6 +298,7 @@
 				8E00C21922E9FE29008C98D1 /* AppDelegate.swift in Sources */,
 				8E00C23B22EAEA42008C98D1 /* MainTabBarController.swift in Sources */,
 				8E00C23522EAC0DC008C98D1 /* SignInViewController.swift in Sources */,
+				8E00C24822EDC1BF008C98D1 /* EXT-WelcomeViewController.swift in Sources */,
 				8E00C23722EAC3DB008C98D1 /* ResetPasswordViewController.swift in Sources */,
 				8E00C23D22EAEA73008C98D1 /* PeopleViewController.swift in Sources */,
 			);
