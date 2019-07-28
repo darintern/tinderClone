@@ -38,12 +38,10 @@ class WelcomeViewController: UIViewController {
     }()
     var termsOfServiceLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Terms of Service."
         return lbl
     }()
     var orLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "or"
         lbl.textAlignment = .center
         return lbl
     }()
@@ -69,6 +67,19 @@ class WelcomeViewController: UIViewController {
         
         
         titleLabel.attributedText = attributedText
+        
+        orLabel.text = "or"
+        orLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        orLabel.textColor = UIColor.init(white: 0, alpha: 0.45)
+        
+        let attributedTermsText = NSMutableAttributedString(string: "By clicking \"Create new account\" you agree to our ", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.init(white: 0, alpha: 0.65) ])
+        let attributedSubTermsText = NSMutableAttributedString(string: "Terms of Service", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.init(white: 0, alpha: 0.65) ])
+        attributedTermsText.append(attributedSubTermsText)
+        
+        
+        termsOfServiceLabel.attributedText = attributedTermsText
+        termsOfServiceLabel.numberOfLines = 0
+        
         
         view.addSubview(titleLabel)
         view.addSubview(signInGoogleBtn)
