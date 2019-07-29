@@ -71,6 +71,27 @@ extension SignInViewController {
         let attributedSubText = NSMutableAttributedString(string: "Sign Up", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor : UIColor.init(white: 0, alpha: 0.65) ])
         attributedText.append(attributedSubText)
         dontHaveAccountBtn.setAttributedTitle(attributedText, for: .normal)
+        dontHaveAccountBtn.addTarget(self, action: #selector(moveToSignUpPage), for: .touchUpInside)
         view.addSubview(dontHaveAccountBtn)
+    }
+    
+    func setupForgotPasswordBtn() {
+        forgotPasswordBtn = UIButton()
+        forgotPasswordBtn.setTitle("Forgot Password ?", for: .normal)
+        forgotPasswordBtn.setTitleColor(.black, for: .normal)
+        forgotPasswordBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        forgotPasswordBtn.layer.cornerRadius = 5
+        forgotPasswordBtn.clipsToBounds = true
+        forgotPasswordBtn.addTarget(self, action: #selector(moveToResetPasswordPage), for: .touchUpInside)
+        view.addSubview(forgotPasswordBtn)
+    }
+    
+    @objc func moveToResetPasswordPage() {
+        let resetPasswordPage = ResetPasswordViewController()
+        navigationController?.pushViewController(resetPasswordPage , animated: true)
+    }
+    
+    @objc func moveToSignUpPage() {
+        navigationController?.popViewController(animated: true)
     }
 }

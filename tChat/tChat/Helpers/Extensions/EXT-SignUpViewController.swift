@@ -13,6 +13,7 @@ extension SignUpViewController {
     func setupCloseBtn() {
         closeBtn = UIButton()
         closeBtn.setImage(UIImage(named: "close"), for: .normal)
+        closeBtn.addTarget(self, action: #selector(moveBackToWelcomePage), for: .touchUpInside)
         view.addSubview(closeBtn)
     }
     
@@ -99,7 +100,7 @@ extension SignUpViewController {
         signUpBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         signUpBtn.layer.cornerRadius = 5
         signUpBtn.clipsToBounds = true
-        signUpBtn.addTarget(self, action: #selector(signUpDidTaped), for: .touchUpInside)
+//        signUpBtn.addTarget(self, action: #selector(signUpDidTaped), for: .touchUpInside)
         view.addSubview(signUpBtn)
     }
     
@@ -109,6 +110,19 @@ extension SignUpViewController {
         let attributedSubText = NSMutableAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor : UIColor.init(white: 0, alpha: 0.65) ])
         attributedText.append(attributedSubText)
         alreadyHaveAccountBtn.setAttributedTitle(attributedText, for: .normal)
+        alreadyHaveAccountBtn.addTarget(self, action: #selector(moveToSignInPage), for: .touchUpInside)
         view.addSubview(alreadyHaveAccountBtn)
     }
+    
+    @objc func moveToSignInPage() {
+        let signInPage = SignInViewController()
+//        present(signInPage, animated: true, completion: nil)
+        navigationController?.pushViewController(signInPage, animated: true)
+    }
+    
+    @objc func moveBackToWelcomePage() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
 }

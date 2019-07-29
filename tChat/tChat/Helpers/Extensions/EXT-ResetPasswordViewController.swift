@@ -12,6 +12,7 @@ extension ResetPasswordViewController {
     func setupCloseBtn() {
         closeBtn = UIButton()
         closeBtn.setImage(UIImage(named: "close"), for: .normal)
+        closeBtn.addTarget(self, action: #selector(moveBackToSignInPage), for: .touchUpInside)
         view.addSubview(closeBtn)
     }
     
@@ -41,5 +42,9 @@ extension ResetPasswordViewController {
         resetPasswordBtn.layer.cornerRadius = 5
         resetPasswordBtn.clipsToBounds = true
         view.addSubview(resetPasswordBtn)
+    }
+    
+    @objc func moveBackToSignInPage() {
+        navigationController?.popViewController(animated: true)
     }
 }

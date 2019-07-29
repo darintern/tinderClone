@@ -22,15 +22,14 @@ class SignInViewController: UIViewController {
     var passwordTextField: UITextField!
     var signInBtn: UIButton!
     var dontHaveAccountBtn: UIButton!
+    var forgotPasswordBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
         makeConstraints()
-        signInDidTaped()
-        
-        
+//        signInDidTaped()
     }
     
     func setupViews() {
@@ -41,6 +40,7 @@ class SignInViewController: UIViewController {
         setupPasswordTextField()
         setupSignInBtn()
         setupDontHaveAccountBtn()
+        setupForgotPasswordBtn()
         
     }
     
@@ -104,6 +104,15 @@ class SignInViewController: UIViewController {
         }
     }
     
+    func constraintsForForgotPasswordBtn() {
+        forgotPasswordBtn.snp.makeConstraints { (make) in
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.left.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.right.equalTo(view.safeAreaLayoutGuide).offset(-20)
+            make.height.equalTo(30)
+        }
+    }
+    
     
     func makeConstraints() {
         constraintsForTitleLabel()
@@ -113,6 +122,7 @@ class SignInViewController: UIViewController {
         constraintsForPasswordTextField()
         constraintsForSignInBtn()
         constraintsForDontHaveAccountBtn()
+        constraintsForForgotPasswordBtn()
     }
     
     

@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = ResetPasswordViewController()
+        window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
 //        if Auth.auth().currentUser != nil {
 //            window?.rootViewController = MainTabBarController()
 //        }
