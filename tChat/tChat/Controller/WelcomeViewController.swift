@@ -18,6 +18,11 @@ class WelcomeViewController: UIViewController {
     var termsOfServiceLabel: UILabel!
     var orLabel: UILabel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
