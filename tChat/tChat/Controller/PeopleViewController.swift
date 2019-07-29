@@ -12,6 +12,8 @@ import FirebaseAuth
 
 class PeopleViewController: UIViewController {
     
+    var users: [User] = []
+    
     let peopleTableView: UITableView = {
         let tv = UITableView()
         return tv
@@ -20,7 +22,14 @@ class PeopleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setLogoutBarBtn()
+        Ref().databaseUsers.observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? Dictionary<String, Any> {
+                if let user = User.transformUser(dict: dict) {
+                    self.users.append(user)
+                }
+                self.peopleTableView.reloadData()
+            }
+        }
         setupViews()
         createConstraints()
     }
@@ -41,25 +50,17 @@ class PeopleViewController: UIViewController {
             make.left.right.equalToSuperview()
         }
     }
-    
-    @objc func logoutBarBtnTapped() {
-        Api.User.logout()
-    }
-
-    func setLogoutBarBtn() {
-        let logoutBarBtn = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(logoutBarBtnTapped))
-        self.navigationItem.leftBarButtonItem = logoutBarBtn
-    }
 }
 
 extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_USERS, for: indexPath) as! PeopleTableViewCell
-        cell.fullNameLabel.text = "Taylor Swift"
+        let user = users[indexPath.row]
+        cell.loadData(user)
         return cell
     }
     
@@ -75,6 +76,7 @@ class PeopleTableViewCell: UITableViewCell {
     let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "taylor_swift")
+        iv.layer.cornerRadius = 30
         iv.clipsToBounds = true
         iv.contentMode = .scaleAspectFit
         return iv
@@ -112,6 +114,12 @@ class PeopleTableViewCell: UITableViewCell {
         addSubview(chatIconImageView)
         addSubview(fullNameLabel)
         addSubview(statusTextLabel)
+    }
+    
+    func loadData(_ user: User) {
+        fullNameLabel.text = user.username
+        statusTextLabel.text = user.status
+        profileImageView.loadImage(user.profileImageUrl)
     }
     
     

@@ -74,6 +74,9 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - ProgressHUD (2.60)
+  - SDWebImage (4.4.5):
+    - SDWebImage/Core (= 4.4.5)
+  - SDWebImage/Core (4.4.5)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
@@ -82,6 +85,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - ProgressHUD
+  - SDWebImage
   - SnapKit
 
 SPEC REPOS:
@@ -100,6 +104,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - ProgressHUD
+    - SDWebImage
     - SnapKit
 
 SPEC CHECKSUMS:
@@ -117,8 +122,9 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 6e6f70588dd7ce01d7dedb5379b4664f41ca93d0
+PODFILE CHECKSUM: 9c0a689e75f60f4e9a313a2d2e2d5b3f81b87ad8
 
 COCOAPODS: 1.7.4

@@ -24,7 +24,7 @@ class MainTabBarController: UITabBarController {
         usersVC.tabBarItem.image = UIImage(named: "icon_users")
         
         
-        let messagesVC = MessagesViewController()
+        let messagesVC = UINavigationController(rootViewController: MessagesViewController())
         messagesVC.tabBarItem.title = "Messages"
         messagesVC.tabBarItem.image = UIImage(named: "icon_messages")
     

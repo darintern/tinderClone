@@ -103,11 +103,13 @@ extension SignInViewController {
     }
     
     func validateFields() {
-        guard let email = emailAddressTextField.text else {
+        guard let email = emailAddressTextField.text, !email.isEmpty else {
+            ProgressHUD.showError(ERROR_EMPTY_EMAIL)
             return
         }
         
-        guard let password = passwordTextField.text else {
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            ProgressHUD.showError(ERROR_EMPTY_PASSWORD)
             return
         }
     }

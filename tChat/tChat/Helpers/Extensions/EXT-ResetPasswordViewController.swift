@@ -62,12 +62,13 @@ extension ResetPasswordViewController {
     }
     
     @objc func resetPasswordBtnDidTaped() {
-        guard emailAddressTextField.text != nil else {
+        guard let email = emailAddressTextField.text, !email.isEmpty else {
+            ProgressHUD.showError(ERROR_EMPTY_EMAIL_RESET)
             return
         }
         self.resetPassword(onSuccess: {
             self.view.endEditing(true)
-            ProgressHUD.showSuccess("Send")
+            ProgressHUD.showSuccess(SUCCESS_EMAIL_RESET)
             self.navigationController?.popViewController(animated: true)
             // switch view
         }) { (error) in
