@@ -75,10 +75,9 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
 class PeopleTableViewCell: UITableViewCell {
     let profileImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "taylor_swift")
         iv.layer.cornerRadius = 30
         iv.clipsToBounds = true
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         return iv
     }()
     let fullNameLabel: UILabel = {

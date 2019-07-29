@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
     var passwordTextField: UITextField!
     var signUpBtn: UIButton!
     var alreadyHaveAccountBtn: UIButton!
-    var image: UIImage? = nil
+    var image = UIImage(named: "Aibol")
     
     override func viewDidLoad() {
         super.viewDidLoad()

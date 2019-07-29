@@ -76,7 +76,7 @@ class UserApi {
                 let metadata = StorageMetadata()
                 metadata.contentType = "image/jpg"
                 
-                StorageService.savePhoto(username: username, uid: userData.user.uid, imageData: imageData, metadata: metadata, storageProfileRef: storageProfile, dict: dict, onSuccess: {
+                StorageService.savePhoto(username: username, uid: userData.user.uid, data: imageData, metadata: metadata, storageProfileRef: storageProfile, dict: dict, onSuccess: {
                     onSuccess()
                 }, onError: { (err) in
                     onError(err)
