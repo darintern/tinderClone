@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
+import FirebaseDatabase
+import FirebaseAuth
+import SnapKit
 
 extension SignInViewController {
     func setupTitleLabel() {
@@ -62,6 +67,7 @@ extension SignInViewController {
         signInBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         signInBtn.layer.cornerRadius = 5
         signInBtn.clipsToBounds = true
+        signInBtn.addTarget(self, action: #selector(signInDidTaped), for: .touchUpInside)
         view.addSubview(signInBtn)
     }
     
@@ -94,4 +100,25 @@ extension SignInViewController {
     @objc func moveToSignUpPage() {
         navigationController?.popViewController(animated: true)
     }
+    
+    //MARK - Actions
+    @objc func signInDidTaped() {
+        guard let email = emailAddressTextField.text else {
+            return
+        }
+        
+        guard let password = passwordTextField.text else {
+            return
+        }
+        
+        Auth.auth().signIn(withEmail: email, password: password) {
+            (authData, err) in
+            if err != nil {
+                print(err)
+                return
+            }
+            print("Authenticated")
+        }
+    }
+    
 }

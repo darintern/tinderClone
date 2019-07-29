@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class ResetPasswordViewController: UIViewController {
     
@@ -72,19 +71,4 @@ class ResetPasswordViewController: UIViewController {
         constraintsForEmailAddressTextField()
         constraintsForResetPasswordBtn()
     }
-    
-    
-    
-
-    func resetPasswordBtnDidTaped() {
-        Auth.auth().sendPasswordReset(withEmail: "aibolseed@gmail.com") {
-            (err) in
-            if err != nil {
-                print(err)
-                return
-            }
-            print("Send!")
-        }
-    }
-
 }

@@ -7,11 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
-import FirebaseDatabase
-import FirebaseAuth
-import SnapKit
 
 class SignInViewController: UIViewController {
     
@@ -29,7 +24,6 @@ class SignInViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         makeConstraints()
-//        signInDidTaped()
     }
     
     func setupViews() {
@@ -124,20 +118,4 @@ class SignInViewController: UIViewController {
         constraintsForDontHaveAccountBtn()
         constraintsForForgotPasswordBtn()
     }
-    
-    
-    //MARK - Actions
-    func signInDidTaped() {
-        Auth.auth().signIn(withEmail: "aibolseed@gmail.com", password: "7kPwWCD33CyQdih") {
-            (authData, err) in
-            if err != nil {
-                print(err)
-                return
-            }
-            print("Authenticated")
-        }
-    }
-    
-    
-
 }

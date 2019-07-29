@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
+import FirebaseDatabase
+import FirebaseAuth
+import SnapKit
 
 extension SignUpViewController {
     
@@ -100,7 +105,7 @@ extension SignUpViewController {
         signUpBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         signUpBtn.layer.cornerRadius = 5
         signUpBtn.clipsToBounds = true
-//        signUpBtn.addTarget(self, action: #selector(signUpDidTaped), for: .touchUpInside)
+        signUpBtn.addTarget(self, action: #selector(signUpDidTaped), for: .touchUpInside)
         view.addSubview(signUpBtn)
     }
     
@@ -122,6 +127,98 @@ extension SignUpViewController {
     
     @objc func moveBackToWelcomePage() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    //MARK - Actions
+    @objc func signUpDidTaped() {
+        print("Hey")
+        
+        guard let email = emailAddressTextField.text else {
+            return
+        }
+        print("Email")
+        
+        guard let password = passwordTextField.text else {
+            return
+        }
+        
+        print("Password")
+        
+        guard let fullName = fullNameTextField.text else {
+            return
+        }
+        
+        print("Full Name")
+        
+        guard let selectedImage = avatar.image else {
+            print("Avatar is nil")
+            return
+        }
+        
+        print("Image")
+        
+        guard let imageData = selectedImage.jpegData(compressionQuality: 0.4) else {
+            return
+        }
+        
+        print("Image Data")
+        
+        
+        Auth.auth().createUser(withEmail: email, password: password) {
+            (authDataRes, err) in
+            if err != nil {
+                print(err?.localizedDescription)
+                return
+            }
+            if let userData = authDataRes {
+                var dict: Dictionary<String, Any> = [
+                    "uid"             : userData.user.uid,
+                    "email"           : userData.user.email,
+                    "fullName"        : fullName,
+                    "profileImageUrl" : "",
+                    "status"          : "Welcome to Tinder"
+                ]
+                
+                let storageRef = Storage.storage().reference(forURL: "gs://tchat-862a1.appspot.com")
+                let storageProfileRef = storageRef.child("profile").child(userData.user.uid)
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpg"
+                
+                storageProfileRef.putData(imageData, metadata: metadata, completion: {
+                    (storageMetadata, err) in
+                    if err != nil {
+                        print(err?.localizedDescription)
+                        return
+                    }
+                    storageProfileRef.downloadURL(completion: {
+                        (url, err) in
+                        if let metaUrl = url?.absoluteString {
+                            dict["profileImageUrl"] = metaUrl
+                            Database.database().reference().child("users").child(userData.user.uid).updateChildValues(dict, withCompletionBlock: {
+                                (err, databaseRef) in
+                                if err != nil {
+                                    print(err?.localizedDescription)
+                                    return
+                                }
+                                print("Done !")
+                                
+                            })
+                        }
+                        
+                    })
+                })
+                
+            }
+        }
+    }
+    
+    @objc func presentPicker() {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
+        
     }
     
     

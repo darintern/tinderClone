@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 extension ResetPasswordViewController {
     func setupCloseBtn() {
@@ -41,10 +42,26 @@ extension ResetPasswordViewController {
         resetPasswordBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         resetPasswordBtn.layer.cornerRadius = 5
         resetPasswordBtn.clipsToBounds = true
+        resetPasswordBtn.addTarget(self, action: #selector(resetPasswordBtnDidTaped), for: .touchUpInside)
         view.addSubview(resetPasswordBtn)
     }
     
     @objc func moveBackToSignInPage() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func resetPasswordBtnDidTaped() {
+        guard  let email = emailAddressTextField.text else {
+            return
+        }
+        
+        Auth.auth().sendPasswordReset(withEmail: email) {
+            (err) in
+            if err != nil {
+                print(err)
+                return
+            }
+            print("Send!")
+        }
     }
 }
