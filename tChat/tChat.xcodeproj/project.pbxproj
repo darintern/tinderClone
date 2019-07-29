@@ -23,6 +23,10 @@
 		8E00C24B22EDC67B008C98D1 /* EXT-SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24A22EDC67B008C98D1 /* EXT-SignUpViewController.swift */; };
 		8E00C24D22EDC68A008C98D1 /* EXT-SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24C22EDC68A008C98D1 /* EXT-SignInViewController.swift */; };
 		8E00C24F22EDC6A4008C98D1 /* EXT-ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24E22EDC6A4008C98D1 /* EXT-ResetPasswordViewController.swift */; };
+		8E00C25122EEFB01008C98D1 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25022EEFB01008C98D1 /* Api.swift */; };
+		8E00C25322EEFB52008C98D1 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25222EEFB52008C98D1 /* UserApi.swift */; };
+		8E00C25522EF08B3008C98D1 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25422EF08B3008C98D1 /* File.swift */; };
+		8E00C25722EF0F73008C98D1 /* Ref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25622EF0F73008C98D1 /* Ref.swift */; };
 		93F065A5CF322AC79D5B5E31 /* Pods_tChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,10 @@
 		8E00C24A22EDC67B008C98D1 /* EXT-SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-SignUpViewController.swift"; sourceTree = "<group>"; };
 		8E00C24C22EDC68A008C98D1 /* EXT-SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-SignInViewController.swift"; sourceTree = "<group>"; };
 		8E00C24E22EDC6A4008C98D1 /* EXT-ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-ResetPasswordViewController.swift"; sourceTree = "<group>"; };
+		8E00C25022EEFB01008C98D1 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		8E00C25222EEFB52008C98D1 /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		8E00C25422EF08B3008C98D1 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		8E00C25622EF0F73008C98D1 /* Ref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ref.swift; sourceTree = "<group>"; };
 		BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE6B9CCB23CFA8F9927B2694 /* Pods-tChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChat.debug.xcconfig"; path = "Target Support Files/Pods-tChat/Pods-tChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				8E00C24922EDC49A008C98D1 /* Extensions */,
+				8E00C25022EEFB01008C98D1 /* Api.swift */,
+				8E00C25222EEFB52008C98D1 /* UserApi.swift */,
+				8E00C25422EF08B3008C98D1 /* File.swift */,
+				8E00C25622EF0F73008C98D1 /* Ref.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -305,10 +317,14 @@
 				8E00C24F22EDC6A4008C98D1 /* EXT-ResetPasswordViewController.swift in Sources */,
 				8E00C23F22EAEA96008C98D1 /* MessagesViewController.swift in Sources */,
 				8E00C24122EAEAA1008C98D1 /* MeViewController.swift in Sources */,
+				8E00C25522EF08B3008C98D1 /* File.swift in Sources */,
 				8E00C21922E9FE29008C98D1 /* AppDelegate.swift in Sources */,
+				8E00C25722EF0F73008C98D1 /* Ref.swift in Sources */,
+				8E00C25322EEFB52008C98D1 /* UserApi.swift in Sources */,
 				8E00C24B22EDC67B008C98D1 /* EXT-SignUpViewController.swift in Sources */,
 				8E00C24D22EDC68A008C98D1 /* EXT-SignInViewController.swift in Sources */,
 				8E00C23B22EAEA42008C98D1 /* MainTabBarController.swift in Sources */,
+				8E00C25122EEFB01008C98D1 /* Api.swift in Sources */,
 				8E00C23522EAC0DC008C98D1 /* SignInViewController.swift in Sources */,
 				8E00C24822EDC1BF008C98D1 /* EXT-WelcomeViewController.swift in Sources */,
 				8E00C23722EAC3DB008C98D1 /* ResetPasswordViewController.swift in Sources */,

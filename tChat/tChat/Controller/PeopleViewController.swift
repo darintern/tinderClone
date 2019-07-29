@@ -8,10 +8,9 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 class PeopleViewController: UIViewController {
-    
-    static let cellId = "cellId"
     
     let peopleTableView: UITableView = {
         let tv = UITableView()
@@ -21,7 +20,7 @@ class PeopleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        setLogoutBarBtn()
         setupViews()
         createConstraints()
     }
@@ -29,9 +28,10 @@ class PeopleViewController: UIViewController {
     func setupViews() {
         self.navigationItem.title = "People"
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
         peopleTableView.delegate = self
         peopleTableView.dataSource = self
-        peopleTableView.register(PeopleTableViewCell.self, forCellReuseIdentifier: PeopleViewController.cellId)
+        peopleTableView.register(PeopleTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_USERS)
         view.addSubview(peopleTableView)
     }
     
@@ -41,6 +41,15 @@ class PeopleViewController: UIViewController {
             make.left.right.equalToSuperview()
         }
     }
+    
+    @objc func logoutBarBtnTapped() {
+        Api.User.logout()
+    }
+
+    func setLogoutBarBtn() {
+        let logoutBarBtn = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(logoutBarBtnTapped))
+        self.navigationItem.leftBarButtonItem = logoutBarBtn
+    }
 }
 
 extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
@@ -49,7 +58,7 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PeopleViewController.cellId, for: indexPath) as! PeopleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_USERS, for: indexPath) as! PeopleTableViewCell
         cell.fullNameLabel.text = "Taylor Swift"
         return cell
     }
@@ -104,6 +113,7 @@ class PeopleTableViewCell: UITableViewCell {
         addSubview(fullNameLabel)
         addSubview(statusTextLabel)
     }
+    
     
     func createConstraints() {
         profileImageView.snp.makeConstraints { (make) in

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import ProgressHUD
 
 extension ResetPasswordViewController {
     func setupCloseBtn() {
@@ -50,18 +51,27 @@ extension ResetPasswordViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    func resetPassword(onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
+        ProgressHUD.show()
+        Api.User.resetPassword(with: emailAddressTextField.text!, onSuccess: {
+            ProgressHUD.dismiss()
+            onSuccess()
+        }) { (error) in
+            onError(error)
+        }
+    }
+    
     @objc func resetPasswordBtnDidTaped() {
-        guard  let email = emailAddressTextField.text else {
+        guard emailAddressTextField.text != nil else {
             return
         }
-        
-        Auth.auth().sendPasswordReset(withEmail: email) {
-            (err) in
-            if err != nil {
-                print(err)
-                return
-            }
-            print("Send!")
+        self.resetPassword(onSuccess: {
+            self.view.endEditing(true)
+            ProgressHUD.showSuccess("Send")
+            self.navigationController?.popViewController(animated: true)
+            // switch view
+        }) { (error) in
+            ProgressHUD.showError(error)
         }
     }
 }

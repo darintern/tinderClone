@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
-import FirebaseDatabase
-import FirebaseAuth
 import SnapKit
+import ProgressHUD
 
 class SignUpViewController: UIViewController {
 
@@ -26,6 +23,7 @@ class SignUpViewController: UIViewController {
     var passwordTextField: UITextField!
     var signUpBtn: UIButton!
     var alreadyHaveAccountBtn: UIButton!
+    var image: UIImage? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,21 +155,16 @@ class SignUpViewController: UIViewController {
         constraintsForSignUpBtn()
         constraintsForAlreadyHaveAccountBtn()
     }
-
-}
-
-
-
-extension SignUpViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            avatar.image = imageSelected
-            print("selected")
-            avatar.backgroundColor = .none
+    
+    @objc func signUpDidTaped() {
+        self.view.endEditing(true)
+        self.validateFields()
+        self.signUp(onSuccess: {
+            // switch view
+            (UIApplication.shared.delegate as! AppDelegate).confugureInitialViewController()
+        }) { (errorMessage) in            
+            ProgressHUD.showError(errorMessage)
         }
-        if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            avatar.image = imageOriginal
-        }
-        picker.dismiss(animated: true, completion: nil)
     }
 }
+

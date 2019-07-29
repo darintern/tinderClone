@@ -12,8 +12,14 @@ import FirebaseAuth
 
 class MessagesViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        setupViews()
+    }
+    
+    func setupViews() {
     }
 }

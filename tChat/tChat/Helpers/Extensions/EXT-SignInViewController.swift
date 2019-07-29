@@ -12,6 +12,7 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import SnapKit
+import ProgressHUD
 
 extension SignInViewController {
     func setupTitleLabel() {
@@ -101,8 +102,7 @@ extension SignInViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    //MARK - Actions
-    @objc func signInDidTaped() {
+    func validateFields() {
         guard let email = emailAddressTextField.text else {
             return
         }
@@ -110,15 +110,32 @@ extension SignInViewController {
         guard let password = passwordTextField.text else {
             return
         }
+    }
+    
+    func signIn(onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
         
-        Auth.auth().signIn(withEmail: email, password: password) {
-            (authData, err) in
-            if err != nil {
-                print(err)
-                return
-            }
-            print("Authenticated")
+        ProgressHUD.show()
+        
+        Api.User.signIn(withEmail: self.emailAddressTextField.text!,password: self.passwordTextField.text!, onSuccess: {
+            ProgressHUD.dismiss()
+            onSuccess()
+        }) { (err) in
+            onError(err)
         }
+        
+    }
+    
+    //MARK - Actions
+    @objc func signInDidTaped() {
+        self.view.endEditing(true)
+        self.validateFields()
+        self.signIn(onSuccess: {
+            // view switch
+            (UIApplication.shared.delegate as! AppDelegate).confugureInitialViewController()
+        }) { (error) in
+            ProgressHUD.showError(error)
+        }
+        
     }
     
 }

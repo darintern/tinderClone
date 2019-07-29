@@ -12,9 +12,10 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import SnapKit
+import ProgressHUD
 
 extension SignUpViewController {
-    
+
     func setupCloseBtn() {
         closeBtn = UIButton()
         closeBtn.setImage(UIImage(named: "close"), for: .normal)
@@ -129,87 +130,35 @@ extension SignUpViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    //MARK - Actions
-    @objc func signUpDidTaped() {
-        print("Hey")
-        
-        guard let email = emailAddressTextField.text else {
-            return
-        }
-        print("Email")
-        
-        guard let password = passwordTextField.text else {
+    func validateFields() {
+        guard let username = self.fullNameTextField.text, !username.isEmpty else {
+            ProgressHUD.showError(ERROR_EMPTY_USERNAME)
             return
         }
         
-        print("Password")
-        
-        guard let fullName = fullNameTextField.text else {
+        guard let email = self.emailAddressTextField.text, !email.isEmpty else {
+            ProgressHUD.showError(ERROR_EMPTY_EMAIL)
+            return
+        }
+        guard let password = self.passwordTextField.text, !password.isEmpty else {
+            ProgressHUD.showError(ERROR_EMPTY_PASSWORD)
             return
         }
         
-        print("Full Name")
+    }
+    
+    
+    func signUp(onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
         
-        guard let selectedImage = avatar.image else {
-            print("Avatar is nil")
-            return
+        ProgressHUD.show()
+        
+        Api.User.signUp(withUsername: self.fullNameTextField.text!, email: self.emailAddressTextField.text!, password: self.passwordTextField.text!, image: self.image, onSuccess: {
+            ProgressHUD.dismiss()
+            onSuccess()
+        }) { (err) in
+            onError(err)
         }
         
-        print("Image")
-        
-        guard let imageData = selectedImage.jpegData(compressionQuality: 0.4) else {
-            return
-        }
-        
-        print("Image Data")
-        
-        
-        Auth.auth().createUser(withEmail: email, password: password) {
-            (authDataRes, err) in
-            if err != nil {
-                print(err?.localizedDescription)
-                return
-            }
-            if let userData = authDataRes {
-                var dict: Dictionary<String, Any> = [
-                    "uid"             : userData.user.uid,
-                    "email"           : userData.user.email,
-                    "fullName"        : fullName,
-                    "profileImageUrl" : "",
-                    "status"          : "Welcome to Tinder"
-                ]
-                
-                let storageRef = Storage.storage().reference(forURL: "gs://tchat-862a1.appspot.com")
-                let storageProfileRef = storageRef.child("profile").child(userData.user.uid)
-                let metadata = StorageMetadata()
-                metadata.contentType = "image/jpg"
-                
-                storageProfileRef.putData(imageData, metadata: metadata, completion: {
-                    (storageMetadata, err) in
-                    if err != nil {
-                        print(err?.localizedDescription)
-                        return
-                    }
-                    storageProfileRef.downloadURL(completion: {
-                        (url, err) in
-                        if let metaUrl = url?.absoluteString {
-                            dict["profileImageUrl"] = metaUrl
-                            Database.database().reference().child("users").child(userData.user.uid).updateChildValues(dict, withCompletionBlock: {
-                                (err, databaseRef) in
-                                if err != nil {
-                                    print(err?.localizedDescription)
-                                    return
-                                }
-                                print("Done !")
-                                
-                            })
-                        }
-                        
-                    })
-                })
-                
-            }
-        }
     }
     
     @objc func presentPicker() {
@@ -222,4 +171,23 @@ extension SignUpViewController {
     }
     
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    
+}
+
+extension SignUpViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            image = imageSelected
+            avatar.image = imageSelected
+        }
+        if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            image = imageOriginal
+            avatar.image = imageOriginal
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
