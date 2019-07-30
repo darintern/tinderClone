@@ -11,4 +11,4 @@ July, 28, 2019 ----- Plan for today is to design sign up/in pages and connect to
 
 July, 29, 2019 ----- Plan for today is to finish things that i had to finish yesterday. Yesterday completed only design sign up/welcome pages and little bit refactored trash code . Today i'm gonna try to strive with hesitation and done the things !!!
 
-July, 30, 2019 ----- Plan for today is to refactor code and fix some bugs, that occured during 5 days. 
+July, 30, 2019 ----- Plan for today is to refactor code and fix some bugs, that occured during 5 days. And design chat scene !!! Need to think about some design. And today - tommorow i'll try to add functionality of sending messages.
