@@ -29,6 +29,7 @@ extension ResetPasswordViewController {
     
     func setupEmailAddressTextField() {
         emailAddressTextField = UITextField()
+        emailAddressTextField.autocapitalizationType = .none
         emailAddressTextField.borderStyle = .none
         let placeholderAttr = NSAttributedString(string: "Email Address", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)])
         emailAddressTextField.attributedPlaceholder = placeholderAttr

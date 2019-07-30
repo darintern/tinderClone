@@ -105,7 +105,6 @@
 			children = (
 				8E00C24622EDC19B008C98D1 /* Helpers */,
 				8E00C23122EAB54C008C98D1 /* Storyboard */,
-				8E00C23022EAB540008C98D1 /* Assets */,
 				8E00C22F22EAB52F008C98D1 /* plist */,
 				8E00C22E22EAB51B008C98D1 /* Controller */,
 				8E00C22D22EAB514008C98D1 /* View */,
@@ -159,7 +158,8 @@
 			children = (
 				8E00C21F22E9FE2A008C98D1 /* Assets.xcassets */,
 			);
-			path = Assets;
+			name = Assets;
+			path = ../Assets;
 			sourceTree = "<group>";
 		};
 		8E00C23122EAB54C008C98D1 /* Storyboard */ = {
@@ -173,11 +173,9 @@
 		8E00C24622EDC19B008C98D1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8ECDE50522EFF967009AC4EF /* Api */,
+				8E00C23022EAB540008C98D1 /* Assets */,
 				8E00C24922EDC49A008C98D1 /* Extensions */,
-				8E00C25022EEFB01008C98D1 /* Api.swift */,
-				8E00C25222EEFB52008C98D1 /* UserApi.swift */,
-				8E00C25422EF08B3008C98D1 /* StorageService.swift */,
-				8E00C25622EF0F73008C98D1 /* Ref.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -192,6 +190,17 @@
 				8E00C25C22EF7477008C98D1 /* Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8ECDE50522EFF967009AC4EF /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				8E00C25022EEFB01008C98D1 /* Api.swift */,
+				8E00C25222EEFB52008C98D1 /* UserApi.swift */,
+				8E00C25422EF08B3008C98D1 /* StorageService.swift */,
+				8E00C25622EF0F73008C98D1 /* Ref.swift */,
+			);
+			path = Api;
 			sourceTree = "<group>";
 		};
 		AE2742ED549057EB1F68123C /* Pods */ = {

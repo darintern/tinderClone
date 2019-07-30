@@ -55,6 +55,7 @@ extension SignUpViewController {
     
     func setupFullNameTextField() {
         fullNameTextField = UITextField()
+        fullNameTextField.autocapitalizationType = .none
         fullNameTextField.borderStyle = .none
         let placeholderAttr = NSAttributedString(string: "Full Name", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)])
         fullNameTextField.attributedPlaceholder = placeholderAttr
@@ -74,6 +75,7 @@ extension SignUpViewController {
     func setupEmailAddressTextField() {
         emailAddressTextField = UITextField()
         emailAddressTextField.borderStyle = .none
+        emailAddressTextField.autocapitalizationType = .none
         let placeholderAttr = NSAttributedString(string: "Email Address", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)])
         emailAddressTextField.attributedPlaceholder = placeholderAttr
         emailAddressTextField.textColor = UIColor(red: 99/255, green: 99/255, blue: 99/255, alpha: 1)
@@ -92,6 +94,7 @@ extension SignUpViewController {
     func setupPasswordTextField() {
         passwordTextField = UITextField()
         passwordTextField.borderStyle = .none
+        passwordTextField.autocapitalizationType = .none
         let placeholderAttr = NSAttributedString(string: "Password( 8+ Characters)", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)])
         passwordTextField.attributedPlaceholder = placeholderAttr
         passwordTextField.textColor = UIColor(red: 99/255, green: 99/255, blue: 99/255, alpha: 1)

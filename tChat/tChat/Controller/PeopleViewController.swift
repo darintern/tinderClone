@@ -94,7 +94,7 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISe
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0;//Choose your custom row height
+        return 100.0; //Choose your custom row height
     }
     
     
@@ -166,8 +166,8 @@ class PeopleTableViewCell: UITableViewCell {
         }
         chatIconImageView.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(-20)
-            make.baseline.equalTo(profileImageView)
             make.width.height.equalTo(36)
+            make.centerY.equalTo(profileImageView.snp.centerY)
         }
     }
     
