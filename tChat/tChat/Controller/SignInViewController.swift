@@ -100,7 +100,7 @@ class SignInViewController: UIViewController {
     
     func constraintsForForgotPasswordBtn() {
         forgotPasswordBtn.snp.makeConstraints { (make) in
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.bottomMargin.equalTo(view.safeAreaLayoutGuide).offset(-20)
             make.left.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.right.equalTo(view.safeAreaLayoutGuide).offset(-20)
             make.height.equalTo(30)

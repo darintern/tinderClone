@@ -16,6 +16,16 @@ import ProgressHUD
 
 class UserApi {
     
+    func observeUsers(onSuccess: @escaping(UserCompletion)) {
+        Ref().databaseUsers.observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? Dictionary<String, Any> {
+                if let user = User.transformUser(dict: dict) {
+                    onSuccess(user)
+                }
+            }
+        }
+    }
+    
     func logout() {
         do {
             try Auth.auth().signOut()
@@ -88,3 +98,6 @@ class UserApi {
     }
 
 }
+
+
+typealias UserCompletion = (User) -> Void

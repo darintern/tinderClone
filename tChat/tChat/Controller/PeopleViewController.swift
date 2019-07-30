@@ -13,6 +13,8 @@ import FirebaseAuth
 class PeopleViewController: UIViewController {
     
     var users: [User] = []
+    var searchController: UISearchController = UISearchController(searchResultsController: nil)
+    var searchResults: [User] = []
     
     let peopleTableView: UITableView = {
         let tv = UITableView()
@@ -22,16 +24,26 @@ class PeopleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        Ref().databaseUsers.observe(.childAdded) { (snapshot) in
-            if let dict = snapshot.value as? Dictionary<String, Any> {
-                if let user = User.transformUser(dict: dict) {
-                    self.users.append(user)
-                }
-                self.peopleTableView.reloadData()
-            }
-        }
+        observeUsers()
         setupViews()
+        setupSearchController()
         createConstraints()
+    }
+    
+    func observeUsers() {
+        Api.User.observeUsers { (user) in
+            self.users.append(user)
+            self.peopleTableView.reloadData()
+        }
+    }
+    
+    func setupSearchController() {
+        searchController.searchBar.tintColor = .white
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "Search users ..."
+        searchController.searchResultsUpdater = self
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
     }
     
     func setupViews() {
@@ -52,14 +64,31 @@ class PeopleViewController: UIViewController {
     }
 }
 
-extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
+extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+//        print(searchController.searchBar.text)
+        if searchController.searchBar.text == nil || searchController.searchBar.text!.isEmpty {
+            view.endEditing(true)
+        } else {
+            let lowercasedText = searchController.searchBar.text!.lowercased()
+            filterContent(for: lowercasedText)
+        }
+        self.peopleTableView.reloadData()
+    }
+    
+    func filterContent(for searchText: String) {
+        searchResults = self.users.filter {
+            return $0.username.lowercased().range(of: searchText) != nil
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return searchController.isActive ? searchResults.count : users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_USERS, for: indexPath) as! PeopleTableViewCell
-        let user = users[indexPath.row]
+        let user = searchController.isActive ? searchResults[indexPath.row] : users[indexPath.row]
         cell.loadData(user)
         return cell
     }
