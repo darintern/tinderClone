@@ -10,3 +10,5 @@ July, 27, 2019 ----- Third day . Very enthusiastic and eager to start todays dev
 July, 28, 2019 ----- Plan for today is to design sign up/in pages and connect to backend and refactor code, so it will look good. So steady !!! 
 
 July, 29, 2019 ----- Plan for today is to finish things that i had to finish yesterday. Yesterday completed only design sign up/welcome pages and little bit refactored trash code . Today i'm gonna try to strive with hesitation and done the things !!!
+
+July, 30, 2019 ----- Plan for today is to refactor code and fix some bugs, that occured during 5 days. 
