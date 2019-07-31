@@ -21,6 +21,7 @@ class ChatViewController: UIViewController {
     var avatarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
     var topLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
     var partnerUsername = ""
+    var partnerId = ""
     var placeholderLbl = UILabel()
     var separatorView = UIView()
     
@@ -131,7 +132,27 @@ class ChatViewController: UIViewController {
     func setupInputMessageSendBtn() {
         inputMessageSendBtn.setTitle("Send", for: .normal)
         inputMessageSendBtn.setTitleColor(.black, for: .normal)
+        inputMessageSendBtn.addTarget(self, action: #selector(sendBtnDidTaped), for: .touchUpInside)
         inputMessageView.addSubview(inputMessageSendBtn)
+    }
+    
+    @objc func sendBtnDidTaped() {
+        if let text = inputMessageSearchTextView.text, text != "" {
+            inputMessageSearchTextView.text = ""
+            self.textViewDidChange(inputMessageSearchTextView)
+            sendToFireBase(dict: ["text": text as Any])
+        }
+    }
+    
+    func sendToFireBase(dict: Dictionary<String, Any>) {
+        let date = Date().timeIntervalSince1970
+        var value = dict
+        value["from"] = Api.User.currentUserId
+        value["to"] = partnerId
+        value["date"] = date
+        value["read"] = true
+        
+        Api.Message.sendMessage(from: Api.User.currentUserId, to: partnerId, value: value)
     }
     
     func createConstraints() {

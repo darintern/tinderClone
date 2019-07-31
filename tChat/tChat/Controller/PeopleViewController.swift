@@ -103,6 +103,7 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISe
             let chatVC = ChatViewController()
             chatVC.imagePartner = cell.profileImageView.image!
             chatVC.partnerUsername = cell.fullNameLabel.text!
+            chatVC.partnerId = cell.user.uid
             self.navigationController?.pushViewController(chatVC, animated: true)
         }
     }
@@ -112,6 +113,7 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISe
 
 
 class PeopleTableViewCell: UITableViewCell {
+    var user: User!
     let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.layer.cornerRadius = 30
@@ -155,6 +157,7 @@ class PeopleTableViewCell: UITableViewCell {
     }
     
     func loadData(_ user: User) {
+        self.user = user
         fullNameLabel.text = user.username
         statusTextLabel.text = user.status
         profileImageView.loadImage(user.profileImageUrl)

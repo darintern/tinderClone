@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 let REF_USER = "users"
+let REF_MESSAGE = "messages"
 let URL_STORAGE_ROOT = "gs://tchat-862a1.appspot.com"
 let STORAGE_PROGILE = "profile"
 let PROFILE_IMAGE_URL = "profileImageUrl"
@@ -36,6 +37,14 @@ class Ref {
     
     func databaseSpecificUser(uid: String) -> DatabaseReference {
         return databaseUsers.child(uid)
+    }
+    
+    var datatabaseMessages: DatabaseReference {
+        return databaseRoot.child(REF_MESSAGE)
+    }
+    
+    func databaseMessageSendTo(from: String, to: String) -> DatabaseReference {
+        return datatabaseMessages.child(from).child(to)
     }
     
     // Storage Ref

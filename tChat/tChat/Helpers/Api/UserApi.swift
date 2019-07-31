@@ -16,6 +16,10 @@ import ProgressHUD
 
 class UserApi {
     
+    var currentUserId: String {
+        return Auth.auth().currentUser != nil ? Auth.auth().currentUser!.uid : ""
+    }
+    
     func observeUsers(onSuccess: @escaping(UserCompletion)) {
         Ref().databaseUsers.observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? Dictionary<String, Any> {
