@@ -29,6 +29,7 @@
 		8E00C25722EF0F73008C98D1 /* Ref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25622EF0F73008C98D1 /* Ref.swift */; };
 		8E00C25922EF6F20008C98D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25822EF6F20008C98D1 /* User.swift */; };
 		8E00C25D22EF7477008C98D1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25C22EF7477008C98D1 /* Extension.swift */; };
+		8ECDE50722F08529009AC4EF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50622F08529009AC4EF /* ChatViewController.swift */; };
 		93F065A5CF322AC79D5B5E31 /* Pods_tChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		8E00C25622EF0F73008C98D1 /* Ref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ref.swift; sourceTree = "<group>"; };
 		8E00C25822EF6F20008C98D1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8E00C25C22EF7477008C98D1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		8ECDE50622F08529009AC4EF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE6B9CCB23CFA8F9927B2694 /* Pods-tChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChat.debug.xcconfig"; path = "Target Support Files/Pods-tChat/Pods-tChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 				8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */,
 				8E00C24022EAEAA1008C98D1 /* MeViewController.swift */,
 				8E00C24422ED736F008C98D1 /* WelcomeViewController.swift */,
+				8ECDE50622F08529009AC4EF /* ChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				8E00C25922EF6F20008C98D1 /* User.swift in Sources */,
 				8E00C24822EDC1BF008C98D1 /* EXT-WelcomeViewController.swift in Sources */,
 				8E00C23722EAC3DB008C98D1 /* ResetPasswordViewController.swift in Sources */,
+				8ECDE50722F08529009AC4EF /* ChatViewController.swift in Sources */,
 				8E00C23D22EAEA73008C98D1 /* PeopleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

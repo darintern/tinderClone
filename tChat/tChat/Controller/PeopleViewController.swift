@@ -51,6 +51,7 @@ class PeopleViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         peopleTableView.delegate = self
+        peopleTableView.tableFooterView = UIView()
         peopleTableView.dataSource = self
         peopleTableView.register(PeopleTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_USERS)
         view.addSubview(peopleTableView)
@@ -95,6 +96,15 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISe
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0; //Choose your custom row height
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? PeopleTableViewCell {
+            let chatVC = ChatViewController()
+            chatVC.imagePartner = cell.profileImageView.image!
+            chatVC.partnerUsername = cell.fullNameLabel.text!
+            self.navigationController?.pushViewController(chatVC, animated: true)
+        }
     }
     
     

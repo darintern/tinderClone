@@ -27,7 +27,7 @@ extension SignInViewController {
     func setupWrapperViewForEmail() {
         wrapperViewForEmail = UIView()
         wrapperViewForEmail.layer.borderWidth = 1
-        wrapperViewForEmail.layer.borderColor = UIColor(red: 210/255, green: 210/255, blue: 210/255, alpha: 1).cgColor
+        wrapperViewForEmail.layer.borderColor = UIColor.rgbColor(r: 210, g: 210, b: 210, alpha: 1).cgColor
         wrapperViewForEmail.layer.cornerRadius = 3
         wrapperViewForEmail.clipsToBounds = true
         view.addSubview(wrapperViewForEmail)
@@ -37,16 +37,16 @@ extension SignInViewController {
         emailAddressTextField = UITextField()
         emailAddressTextField.borderStyle = .none
         emailAddressTextField.autocapitalizationType = .none
-        let placeholderAttr = NSAttributedString(string: "Email Address", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)])
+        let placeholderAttr = NSAttributedString(string: "Email Address", attributes: [NSAttributedString.Key.foregroundColor : UIColor.rgbColor(r: 170, g: 170, b: 170, alpha: 1)])
         emailAddressTextField.attributedPlaceholder = placeholderAttr
-        emailAddressTextField.textColor = UIColor(red: 99/255, green: 99/255, blue: 99/255, alpha: 1)
+        emailAddressTextField.textColor = UIColor.rgbColor(r: 99, g: 99, b: 99, alpha: 1)
         wrapperViewForEmail.addSubview(emailAddressTextField)
     }
     
     func setupWrapperViewForPassword() {
         wrapperViewForPassword = UIView()
         wrapperViewForPassword.layer.borderWidth = 1
-        wrapperViewForPassword.layer.borderColor = UIColor(red: 210/255, green: 210/255, blue: 210/255, alpha: 1).cgColor
+        wrapperViewForPassword.layer.borderColor = UIColor.rgbColor(r: 210, g: 210, b: 210, alpha: 1).cgColor
         wrapperViewForPassword.layer.cornerRadius = 3
         wrapperViewForPassword.clipsToBounds = true
         view.addSubview(wrapperViewForPassword)
@@ -56,9 +56,9 @@ extension SignInViewController {
         passwordTextField = UITextField()
         passwordTextField.borderStyle = .none
         passwordTextField.autocapitalizationType = .none
-        let placeholderAttr = NSAttributedString(string: "Password( 8+ Characters)", attributes: [NSAttributedString.Key.foregroundColor : UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)])
+        let placeholderAttr = NSAttributedString(string: "Password( 8+ Characters)", attributes: [NSAttributedString.Key.foregroundColor : UIColor.rgbColor(r: 170, g: 170, b: 170, alpha: 1)])
         passwordTextField.attributedPlaceholder = placeholderAttr
-        passwordTextField.textColor = UIColor(red: 99/255, green: 99/255, blue: 99/255, alpha: 1)
+        passwordTextField.textColor = UIColor.rgbColor(r: 99, g: 99, b: 99, alpha: 1)
         passwordTextField.isSecureTextEntry = true
         wrapperViewForPassword.addSubview(passwordTextField)
     }

@@ -35,7 +35,7 @@ extension WelcomeViewController {
         
         signInFacebookBtn.setTitle("Sign in with Facebook", for: .normal)
         signInFacebookBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        signInFacebookBtn.backgroundColor = UIColor(red: 58/255, green: 85/255, blue: 159/255, alpha: 1)
+        signInFacebookBtn.backgroundColor = UIColor.rgbColor(r: 58, g: 85, b: 159, alpha: 1)
         signInFacebookBtn.layer.cornerRadius = 5
         signInFacebookBtn.clipsToBounds = true
         signInFacebookBtn.setImage(tintedFacebookImage, for: .normal)
@@ -51,7 +51,7 @@ extension WelcomeViewController {
         signInGoogleBtn.titleLabel?.font = UIFont.systemFont(ofSize: 18)
         signInGoogleBtn.layer.cornerRadius = 5
         signInGoogleBtn.imageView?.contentMode = .scaleAspectFit
-        signInGoogleBtn.backgroundColor = UIColor(red: 223/255, green: 74/255, blue: 50/255, alpha: 1)
+        signInGoogleBtn.backgroundColor = UIColor.rgbColor(r: 223, g: 74, b: 50, alpha: 1)
         signInGoogleBtn.imageEdgeInsets = UIEdgeInsets(top: 12, left: -35, bottom: 12, right: 0)
         signInGoogleBtn.tintColor = .white
         signInGoogleBtn.clipsToBounds = true
