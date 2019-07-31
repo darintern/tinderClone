@@ -13,4 +13,4 @@ July, 29, 2019 ----- Plan for today is to finish things that i had to finish yes
 
 July, 30, 2019 ----- Plan for today is to refactor code and fix some bugs, that occured during 5 days. And design chat scene !!! Need to think about some design. And today - tommorow i'll try to add functionality of sending messages.
 
-July, 31, 2019 ----- Plan for today is the same as yesterday's, cus yesterday i was doin' nothing and i have no excuses. So get started !!! 
+July, 31, 2019 ----- Plan for today is the same as yesterday's, cus yesterday i was doin' nothing and i have no excuses. So let's get started !!! 
