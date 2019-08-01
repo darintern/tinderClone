@@ -15,4 +15,4 @@ July, 30, 2019 ----- Plan for today is to refactor code and fix some bugs, that 
 
 July, 31, 2019 ----- Plan for today is the same as yesterday's, cus yesterday i was doin' nothing and i have no excuses. So let's get started !!! 
 
-Aug, 1, 2019  ------ Plan for today is to add functionality of send photo message and video message and dowload them from firebase.
+Aug, 1, 2019  ------ Plan for today is to add functionality of send photo message and video message and download them from firebase.
