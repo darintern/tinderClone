@@ -8,6 +8,8 @@
 
 import UIKit
 import SnapKit
+import MobileCoreServices
+import AVFoundation
 
 class ChatViewController: UIViewController {
     
@@ -24,6 +26,7 @@ class ChatViewController: UIViewController {
     var partnerId = ""
     var placeholderLbl = UILabel()
     var separatorView = UIView()
+    var picker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +46,15 @@ class ChatViewController: UIViewController {
     }
     
     func setupViews() {
+        setupPicker()
         setupNavigationBar()
         setupTableView()
         setupSeparatorView()
         setupInputMessageView()
+    }
+    
+    func setupPicker() {
+        self.picker.delegate = self
     }
     
     func setupNavigationBar() {
@@ -105,6 +113,7 @@ class ChatViewController: UIViewController {
     func setupInputMessageAttachmentBtn() {
         inputMessageAttachmentBtn.setImage(UIImage(named: "attachment_icon")?.withRenderingMode(.alwaysTemplate), for: .normal)
         inputMessageAttachmentBtn.tintColor = .lightGray
+        inputMessageAttachmentBtn.addTarget(self, action: #selector(attachmentBtnDidTaped), for: .touchUpInside)
         inputMessageView.addSubview(inputMessageAttachmentBtn)
     }
     
@@ -142,6 +151,49 @@ class ChatViewController: UIViewController {
             self.textViewDidChange(inputMessageSearchTextView)
             sendToFireBase(dict: ["text": text as Any])
         }
+    }
+    
+    @objc func attachmentBtnDidTaped() {
+        let alert = UIAlertController(title: "tChat", message: "Select source", preferredStyle: .actionSheet)
+        
+        let camera = UIAlertAction(title: "Take a picture", style: .default) { (_) in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+                self.picker.sourceType = .camera
+                self.present(self.picker, animated: true, completion: nil)
+            } else {
+                print("Unavaliable")
+            }
+        }
+        
+        let library = UIAlertAction(title: "Choose an image or video", style: .default) { (_) in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+                self.picker.sourceType = .photoLibrary
+                self.picker.mediaTypes = [String(kUTTypeMovie), String(kUTTypeImage)]
+                self.present(self.picker, animated: true, completion: nil)
+            } else {
+                print("Unavaliable")
+            }
+        }
+        
+        let videoCamera = UIAlertAction(title: "Take a video", style: .default) { (_) in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+                self.picker.sourceType = .camera
+                self.picker.mediaTypes = [String(kUTTypeMovie)]
+                self.picker.videoExportPreset = AVAssetExportPresetPassthrough
+                self.picker.videoMaximumDuration = 30
+                self.present(self.picker, animated: true, completion: nil)
+            } else {
+                print("Unavaliable")
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(camera)
+        alert.addAction(videoCamera)
+        alert.addAction(library)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func sendToFireBase(dict: Dictionary<String, Any>) {
@@ -244,5 +296,41 @@ extension ChatViewController: UITextViewDelegate {
             inputMessageSendBtn.isEnabled = false
             inputMessageSendBtn.setTitleColor(.lightGray, for: .normal)
         }
+    }
+}
+
+extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let videoUrl = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+            handleVideoSelectedForUrl(videoUrl)
+        } else {
+            handleImageSelectedForInfo(info)
+        }
+    }
+    
+    func handleVideoSelectedForUrl(_ video: URL) {
+//        StorageService.saveVideoMessage
+    }
+    
+    func handleImageSelectedForInfo(_ info: [UIImagePickerController.InfoKey: Any]) {
+        var selectedImageFromPicker: UIImage?
+        if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImageFromPicker = imageSelected
+        }
+        if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedImageFromPicker = imageOriginal
+        }
+        //save photo
+        
+        let imageName = NSUUID().uuidString
+        StorageService.savePhotoMessage(image: selectedImageFromPicker, id: imageName, onSuccess: { (anyValue) in
+            if let dict = anyValue as? [String: Any] {
+                self.sendToFireBase(dict: dict)
+            }
+        }) { (error) in
+            print(error)
+        }
+        picker.dismiss(animated: true, completion: nil)
+        
     }
 }
