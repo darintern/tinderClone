@@ -308,8 +308,15 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         }
     }
     
-    func handleVideoSelectedForUrl(_ video: URL) {
-//        StorageService.saveVideoMessage
+    func handleVideoSelectedForUrl(_ url: URL) {
+        let videoName = NSUUID().uuidString
+        StorageService.saveVideoMessage(url: url, id: videoName, onSuccess: { (anyValue) in
+            if let dict = anyValue as? [String: Any] {
+                self.sendToFireBase(dict: dict)
+            }
+        }) { (error) in
+            print(error)
+        }
     }
     
     func handleImageSelectedForInfo(_ info: [UIImagePickerController.InfoKey: Any]) {

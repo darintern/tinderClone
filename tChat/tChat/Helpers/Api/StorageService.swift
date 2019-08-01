@@ -11,10 +11,49 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import ProgressHUD
+import AVFoundation
 
 class StorageService {
     
     static func saveVideoMessage(url: URL, id: String, onSuccess: @escaping(_ value: Dictionary<String, Any>) -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
+        let ref = Ref().storageSpecificVideoMessage(id: id)
+        ref.putFile(from: url, metadata: nil) { (metadat, error) in
+            if error != nil {
+                onError(error!.localizedDescription)
+                return
+            }
+            ref.downloadURL(completion: { (videoUrl, error) in
+                if let thumbnailImage = self.thumbnailImageForFileUrl(url) {
+                    StorageService.savePhotoMessage(image: thumbnailImage, id: id, onSuccess: { (value) in
+                        if let dict = value as? Dictionary<String, Any> {
+                            var dictValue = dict
+                            if let videoUrlString = videoUrl?.absoluteURL {
+                                dictValue["videoUrl"] = videoUrlString
+                            }
+                            onSuccess(dictValue)
+                        }
+                    }, onError: { (errorMessage) in
+                        onError(errorMessage)
+                    })
+                }
+            })
+        }
+    }
+    
+    static func thumbnailImageForFileUrl(_ url: URL) -> UIImage? {
+        let asset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true
+        var time = asset.duration
+        time.value = min(time.value, 2)
+        do {
+            let imageRef = try imageGenerator.copyCGImage(at: time, actualTime: nil)
+            return UIImage(cgImage: imageRef)
+        } catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
+        
         
     }
     
