@@ -13,4 +13,15 @@ class MessageApi {
         let ref = Ref().databaseMessageSendTo(from: from, to: to)
         ref.childByAutoId().updateChildValues(value)
     }
+    
+    func recieveMessage(from: String, to: String, onSuccess: @escaping(Message) -> Void) {
+        let ref = Ref().databaseMessageSendTo(from: from, to: to)
+        ref.observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? Dictionary<String, Any> {
+                if let message = Message.transformMessage(dict: dict, keyId: snapshot.key) {
+                    onSuccess(message)
+                }
+            }
+        }
+    }
 }

@@ -15,9 +15,9 @@ import AVFoundation
 
 class StorageService {
     
-    static func saveVideoMessage(url: URL, id: String, onSuccess: @escaping(_ value: Dictionary<String, Any>) -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
+    static func saveVideoMessage(url: URL, id: String, onSuccess: @escaping(_ value: Any) -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
         let ref = Ref().storageSpecificVideoMessage(id: id)
-        ref.putFile(from: url, metadata: nil) { (metadat, error) in
+        ref.putFile(from: url, metadata: nil) { (metadata, error) in
             if error != nil {
                 onError(error!.localizedDescription)
                 return

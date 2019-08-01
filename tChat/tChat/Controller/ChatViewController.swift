@@ -51,10 +51,11 @@ class ChatViewController: UIViewController {
         setupTableView()
         setupSeparatorView()
         setupInputMessageView()
+        observeMessages()
     }
     
     func setupPicker() {
-        self.picker.delegate = self
+        picker.delegate = self
     }
     
     func setupNavigationBar() {
@@ -145,6 +146,15 @@ class ChatViewController: UIViewController {
         inputMessageView.addSubview(inputMessageSendBtn)
     }
     
+    func observeMessages() {
+        Api.Message.recieveMessage(from: Api.User.currentUserId, to: partnerId) { (message) in
+            
+        }
+        Api.Message.recieveMessage(from: partnerId, to: Api.User.currentUserId) { (message) in
+            
+        }
+    }
+    
     @objc func sendBtnDidTaped() {
         if let text = inputMessageSearchTextView.text, text != "" {
             inputMessageSearchTextView.text = ""
@@ -166,7 +176,7 @@ class ChatViewController: UIViewController {
         }
         
         let library = UIAlertAction(title: "Choose an image or video", style: .default) { (_) in
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
                 self.picker.sourceType = .photoLibrary
                 self.picker.mediaTypes = [String(kUTTypeMovie), String(kUTTypeImage)]
                 self.present(self.picker, animated: true, completion: nil)
@@ -317,6 +327,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         }) { (error) in
             print(error)
         }
+        self.picker.dismiss(animated: true, completion: nil)
     }
     
     func handleImageSelectedForInfo(_ info: [UIImagePickerController.InfoKey: Any]) {
@@ -338,6 +349,5 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
             print(error)
         }
         picker.dismiss(animated: true, completion: nil)
-        
     }
 }
