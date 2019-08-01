@@ -27,6 +27,7 @@ class ChatViewController: UIViewController {
     var placeholderLbl = UILabel()
     var separatorView = UIView()
     var picker = UIImagePickerController()
+    var messages = [Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +95,7 @@ class ChatViewController: UIViewController {
         chatTableView.dataSource = self
         chatTableView.backgroundColor = .white
         chatTableView.tableFooterView = UIView()
+        chatTableView.register(MessageTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_CHAT)
         view.addSubview(chatTableView)
     }
     
@@ -148,11 +150,21 @@ class ChatViewController: UIViewController {
     
     func observeMessages() {
         Api.Message.recieveMessage(from: Api.User.currentUserId, to: partnerId) { (message) in
-            
+            self.messages.append(message)
+            self.sortMessages()
         }
         Api.Message.recieveMessage(from: partnerId, to: Api.User.currentUserId) { (message) in
-            
+            self.messages.append(message)
+            self.sortMessages()
         }
+    }
+    
+    func sortMessages() {
+        messages = self.messages.sorted(by: { $0.date < $1.date })
+        DispatchQueue.main.async {
+            self.chatTableView.reloadData()
+        }
+        
     }
     
     @objc func sendBtnDidTaped() {
@@ -281,12 +293,32 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_CHAT, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_CHAT, for: indexPath) as! MessageTableViewCell
+        cell.playButton.isHidden = messages[indexPath.row].videoUrl == ""
+        cell.configureCell(uid: Api.User.currentUserId, message: messages[indexPath.row], image: imagePartner)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height: CGFloat = 0
+        let message = messages[indexPath.row]
+        let text = message.text
+        if !text.isEmpty {
+            height = text.estimateFrameForText(text).height
+        }
+        
+        let heightMessage = message.height
+        let widthMessage = message.width
+        
+        if heightMessage != 0, widthMessage != 0 {
+            height = CGFloat (heightMessage / widthMessage * 250)
+        }
+        
+        return height
     }
     
     

@@ -32,6 +32,7 @@
 		8ECDE50722F08529009AC4EF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50622F08529009AC4EF /* ChatViewController.swift */; };
 		8ECDE50922F1CA7E009AC4EF /* MessageApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */; };
 		8ECDE52B22F338DD009AC4EF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE52A22F338DD009AC4EF /* Message.swift */; };
+		8ECDE52D22F346A1009AC4EF /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE52C22F346A1009AC4EF /* MessageTableViewCell.swift */; };
 		93F065A5CF322AC79D5B5E31 /* Pods_tChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		8ECDE50622F08529009AC4EF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageApi.swift; sourceTree = "<group>"; };
 		8ECDE52A22F338DD009AC4EF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		8ECDE52C22F346A1009AC4EF /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE6B9CCB23CFA8F9927B2694 /* Pods-tChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChat.debug.xcconfig"; path = "Target Support Files/Pods-tChat/Pods-tChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 		8E00C22D22EAB514008C98D1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8ECDE52C22F346A1009AC4EF /* MessageTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				8E00C25922EF6F20008C98D1 /* User.swift in Sources */,
 				8ECDE52B22F338DD009AC4EF /* Message.swift in Sources */,
 				8E00C24822EDC1BF008C98D1 /* EXT-WelcomeViewController.swift in Sources */,
+				8ECDE52D22F346A1009AC4EF /* MessageTableViewCell.swift in Sources */,
 				8E00C23722EAC3DB008C98D1 /* ResetPasswordViewController.swift in Sources */,
 				8ECDE50722F08529009AC4EF /* ChatViewController.swift in Sources */,
 				8E00C23D22EAEA73008C98D1 /* PeopleViewController.swift in Sources */,
