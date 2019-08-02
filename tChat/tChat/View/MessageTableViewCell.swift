@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import AVFoundation
 
 class MessageTableViewCell: UITableViewCell {
     var partnerProfileImageView = UIImageView()
@@ -15,8 +16,14 @@ class MessageTableViewCell: UITableViewCell {
     var textMsgLbl = UILabel()
     var dateMsgLbl = UILabel()
     var bubbleImageView = UIImageView()
+    var activityIndicatorView = UIActivityIndicatorView()
     var playButton = UIButton()
     var widthConstraintForBubble = 0
+    
+    var playerLayer: AVPlayerLayer?
+    var player: AVPlayer?
+    var message: Message!
+    var observation: Any? = nil
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,9 +51,26 @@ class MessageTableViewCell: UITableViewCell {
         textMsgLbl.isHidden = true
         bubbleImageView.isHidden = true
         partnerProfileImageView.isHidden = true
+        
+        if observation != nil {
+            stopObservers()
+        }
+        
+        playerLayer?.removeFromSuperlayer()
+        player?.pause()
+        playButton.isHidden = false
+        
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.stopAnimating()
+    }
+    
+    func stopObservers() {
+        player?.removeObserver(self, forKeyPath: "status")
+        observation = nil
     }
     
     func configureCell(uid: String, message: Message, image: UIImage) {
+        self.message = message
         let text = message.text
         if !text.isEmpty {
             textMsgLbl.text = text
@@ -89,15 +113,12 @@ class MessageTableViewCell: UITableViewCell {
             bubbleMsgView.backgroundColor = .white
             bubbleMsgView.layer.borderColor = UIColor.lightGray.cgColor
             partnerProfileImageView.image = image
-            let rightConstraintValue: CGFloat = UIScreen.main.bounds.width - 8 - CGFloat(widthConstraintForBubble)
+            let rightConstraintValue: CGFloat = UIScreen.main.bounds.width - 55 - CGFloat(widthConstraintForBubble)
             bubbleMsgView.snp.makeConstraints { (make) in
                 make.left.equalToSuperview().offset(55).priority(1000)
                 make.right.equalToSuperview().offset(-rightConstraintValue).priority(1000)
-                
             }
-            
         }
-        
         let date = Date(timeIntervalSince1970: message.date)
         let dateString = timeAgoSinceDate(date, currentDate: Date(), numericDates: true)
         dateMsgLbl.text = dateString
@@ -118,11 +139,19 @@ class MessageTableViewCell: UITableViewCell {
         bubbleMsgView.layer.cornerRadius = 15
         bubbleMsgView.layer.borderWidth = 0.4
         bubbleMsgView.clipsToBounds = true
+        setupActivityIndicatorView()
         setupTextMsgLbl()
         setupDateMsgLbl()
         setupBubbleImageView()
         setupPlayButton()
         addSubview(bubbleMsgView)
+    }
+    
+    func setupActivityIndicatorView() {
+        activityIndicatorView.style = .whiteLarge
+        activityIndicatorView.isHidden = true
+        activityIndicatorView.stopAnimating()
+        bubbleMsgView.addSubview(activityIndicatorView)
     }
     
     func setupTextMsgLbl() {
@@ -148,6 +177,7 @@ class MessageTableViewCell: UITableViewCell {
     
     func setupPlayButton() {
         playButton.setImage(UIImage(named: "play"), for: .normal)
+        playButton.addTarget(self, action: #selector(playBtnDidTaped), for: .touchUpInside)
         bubbleMsgView.addSubview(playButton)
     }
     
@@ -175,6 +205,10 @@ class MessageTableViewCell: UITableViewCell {
             make.bottom.equalToSuperview().offset(5)
             make.height.equalTo(15)
         }
+        activityIndicatorView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
         bubbleImageView.snp.makeConstraints { (make) in
 //            make.left.right.top.bottom.equalToSuperview()
             make.left.equalToSuperview()
@@ -185,6 +219,45 @@ class MessageTableViewCell: UITableViewCell {
         playButton.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
             make.right.equalToSuperview().offset(-5)
+        }
+    }
+    
+    @objc func playBtnDidTaped() {
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
+        handlePlay()
+    }
+    
+    func handlePlay() {
+        let videoUrl = message.videoUrl
+        if videoUrl.isEmpty {
+            return
+        }
+        
+        if let url = URL(string: videoUrl) {
+            player = AVPlayer(url: url)
+            playerLayer = AVPlayerLayer(player: player)
+            playerLayer?.videoGravity = .resizeAspectFill
+            playerLayer?.frame = bubbleImageView.frame
+            observation = player?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
+            bubbleMsgView.layer.addSublayer(playerLayer!)
+            player?.play()
+            playButton.isHidden = true
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "status" {
+            let status = player!.status
+            switch(status) {
+            case .readyToPlay:
+                activityIndicatorView.isHidden = true
+                activityIndicatorView.stopAnimating()
+                break
+            case .unknown, .failed:
+                break
+                
+            }
         }
     }
 
