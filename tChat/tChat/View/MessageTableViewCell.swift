@@ -20,12 +20,23 @@ class MessageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupViews()
-        createConstraints()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+        createConstraints()
+        textMsgLbl.isHidden = true
+        bubbleImageView.isHidden = true
+        partnerProfileImageView.isHidden = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func prepareForReuse() {
@@ -41,16 +52,16 @@ class MessageTableViewCell: UITableViewCell {
             textMsgLbl.text = text
             textMsgLbl.isHidden = false
             let widthValue = text.estimateFrameForText(text).width + 40
-            if widthValue < 75 {
-                widthConstraintForBubble = 75
-                textMsgLbl.snp.makeConstraints { (make) in
-                    make.width.equalTo(75)
+            if widthValue < 100 {
+                widthConstraintForBubble = 100
+                bubbleMsgView.snp.makeConstraints { (make) in
+                    make.width.equalTo(widthConstraintForBubble).priority(1000)
                 }
             }
             else {
                 widthConstraintForBubble = Int(widthValue)
-                textMsgLbl.snp.makeConstraints { (make) in
-                    make.width.equalTo(widthValue)
+                bubbleMsgView.snp.makeConstraints { (make) in
+                    make.width.equalTo(widthConstraintForBubble).priority(1000)
                 }
             }
             dateMsgLbl.textColor = .lightGray
@@ -58,8 +69,8 @@ class MessageTableViewCell: UITableViewCell {
             bubbleImageView.isHidden = false
             bubbleImageView.loadImage(message.imageUrl)
             bubbleImageView.layer.borderColor = UIColor.clear.cgColor
-            bubbleImageView.snp.makeConstraints { (make) in
-                make.width.equalTo(250)
+            bubbleMsgView.snp.makeConstraints { (make) in
+                make.width.equalTo(250).priority(1000)
             }
             dateMsgLbl.textColor = .white
         }
@@ -69,8 +80,8 @@ class MessageTableViewCell: UITableViewCell {
             bubbleMsgView.layer.borderColor = UIColor.clear.cgColor
             let leftConstraintValue: CGFloat = UIScreen.main.bounds.width - 8 - 250
             bubbleMsgView.snp.makeConstraints { (make) in
-                make.right.equalToSuperview().offset(-8)
-                make.left.equalToSuperview().offset(leftConstraintValue)
+                make.right.equalToSuperview().offset(-8).priority(1000)
+                make.left.equalToSuperview().offset(leftConstraintValue).priority(1000)
             }
         }
         else {
@@ -80,8 +91,8 @@ class MessageTableViewCell: UITableViewCell {
             partnerProfileImageView.image = image
             let rightConstraintValue: CGFloat = UIScreen.main.bounds.width - 8 - CGFloat(widthConstraintForBubble)
             bubbleMsgView.snp.makeConstraints { (make) in
-                make.left.equalToSuperview().offset(55)
-                make.right.equalToSuperview().offset(-rightConstraintValue)
+                make.left.equalToSuperview().offset(55).priority(1000)
+                make.right.equalToSuperview().offset(-rightConstraintValue).priority(1000)
                 
             }
             
@@ -89,6 +100,7 @@ class MessageTableViewCell: UITableViewCell {
         
         let date = Date(timeIntervalSince1970: message.date)
         let dateString = timeAgoSinceDate(date, currentDate: Date(), numericDates: true)
+        dateMsgLbl.text = dateString
     }
     
     func setupViews() {
@@ -142,14 +154,14 @@ class MessageTableViewCell: UITableViewCell {
     func createConstraints() {
         partnerProfileImageView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
-            make.bottom.equalToSuperview().offset(12)
+            make.bottom.equalToSuperview().offset(-12)
             make.height.width.equalTo(32)
         }
         bubbleMsgView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(12)
-            make.right.equalToSuperview().offset(-8)
-            make.bottom.equalTo(partnerProfileImageView)
-            make.left.equalToSuperview().offset(55)
+            make.right.equalToSuperview().offset(-8).priority(750)
+            make.bottom.equalToSuperview().offset(-12)
+            make.left.equalToSuperview().offset(55).priority(750)
         }
         textMsgLbl.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
@@ -164,21 +176,16 @@ class MessageTableViewCell: UITableViewCell {
             make.height.equalTo(15)
         }
         bubbleImageView.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalToSuperview()
+//            make.left.right.top.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
         playButton.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)
             make.right.equalToSuperview().offset(-5)
         }
-    }
-
-}
-
-extension String {
-    func estimateFrameForText(_ text: String ) -> CGRect {
-        let size = CGSize(width: 250, height: 1000)
-        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)], context: nil)
     }
 
 }

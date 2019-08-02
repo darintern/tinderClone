@@ -299,7 +299,8 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_CHAT, for: indexPath) as! MessageTableViewCell
         cell.playButton.isHidden = messages[indexPath.row].videoUrl == ""
-        cell.configureCell(uid: Api.User.currentUserId, message: messages[indexPath.row], image: imagePartner)
+        let uid = Api.User.currentUserId
+        cell.configureCell(uid: uid, message: messages[indexPath.row], image: imagePartner)
         return cell
     }
     
@@ -308,16 +309,15 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         let message = messages[indexPath.row]
         let text = message.text
         if !text.isEmpty {
-            height = text.estimateFrameForText(text).height
+            height = text.estimateFrameForText(text).height + 60
         }
-        
         let heightMessage = message.height
         let widthMessage = message.width
-        
+        print(heightMessage)
+        print(widthMessage)
         if heightMessage != 0, widthMessage != 0 {
-            height = CGFloat (heightMessage / widthMessage * 250)
+            height = CGFloat(heightMessage / widthMessage * 250)
         }
-        
         return height
     }
     

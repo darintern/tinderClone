@@ -38,11 +38,11 @@ class Message {
                 return nil
         }
         
-        var text = (dict["text"] as? String) == nil ? "" : dict["text"]! as! String
-        var imageUrl = (dict["imageUrl"] as? String) == nil ? "" : dict["imageUrl"]! as! String
-        var height = (dict["height"] as? Double) == nil ? 0 : dict["height"]! as! Double
-        var width = (dict["width"] as? Double) == nil ? 0 : dict["width"]! as! Double
-        var videoUrl = (dict["videoUrl"] as? String) == nil ? "" : dict["videoUrl"]!  as! String
+        let text = (dict["text"] as? String) == nil ? "" : dict["text"]! as! String
+        let imageUrl = (dict["imageUrl"] as? String) == nil ? "" : dict["imageUrl"]! as! String
+        let height = (dict["imageHeight"] as? Double) == nil ? 0 : dict["imageHeight"]! as! Double
+        let width = (dict["imageWidth"] as? Double) == nil ? 0 : dict["imageWidth"]! as! Double
+        let videoUrl = (dict["videoUrl"] as? String) == nil ? "" : dict["videoUrl"]!  as! String
         
         
         let message = Message(id: keyId, from: from, to: to, date: date, text: text, imageUrl: imageUrl, height: height, width: width, videoUrl: videoUrl)

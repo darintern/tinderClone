@@ -28,6 +28,17 @@ extension UIColor {
     }
 }
 
+
+extension String {
+    func estimateFrameForText(_ text: String ) -> CGRect {
+        let size = CGSize(width: 250, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)], context: nil)
+    }
+    
+}
+
+
 func timeAgoSinceDate(_ date:Date, currentDate:Date, numericDates:Bool) -> String {
     let calendar = Calendar.current
     let now = currentDate

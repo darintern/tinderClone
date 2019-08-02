@@ -27,7 +27,8 @@ class StorageService {
                     StorageService.savePhotoMessage(image: thumbnailImage, id: id, onSuccess: { (value) in
                         if let dict = value as? Dictionary<String, Any> {
                             var dictValue = dict
-                            if let videoUrlString = videoUrl?.absoluteURL {
+                            if let videoUrlString = videoUrl?.absoluteString {
+                                print(videoUrlString)
                                 dictValue["videoUrl"] = videoUrlString
                             }
                             onSuccess(dictValue)
