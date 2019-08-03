@@ -18,3 +18,6 @@ July, 31, 2019 ----- Plan for today is the same as yesterday's, cus yesterday i 
 Aug, 1, 2019  ------ Plan for today is to add functionality of send photo message and video message and download them from firebase.
 
 Aug, 2, 2019  ------ Plan for today is to design chat scene, play video messages and resolve issue #2, #5, #7, #8, #9
+
+Aug, 3, 2019  ------ Plan for today is to design inbox scene and add functionality for it and also design setting page.
+I'll try today - tommorow upload design of our app (it would take some time, cus we don't have appropriate design in figma, so need to do) 
