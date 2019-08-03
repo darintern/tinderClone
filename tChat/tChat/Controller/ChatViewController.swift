@@ -62,6 +62,7 @@ class ChatViewController: UIViewController {
             inputMessageSearchTextView.text = ""
             self.textViewDidChange(inputMessageSearchTextView)
             sendToFireBase(dict: ["text": text as Any])
+            chatTableView.layoutIfNeeded()
         }
     }
     

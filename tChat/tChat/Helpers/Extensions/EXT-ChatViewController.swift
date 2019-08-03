@@ -105,13 +105,16 @@ extension ChatViewController {
     }
     
     func observeMessages() {
-        Api.Message.recieveMessage(from: Api.User.currentUserId, to: partnerId) { (message) in
-            self.messages.append(message)
-            self.sortMessages()
-        }
-        Api.Message.recieveMessage(from: partnerId, to: Api.User.currentUserId) { (message) in
-            self.messages.append(message)
-            self.sortMessages()
+        print("da")
+        DispatchQueue.global(qos: .background).async {
+            Api.Message.recieveMessage(from: Api.User.currentUserId, to: self.partnerId) { (message) in
+                self.messages.append(message)
+                self.sortMessages()
+            }
+            Api.Message.recieveMessage(from: self.partnerId, to: Api.User.currentUserId) { (message) in
+                self.messages.append(message)
+                self.sortMessages()
+            }
         }
     }
     

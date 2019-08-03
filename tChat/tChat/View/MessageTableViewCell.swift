@@ -18,7 +18,7 @@ class MessageTableViewCell: UITableViewCell {
     var bubbleImageView = UIImageView()
     var activityIndicatorView = UIActivityIndicatorView()
     var playButton = UIButton()
-    var widthConstraintForBubble = 0
+    var widthConstraintForBubble = 250
     
     var playerLayer: AVPlayerLayer?
     var player: AVPlayer?
@@ -75,6 +75,7 @@ class MessageTableViewCell: UITableViewCell {
         if !text.isEmpty {
             textMsgLbl.text = text
             textMsgLbl.isHidden = false
+    
             let widthValue = text.estimateFrameForText(text).width + 40
             if widthValue < 100 {
                 widthConstraintForBubble = 100
@@ -94,7 +95,7 @@ class MessageTableViewCell: UITableViewCell {
             bubbleImageView.loadImage(message.imageUrl)
             bubbleImageView.layer.borderColor = UIColor.clear.cgColor
             bubbleMsgView.snp.makeConstraints { (make) in
-                make.width.equalTo(250).priority(1000)
+                make.width.lessThanOrEqualTo(message.width).priority(1000)
             }
             dateMsgLbl.textColor = .white
         }
@@ -102,7 +103,7 @@ class MessageTableViewCell: UITableViewCell {
         if uid == message.from {
             bubbleMsgView.backgroundColor = .groupTableViewBackground
             bubbleMsgView.layer.borderColor = UIColor.clear.cgColor
-            let leftConstraintValue: CGFloat = UIScreen.main.bounds.width - 8 - 250
+            let leftConstraintValue: CGFloat = UIScreen.main.bounds.width - 8 - CGFloat(widthConstraintForBubble)
             bubbleMsgView.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-8).priority(1000)
                 make.left.equalToSuperview().offset(leftConstraintValue).priority(1000)
@@ -122,6 +123,7 @@ class MessageTableViewCell: UITableViewCell {
         let date = Date(timeIntervalSince1970: message.date)
         let dateString = timeAgoSinceDate(date, currentDate: Date(), numericDates: true)
         dateMsgLbl.text = dateString
+        
     }
     
     func setupViews() {
@@ -169,7 +171,7 @@ class MessageTableViewCell: UITableViewCell {
     }
     
     func setupBubbleImageView() {
-        bubbleImageView.layer.cornerRadius = 15
+//        bubbleImageView.layer.cornerRadius = 15
         bubbleImageView.clipsToBounds = true
         bubbleImageView.contentMode = .scaleAspectFill
         bubbleMsgView.addSubview(bubbleImageView)
@@ -201,8 +203,8 @@ class MessageTableViewCell: UITableViewCell {
         dateMsgLbl.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(8)
             make.right.equalToSuperview().offset(-8)
-            make.top.equalToSuperview()
-            make.bottom.equalToSuperview().offset(5)
+            make.top.equalTo(textMsgLbl.snp.bottom)
+            make.bottom.equalToSuperview().offset(-5)
             make.height.equalTo(15)
         }
         activityIndicatorView.snp.makeConstraints { (make) in
