@@ -12,6 +12,8 @@ import FirebaseAuth
 
 class MessagesViewController: UIViewController {
 
+    var inboxArray = [Inbox]()
+    
     let messagesTableView = UITableView()
     
     override func viewDidLoad() {
@@ -24,7 +26,20 @@ class MessagesViewController: UIViewController {
     }
     
     func observeInbox() {
-        Api.Inbox.lastMessages(uid: Api.User.currentUserId)
+        Api.Inbox.lastMessages(uid: Api.User.currentUserId) { (inbox) in
+            if !self.inboxArray.contains(where: { $0.user.uid == inbox.user.uid}) {
+                self.inboxArray.append(inbox)
+                self.sortedInbox()
+            }
+        }
+    }
+    
+    func sortedInbox() {
+        inboxArray = self.inboxArray.sorted(by: { $0.date > $1.date })
+        DispatchQueue.main.async {
+            self.messagesTableView.reloadData()
+            self.messagesTableView.scrollToRow(at: IndexPath(row: self.inboxArray.count - 1, section: 0), at: .bottom, animated: true)
+        }
     }
     
     func setupViews() {
@@ -34,7 +49,7 @@ class MessagesViewController: UIViewController {
         messagesTableView.delegate = self
         messagesTableView.tableFooterView = UIView()
         messagesTableView.dataSource = self
-        messagesTableView.register(MessagesTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_MESSAGES)
+        messagesTableView.register(InboxTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_MESSAGES)
         view.addSubview(messagesTableView)
     }
 

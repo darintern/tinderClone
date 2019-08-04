@@ -42,6 +42,20 @@ class InboxTableViewCell: UITableViewCell {
         self.createConstraints()
     }
     
+    func configureCell(uid: String, inbox: Inbox) {
+        self.user = inbox.user
+        profileImageView.loadImage(inbox.user.profileImageUrl)
+        usernameLbl.text = user.username
+        let date = Date(timeIntervalSince1970: inbox.date)
+        let dateString = timeAgoSinceDate(date, currentDate: Date(), numericDates: true)
+        dateLbl.text = dateString
+        messageLbl.text = inbox.text
+        
+        if inbox.text.isEmpty {
+            messageLbl.text = "MEDIA"
+        }
+    }
+    
     func setupViews() {
         addSubview(profileImageView)
         addSubview(usernameLbl)
