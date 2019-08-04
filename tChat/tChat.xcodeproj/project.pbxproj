@@ -17,7 +17,7 @@
 		8E00C23B22EAEA42008C98D1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23A22EAEA42008C98D1 /* MainTabBarController.swift */; };
 		8E00C23D22EAEA73008C98D1 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23C22EAEA73008C98D1 /* PeopleViewController.swift */; };
 		8E00C23F22EAEA96008C98D1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */; };
-		8E00C24122EAEAA1008C98D1 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24022EAEAA1008C98D1 /* MeViewController.swift */; };
+		8E00C24122EAEAA1008C98D1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24022EAEAA1008C98D1 /* ProfileViewController.swift */; };
 		8E00C24522ED736F008C98D1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24422ED736F008C98D1 /* WelcomeViewController.swift */; };
 		8E00C24822EDC1BF008C98D1 /* EXT-WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24722EDC1BF008C98D1 /* EXT-WelcomeViewController.swift */; };
 		8E00C24B22EDC67B008C98D1 /* EXT-SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24A22EDC67B008C98D1 /* EXT-SignUpViewController.swift */; };
@@ -40,6 +40,7 @@
 		8ECDE53722F6874F009AC4EF /* InboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE53622F6874F009AC4EF /* InboxTableViewCell.swift */; };
 		8ECDE53922F6881B009AC4EF /* EXT-MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE53822F6881B009AC4EF /* EXT-MessagesViewController.swift */; };
 		8ECDE53B22F68E4B009AC4EF /* InboxApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE53A22F68E4B009AC4EF /* InboxApi.swift */; };
+		8ECDE53D22F6EE3A009AC4EF /* EXT-ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE53C22F6EE3A009AC4EF /* EXT-ProfileViewController.swift */; };
 		93F065A5CF322AC79D5B5E31 /* Pods_tChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +58,7 @@
 		8E00C23A22EAEA42008C98D1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8E00C23C22EAEA73008C98D1 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		8E00C24022EAEAA1008C98D1 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		8E00C24022EAEAA1008C98D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8E00C24422ED736F008C98D1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8E00C24722EDC1BF008C98D1 /* EXT-WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-WelcomeViewController.swift"; sourceTree = "<group>"; };
 		8E00C24A22EDC67B008C98D1 /* EXT-SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-SignUpViewController.swift"; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		8ECDE53622F6874F009AC4EF /* InboxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxTableViewCell.swift; sourceTree = "<group>"; };
 		8ECDE53822F6881B009AC4EF /* EXT-MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-MessagesViewController.swift"; sourceTree = "<group>"; };
 		8ECDE53A22F68E4B009AC4EF /* InboxApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxApi.swift; sourceTree = "<group>"; };
+		8ECDE53C22F6EE3A009AC4EF /* EXT-ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-ProfileViewController.swift"; sourceTree = "<group>"; };
 		BD1A59C1EE9753D7CCAD5F0C /* Pods_tChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE6B9CCB23CFA8F9927B2694 /* Pods-tChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tChat.debug.xcconfig"; path = "Target Support Files/Pods-tChat/Pods-tChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,7 +167,7 @@
 				8E00C23A22EAEA42008C98D1 /* MainTabBarController.swift */,
 				8E00C23C22EAEA73008C98D1 /* PeopleViewController.swift */,
 				8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */,
-				8E00C24022EAEAA1008C98D1 /* MeViewController.swift */,
+				8E00C24022EAEAA1008C98D1 /* ProfileViewController.swift */,
 				8E00C24422ED736F008C98D1 /* WelcomeViewController.swift */,
 				8ECDE50622F08529009AC4EF /* ChatViewController.swift */,
 			);
@@ -215,10 +217,11 @@
 				8E00C24A22EDC67B008C98D1 /* EXT-SignUpViewController.swift */,
 				8E00C24C22EDC68A008C98D1 /* EXT-SignInViewController.swift */,
 				8E00C24E22EDC6A4008C98D1 /* EXT-ResetPasswordViewController.swift */,
-				8E00C25C22EF7477008C98D1 /* Extension.swift */,
 				8ECDE52E22F49A1B009AC4EF /* EXT-ChatViewController.swift */,
 				8ECDE53022F5B9B6009AC4EF /* EXT-PeopleViewController.swift */,
 				8ECDE53822F6881B009AC4EF /* EXT-MessagesViewController.swift */,
+				8ECDE53C22F6EE3A009AC4EF /* EXT-ProfileViewController.swift */,
+				8E00C25C22EF7477008C98D1 /* Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -368,11 +371,12 @@
 				8ECDE53922F6881B009AC4EF /* EXT-MessagesViewController.swift in Sources */,
 				8E00C23F22EAEA96008C98D1 /* MessagesViewController.swift in Sources */,
 				8ECDE53722F6874F009AC4EF /* InboxTableViewCell.swift in Sources */,
-				8E00C24122EAEAA1008C98D1 /* MeViewController.swift in Sources */,
+				8E00C24122EAEAA1008C98D1 /* ProfileViewController.swift in Sources */,
 				8E00C25522EF08B3008C98D1 /* StorageService.swift in Sources */,
 				8E00C21922E9FE29008C98D1 /* AppDelegate.swift in Sources */,
 				8ECDE50922F1CA7E009AC4EF /* MessageApi.swift in Sources */,
 				8ECDE53322F5B9F0009AC4EF /* PeopleTableViewCell.swift in Sources */,
+				8ECDE53D22F6EE3A009AC4EF /* EXT-ProfileViewController.swift in Sources */,
 				8E00C25722EF0F73008C98D1 /* Ref.swift in Sources */,
 				8E00C25322EEFB52008C98D1 /* UserApi.swift in Sources */,
 				8E00C24B22EDC67B008C98D1 /* EXT-SignUpViewController.swift in Sources */,
