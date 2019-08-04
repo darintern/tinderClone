@@ -105,7 +105,6 @@ extension ChatViewController {
     }
     
     func observeMessages() {
-        print("da")
         DispatchQueue.global(qos: .background).async {
             Api.Message.recieveMessage(from: Api.User.currentUserId, to: self.partnerId) { (message) in
                 self.messages.append(message)
@@ -122,6 +121,7 @@ extension ChatViewController {
         messages = self.messages.sorted(by: { $0.date < $1.date })
         DispatchQueue.main.async {
             self.chatTableView.reloadData()
+            self.chatTableView.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom, animated: true)
         }
         
     }
