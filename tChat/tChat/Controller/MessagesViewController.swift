@@ -15,12 +15,13 @@ class MessagesViewController: UIViewController {
     var inboxArray = [Inbox]()
     
     let messagesTableView = UITableView()
+    var avatarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
         setupViews()
-        setLogoutBarBtn()
+//        setLogoutBarBtn()
         createConstraints()
         observeInbox()
     }
@@ -43,20 +44,45 @@ class MessagesViewController: UIViewController {
     }
     
     func setupViews() {
+        setupNavigationBar()
+        setupTableView()
+    }
+    
+    func setupNavigationBar() {
         self.navigationItem.title = "Messages"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
+        setupAvatarImageView()
+    }
+    
+    func setupTableView() {
         messagesTableView.delegate = self
         messagesTableView.tableFooterView = UIView()
         messagesTableView.dataSource = self
         messagesTableView.register(InboxTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_MESSAGES)
         view.addSubview(messagesTableView)
     }
-
-    func setLogoutBarBtn() {
-        let logoutBarBtn = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(logoutBarBtnTapped))
-        self.navigationItem.leftBarButtonItem = logoutBarBtn
+    
+    func setupAvatarImageView() {
+        let imagePartnerContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
+        avatarImageView.clipsToBounds = true
+        avatarImageView.layer.cornerRadius = 18
+        avatarImageView.contentMode = .scaleAspectFill
+        imagePartnerContainerView.addSubview(avatarImageView)
+        
+        let leftBarBtn = UIBarButtonItem(customView: imagePartnerContainerView)
+        navigationItem.leftBarButtonItem = leftBarBtn
+        
+        if let currentUser = Auth.auth().currentUser, let photoUrl = currentUser.photoURL {
+            avatarImageView.loadImage(photoUrl.absoluteString)
+        }
     }
+    
+    
+
+//    func setLogoutBarBtn() {
+//        let logoutBarBtn = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(logoutBarBtnTapped))
+//        self.navigationItem.leftBarButtonItem = logoutBarBtn
+//    }
     
     func createConstraints() {
         messagesTableView.snp.makeConstraints { (make) in
@@ -65,7 +91,7 @@ class MessagesViewController: UIViewController {
         }
     }
     
-    @objc func logoutBarBtnTapped() {
-        Api.User.logout()
-    }
+//    @objc func logoutBarBtnTapped() {
+//        Api.User.logout()
+//    }
 }
