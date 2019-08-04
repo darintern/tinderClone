@@ -29,15 +29,15 @@ class MainTabBarController: UITabBarController {
         messagesVC.tabBarItem.image = UIImage(named: "icon_messages")
     
         
-        let meVC = MeViewController()
+        let meVC = UINavigationController(rootViewController: ProfileViewController())
         meVC.tabBarItem.title = "Me"
         meVC.tabBarItem.image = UIImage(named: "icon_profile")
         
         viewControllers = [usersVC, messagesVC, meVC]
         
     }
-    
-    @objc func logoutDidTaped() {
-        print("logout")
-    }
+//    
+//    @objc func logoutDidTaped() {
+//        print("logout")
+//    }
 }
