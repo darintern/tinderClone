@@ -11,6 +11,7 @@ import Firebase
 
 let REF_USER = "users"
 let REF_MESSAGE = "messages"
+let REF_INBOX = "inbox"
 let URL_STORAGE_ROOT = "gs://tchat-862a1.appspot.com"
 let STORAGE_PROGILE = "profile"
 let PROFILE_IMAGE_URL = "profileImageUrl"
@@ -45,6 +46,14 @@ class Ref {
     
     func databaseMessageSendTo(from: String, to: String) -> DatabaseReference {
         return datatabaseMessages.child(from).child(to)
+    }
+    
+    var databaseInbox: DatabaseReference {
+        return databaseRoot.child(REF_INBOX)
+    }
+    
+    func databaseInboxInfo(from: String, to: String) -> DatabaseReference {
+        return databaseInbox.child(from).child(to)
     }
     
     // Storage Ref
