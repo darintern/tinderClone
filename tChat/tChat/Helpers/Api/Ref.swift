@@ -27,6 +27,7 @@ let ERROR_EMPTY_EMAIL_RESET = "Please enter an email address for password reset"
 let SUCCESS_EMAIL_RESET = "We have just sent you a password reset email. Please check your inbox and follow the instructions to reset your password"
 let IDENTIFIER_CELL_USERS = "UsersTableViewCell"
 let IDENTIFIER_CELL_CHAT = "ChatTableViewCell"
+let IDENTIFIER_CELL_MESSAGES = "InboxTableViewCell"
 
 
 class Ref {
@@ -54,6 +55,10 @@ class Ref {
     
     func databaseInboxInfo(from: String, to: String) -> DatabaseReference {
         return databaseInbox.child(from).child(to)
+    }
+    
+    func databaseInboxForUser(uid: String) -> DatabaseReference {
+        return databaseInbox.child(uid)
     }
     
     // Storage Ref
