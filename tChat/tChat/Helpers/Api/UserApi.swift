@@ -23,7 +23,7 @@ class UserApi {
     func typing(from: String, to: String) {
         let ref = Ref().databaseIsOnline(uid: from)
         let dict: Dictionary<String, Any> = [
-            "typing": to as Any
+            "typing": to
         ]
         ref.updateChildValues(dict)
     }

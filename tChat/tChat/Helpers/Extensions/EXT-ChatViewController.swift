@@ -21,15 +21,18 @@ extension ChatViewController {
     }
     
     func setupTopLabel(bool: Bool) {
-        
         var status = ""
         var color = UIColor()
         if bool {
             status = "Active"
-            color = .green
+            color = UIColor.green
+            if isTyping {
+                status = "Typing..."
+                color = UIColor.gray
+            }
         } else {
-            status = "Last Time " + lastTimeOnline
-            color = .red
+            status = "Last Active " + self.lastTimeOnline
+            color = UIColor.red
         }
         
         let attributedText = NSMutableAttributedString(string: partnerUsername + "\n", attributes: [.font : UIFont.systemFont(ofSize: 17) , .foregroundColor : UIColor.black])
@@ -60,17 +63,21 @@ extension ChatViewController {
             self.setupTopLabel(bool: self.isActive)
         }
         ref.observe(.childChanged) { (snapshot) in
-            if let snp = snapshot.value {
+            if let snap = snapshot.value {
                 if snapshot.key == "online" {
-                     self.isActive = snp as! Bool
+                    self.isActive = snap as! Bool
                 }
-                else if snapshot.key == "latest" {
-                    let latest = snp as! Double
+                if snapshot.key == "latest" {
+                    let latest = snap as! Double
                     self.lastTimeOnline = latest.convertDate()
                 }
+                if snapshot.key == "typing" {
+                    let typing = snap as! String
+                    self.isTyping = typing == Api.User.currentUserId ? true : false
+                }
+                
                 self.setupTopLabel(bool: self.isActive)
             }
-            
         }
     }
     
@@ -302,11 +309,13 @@ extension ChatViewController: UITextViewDelegate {
         }
         
         if !isTyping {
-            self.isTyping = true
             Api.User.typing(from: Api.User.currentUserId, to: partnerUser.uid)
+            isTyping = true
         } else {
             timer.invalidate()
         }
+        
+        timerTyping()
     }
     
     func timerTyping() {
