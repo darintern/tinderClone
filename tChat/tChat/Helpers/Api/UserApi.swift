@@ -20,6 +20,14 @@ class UserApi {
         return Auth.auth().currentUser != nil ? Auth.auth().currentUser!.uid : ""
     }
     
+    func typing(from: String, to: String) {
+        let ref = Ref().databaseIsOnline(uid: from)
+        let dict: Dictionary<String, Any> = [
+            "typing": to as Any
+        ]
+        ref.updateChildValues(dict)
+    }
+    
     func saveUserProfile(dict: [String: Any], onSuccess: @escaping() -> Void, onError: @escaping(_ error: String) -> Void) {
         
         let ref = Ref().databaseSpecificUser(uid: currentUserId).updateChildValues(dict) { (error, dataRef) in

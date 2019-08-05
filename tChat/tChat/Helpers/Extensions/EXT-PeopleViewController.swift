@@ -48,6 +48,7 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISe
             let chatVC = ChatViewController()
             chatVC.imagePartner = cell.profileImageView.image!
             chatVC.partnerUsername = cell.fullNameLabel.text!
+            chatVC.partnerUser = cell.user
             chatVC.partnerId = cell.user.uid
             self.navigationController?.pushViewController(chatVC, animated: true)
         }

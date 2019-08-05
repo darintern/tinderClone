@@ -10,11 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Controller/ChatViewController.swift"
-            timestampString = "586582526.581213"
+            timestampString = "586701516.4153529"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116">
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -24,11 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Controller/ChatViewController.swift"
-            timestampString = "586582526.581359"
+            timestampString = "586701516.417546"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116">
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -38,11 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Controller/ChatViewController.swift"
-            timestampString = "586582526.581422"
+            timestampString = "586701516.417622"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116">
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -52,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Api/StorageService.swift"
-            timestampString = "586694175.482911"
+            timestampString = "586701516.417727"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -100,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Extensions/EXT-ChatViewController.swift"
-            timestampString = "586694175.483004"
+            timestampString = "586701516.41839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "observeMessages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -116,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Extensions/EXT-ChatViewController.swift"
-            timestampString = "586694175.4830641"
+            timestampString = "586701516.418902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "observeMessages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Extensions/EXT-ChatViewController.swift"
-            timestampString = "586694175.483102"
+            timestampString = "586701516.419243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "observeMessages()"
             landmarkType = "7">
          </BreakpointContent>

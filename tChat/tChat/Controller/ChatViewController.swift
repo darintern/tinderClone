@@ -24,10 +24,15 @@ class ChatViewController: UIViewController {
     var topLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
     var partnerUsername = ""
     var partnerId = ""
+    var partnerUser: User!
     var placeholderLbl = UILabel()
     var separatorView = UIView()
     var picker = UIImagePickerController()
     var messages = [Message]()
+    var isActive = false
+    var lastTimeOnline = ""
+    var isTyping = false
+    var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +57,6 @@ class ChatViewController: UIViewController {
         setupTableView()
         setupSeparatorView()
         setupInputMessageView()
-        observeMessages()
     }
     
     

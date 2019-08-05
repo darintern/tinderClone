@@ -17,12 +17,23 @@ extension ChatViewController {
     func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
         setupAvatarImageView()
-        setupTopLabel()
+        setupTopLabel(bool: false)
     }
     
-    func setupTopLabel() {
+    func setupTopLabel(bool: Bool) {
+        
+        var status = ""
+        var color = UIColor()
+        if bool {
+            status = "Active"
+            color = .green
+        } else {
+            status = "Last Time " + lastTimeOnline
+            color = .red
+        }
+        
         let attributedText = NSMutableAttributedString(string: partnerUsername + "\n", attributes: [.font : UIFont.systemFont(ofSize: 17) , .foregroundColor : UIColor.black])
-        let attributedSubText = NSMutableAttributedString(string: "Active", attributes: [.font : UIFont.systemFont(ofSize: 13), .foregroundColor : UIColor.green])
+        let attributedSubText = NSMutableAttributedString(string: status, attributes: [.font : UIFont.systemFont(ofSize: 13), .foregroundColor : color])
         
         attributedText.append(attributedSubText)
         
@@ -33,6 +44,36 @@ extension ChatViewController {
         navigationItem.titleView = topLabel
     }
     
+    func observeActivity() {
+        let ref = Ref().databaseIsOnline(uid: partnerUser.uid)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            if let snap = snapshot.value as? Dictionary<String, Any> {
+                if let active = snap["online"] as? Bool {
+                    self.isActive = active
+                }
+                
+                if let latest = snap["latest"] as? Double {
+                    self.lastTimeOnline = latest.convertDate()
+                }
+            }
+            
+            self.setupTopLabel(bool: self.isActive)
+        }
+        ref.observe(.childChanged) { (snapshot) in
+            if let snp = snapshot.value {
+                if snapshot.key == "online" {
+                     self.isActive = snp as! Bool
+                }
+                else if snapshot.key == "latest" {
+                    let latest = snp as! Double
+                    self.lastTimeOnline = latest.convertDate()
+                }
+                self.setupTopLabel(bool: self.isActive)
+            }
+            
+        }
+    }
+    
     func setupAvatarImageView() {
         let imagePartnerContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
         avatarImageView.image = imagePartner
@@ -40,6 +81,18 @@ extension ChatViewController {
         avatarImageView.layer.cornerRadius = 18
         avatarImageView.contentMode = .scaleAspectFill
         imagePartnerContainerView.addSubview(avatarImageView)
+        
+        if imagePartner != nil {
+            avatarImageView.image = imagePartner
+            self.observeActivity()
+            self.observeMessages()
+        } else {
+            avatarImageView.loadImage(partnerUser.profileImageUrl) { (image) in
+                self.imagePartner = image
+                self.observeActivity()
+                self.observeMessages()
+            }
+        }
         
         let rightBarBtn = UIBarButtonItem(customView: imagePartnerContainerView)
         navigationItem.rightBarButtonItem = rightBarBtn
@@ -247,6 +300,20 @@ extension ChatViewController: UITextViewDelegate {
             inputMessageSendBtn.isEnabled = false
             inputMessageSendBtn.setTitleColor(.lightGray, for: .normal)
         }
+        
+        if !isTyping {
+            self.isTyping = true
+            Api.User.typing(from: Api.User.currentUserId, to: partnerUser.uid)
+        } else {
+            timer.invalidate()
+        }
+    }
+    
+    func timerTyping() {
+        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (t) in
+            Api.User.typing(from: Api.User.currentUserId, to: "")
+            self.isTyping = false
+        })
     }
 }
 
