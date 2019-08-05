@@ -10,6 +10,7 @@ target 'tChat' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Database'
 	pod 'Firebase/Storage'
+	pod 'Firebase/Messages'
 	pod 'SnapKit'
 	pod 'ProgressHUD'
 	pod 'SDWebImage'

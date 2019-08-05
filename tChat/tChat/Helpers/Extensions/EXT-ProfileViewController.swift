@@ -9,6 +9,19 @@
 import Foundation
 import UIKit
 
+extension ProfileViewController {
+    
+    @objc func presentPicker() {
+        view.endEditing(true)
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
+        
+    }
+}
+
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
@@ -55,6 +68,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 3 {
             let btn = UIButton()
             btn.setTitle("Logout", for: .normal)
+            btn.addTarget(ProfileViewController.self, action: #selector(logoutBtnDidTaped), for: .touchUpInside)
             btn.setTitleColor(.red, for: .normal)
             cell.addSubview(btn)
             btn.snp.makeConstraints { (make) in
@@ -68,4 +82,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-
+extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            image = imageSelected
+            avatar.image = imageSelected
+        }
+        if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            image = imageOriginal
+            avatar.image = imageOriginal
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
+}

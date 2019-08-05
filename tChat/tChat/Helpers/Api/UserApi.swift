@@ -20,8 +20,33 @@ class UserApi {
         return Auth.auth().currentUser != nil ? Auth.auth().currentUser!.uid : ""
     }
     
+    func saveUserProfile(dict: [String: Any], onSuccess: @escaping() -> Void, onError: @escaping(_ error: String) -> Void) {
+        
+        let ref = Ref().databaseSpecificUser(uid: currentUserId).updateChildValues(dict) { (error, dataRef) in
+            if error != nil {
+                onError(error!.localizedDescription)
+                return
+            }
+            onSuccess()
+        }
+        
+        
+        
+    }
+    
     func observeUsers(onSuccess: @escaping(UserCompletion)) {
         Ref().databaseUsers.observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? Dictionary<String, Any> {
+                if let user = User.transformUser(dict: dict) {
+                    onSuccess(user)
+                }
+            }
+        }
+    }
+    
+    func getUserInfoSingleEvent(uid: String, onSuccess: @escaping(UserCompletion)) {
+        let ref = Ref().databaseSpecificUser(uid: uid)
+        ref.observeSingleEvent(of: .value) { (snapshot) in
             if let dict = snapshot.value as? Dictionary<String, Any> {
                 if let user = User.transformUser(dict: dict) {
                     onSuccess(user)
