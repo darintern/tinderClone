@@ -41,6 +41,7 @@ class MessageTableViewCell: UITableViewCell {
         textMsgLbl.isHidden = true
         bubbleImageView.isHidden = true
         partnerProfileImageView.isHidden = true
+        onlineStatusView.isHidden = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -112,6 +113,7 @@ class MessageTableViewCell: UITableViewCell {
         }
         else {
             partnerProfileImageView.isHidden = false
+            onlineStatusView.isHidden = false
             bubbleMsgView.backgroundColor = .white
             bubbleMsgView.layer.borderColor = UIColor.lightGray.cgColor
             partnerProfileImageView.image = image
