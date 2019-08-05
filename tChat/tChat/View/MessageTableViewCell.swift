@@ -18,6 +18,7 @@ class MessageTableViewCell: UITableViewCell {
     var bubbleImageView = UIImageView()
     var activityIndicatorView = UIActivityIndicatorView()
     var playButton = UIButton()
+    var onlineStatusView = UIView()
     var widthConstraintForBubble = 250
     
     var playerLayer: AVPlayerLayer?
@@ -128,6 +129,7 @@ class MessageTableViewCell: UITableViewCell {
     
     func setupViews() {
         setupPartnerProfileImageView()
+        setupOnlineStatusView()
         setupBubleMsgView()
     }
     
@@ -135,6 +137,15 @@ class MessageTableViewCell: UITableViewCell {
         partnerProfileImageView.layer.cornerRadius = 16
         partnerProfileImageView.clipsToBounds = true
         addSubview(partnerProfileImageView)
+    }
+    
+    func setupOnlineStatusView() {
+        onlineStatusView.backgroundColor = .red
+        onlineStatusView.layer.cornerRadius = 15/2
+        onlineStatusView.layer.borderColor = UIColor.white.cgColor
+        onlineStatusView.layer.borderWidth = 2
+        onlineStatusView.clipsToBounds = true
+        addSubview(onlineStatusView)
     }
     
     func setupBubleMsgView() {
@@ -188,6 +199,10 @@ class MessageTableViewCell: UITableViewCell {
             make.left.equalToSuperview().offset(15)
             make.bottom.equalToSuperview().offset(-12)
             make.height.width.equalTo(32)
+        }
+        onlineStatusView.snp.makeConstraints { (make) in
+            make.right.bottom.equalTo(partnerProfileImageView)
+            make.height.width.equalTo(15)
         }
         bubbleMsgView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(12)

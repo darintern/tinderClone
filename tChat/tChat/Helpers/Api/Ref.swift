@@ -12,6 +12,7 @@ import Firebase
 let REF_USER = "users"
 let REF_MESSAGE = "messages"
 let REF_INBOX = "inbox"
+let IS_ONLINE = "isOnline"
 let URL_STORAGE_ROOT = "gs://tchat-862a1.appspot.com"
 let STORAGE_PROGILE = "profile"
 let PROFILE_IMAGE_URL = "profileImageUrl"
@@ -60,6 +61,10 @@ class Ref {
     
     func databaseInboxForUser(uid: String) -> DatabaseReference {
         return databaseInbox.child(uid)
+    }
+    
+    func databaseIsOnline(uid: String) -> DatabaseReference {
+        return databaseUsers.child(uid).child(IS_ONLINE)
     }
     
     // Storage Ref

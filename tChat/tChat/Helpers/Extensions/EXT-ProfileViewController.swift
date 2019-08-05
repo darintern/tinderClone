@@ -68,7 +68,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 3 {
             let btn = UIButton()
             btn.setTitle("Logout", for: .normal)
-            btn.addTarget(ProfileViewController.self, action: #selector(logoutBtnDidTaped), for: .touchUpInside)
+            btn.addTarget(self, action: #selector(logoutBtnDidTaped), for: .touchUpInside)
             btn.setTitleColor(.red, for: .normal)
             cell.addSubview(btn)
             btn.snp.makeConstraints { (make) in

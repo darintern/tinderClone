@@ -11,6 +11,7 @@ import UIKit
 
 class PeopleTableViewCell: UITableViewCell {
     var user: User!
+    var onlineStatusView = UIView()
     let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.layer.cornerRadius = 30
@@ -51,6 +52,16 @@ class PeopleTableViewCell: UITableViewCell {
         addSubview(chatIconImageView)
         addSubview(fullNameLabel)
         addSubview(statusTextLabel)
+        setupOnlineStatusView()
+    }
+    
+    func setupOnlineStatusView() {
+        onlineStatusView.backgroundColor = .red
+        onlineStatusView.layer.cornerRadius = 15/2
+        onlineStatusView.layer.borderColor = UIColor.white.cgColor
+        onlineStatusView.layer.borderWidth = 2
+        onlineStatusView.clipsToBounds = true
+        addSubview(onlineStatusView)
     }
     
     func loadData(_ user: User) {
@@ -78,6 +89,10 @@ class PeopleTableViewCell: UITableViewCell {
             make.right.equalToSuperview().offset(-20)
             make.width.height.equalTo(36)
             make.centerY.equalTo(profileImageView.snp.centerY)
+        }
+        onlineStatusView.snp.makeConstraints { (make) in
+            make.right.bottom.equalTo(profileImageView)
+            make.height.width.equalTo(15)
         }
     }
     

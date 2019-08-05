@@ -16,10 +16,7 @@ class PeopleViewController: UIViewController {
     var searchController: UISearchController = UISearchController(searchResultsController: nil)
     var searchResults: [User] = []
     
-    let peopleTableView: UITableView = {
-        let tv = UITableView()
-        return tv
-    }()
+    var peopleTableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -28,6 +28,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if let cell = tableView.cellForRow(at: indexPath) as? InboxTableViewCell {
             let chatVC = ChatViewController()
             chatVC.imagePartner = cell.profileImageView.image!
@@ -36,6 +37,4 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(chatVC, animated: true)
         }
     }
-    
-    
 }

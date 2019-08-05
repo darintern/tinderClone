@@ -117,11 +117,10 @@ extension SignInViewController {
     }
     
     func signIn(onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
-        
         ProgressHUD.show()
-        
         Api.User.signIn(withEmail: self.emailAddressTextField.text!,password: self.passwordTextField.text!, onSuccess: {
             ProgressHUD.dismiss()
+            Api.User.isOnline(bool: true)
             onSuccess()
         }) { (err) in
             onError(err)

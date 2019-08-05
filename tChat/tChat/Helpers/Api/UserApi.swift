@@ -136,6 +136,18 @@ class UserApi {
             }
         }
     }
+    
+    func isOnline(bool: Bool) {
+        if !currentUserId.isEmpty {
+            let ref = Ref().databaseIsOnline(uid: currentUserId)
+            let dict: Dictionary<String, Any> = [
+                "online": bool as Any,
+                "latest": Date().timeIntervalSince1970 as Any
+            ]
+            ref.updateChildValues(dict)
+        }
+        
+    }
 
 }
 

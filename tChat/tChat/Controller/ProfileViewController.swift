@@ -78,7 +78,9 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func logoutBtnDidTaped() {
+        Api.User.isOnline(bool: false)
         Api.User.logout()
+        
     }
 
     func setupProfileTableView() {

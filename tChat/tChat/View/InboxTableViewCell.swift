@@ -36,6 +36,8 @@ class InboxTableViewCell: UITableViewCell {
         label.text = "Welcome to tChat"
         return label
     }()
+    var onlineStatusView = UIView()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupViews()
@@ -61,6 +63,16 @@ class InboxTableViewCell: UITableViewCell {
         addSubview(usernameLbl)
         addSubview(dateLbl)
         addSubview(messageLbl)
+        setupOnlineStatusView()
+    }
+    
+    func setupOnlineStatusView() {
+        onlineStatusView.backgroundColor = .red
+        onlineStatusView.layer.cornerRadius = 15/2
+        onlineStatusView.layer.borderColor = UIColor.white.cgColor
+        onlineStatusView.layer.borderWidth = 2
+        onlineStatusView.clipsToBounds = true
+        addSubview(onlineStatusView)
     }
     
     func loadData(_ user: User) {
@@ -74,6 +86,10 @@ class InboxTableViewCell: UITableViewCell {
         profileImageView.snp.makeConstraints { (make) in
             make.left.top.equalToSuperview().offset(20)
             make.width.height.equalTo(60)
+        }
+        onlineStatusView.snp.makeConstraints { (make) in
+            make.right.bottom.equalTo(profileImageView)
+            make.height.width.equalTo(15)
         }
         usernameLbl.snp.makeConstraints { (make) in
             make.left.equalTo(profileImageView.snp.right).offset(15)

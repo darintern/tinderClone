@@ -152,11 +152,10 @@ extension SignUpViewController {
     
     
     func signUp(onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
-        
         ProgressHUD.show()
-        
         Api.User.signUp(withUsername: self.fullNameTextField.text!, email: self.emailAddressTextField.text!, password: self.passwordTextField.text!, image: self.image, onSuccess: {
             ProgressHUD.dismiss()
+            Api.User.isOnline(bool: true)
             onSuccess()
         }) { (err) in
             onError(err)
