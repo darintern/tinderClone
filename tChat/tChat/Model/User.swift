@@ -34,4 +34,14 @@ class User {
         let user = User(uid: uid, username: username, email: email, profileImageUrl: profileImageUrl, status: status)
         return user
     }
+    
+    func updateData(key: String, value: String) {
+        switch key {
+            case "username": self.username = value; break
+            case "email": self.email = value; break
+            case "profileImageUrl": self.profileImageUrl = value; break
+            case "status": self.status = value; break
+            default: break
+        }
+    }
 }

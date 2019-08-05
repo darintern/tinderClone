@@ -18,6 +18,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_MESSAGES, for: indexPath) as! InboxTableViewCell
 //        cell.loadData(user)
         let inbox = inboxArray[indexPath.row]
+        cell.controller = self
         cell.configureCell(uid: Api.User.currentUserId, inbox: inbox)
         return cell
     }

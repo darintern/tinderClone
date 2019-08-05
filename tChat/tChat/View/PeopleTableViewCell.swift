@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class PeopleTableViewCell: UITableViewCell {
     var user: User!
@@ -35,6 +36,8 @@ class PeopleTableViewCell: UITableViewCell {
         chatIconIV.contentMode = .scaleAspectFit
         return chatIconIV
     }()
+    var inboxChangedOnlineHandle: DatabaseHandle!
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupViews()
@@ -69,6 +72,34 @@ class PeopleTableViewCell: UITableViewCell {
         fullNameLabel.text = user.username
         statusTextLabel.text = user.status
         profileImageView.loadImage(user.profileImageUrl)
+        
+        let refOnline = Ref().databaseIsOnline(uid: user.uid)
+        refOnline.observeSingleEvent(of: .value) { (snapshot) in
+            if let snap = snapshot.value as? Dictionary<String, Any> {
+                if let active = snap["online"] as? Bool {
+                    self.onlineStatusView.backgroundColor = active == true ? .green : .red
+                }
+            }
+        }
+        if inboxChangedOnlineHandle != nil {
+            refOnline.removeObserver(withHandle: inboxChangedOnlineHandle)
+        }
+        
+        inboxChangedOnlineHandle = refOnline.observe(.childChanged) { (snapshot) in
+            if let snap = snapshot.value {
+                if snapshot.key == "online" {
+                    self.onlineStatusView.backgroundColor = (snap as! Bool) == true ? .green : .red
+                }
+            }
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        let refOnline = Ref().databaseIsOnline(uid: self.user.uid)
+        if inboxChangedOnlineHandle != nil {
+            refOnline.removeObserver(withHandle: inboxChangedOnlineHandle)
+        }
     }
     
     
