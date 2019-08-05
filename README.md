@@ -23,3 +23,5 @@ Aug, 3, 2019 ------ Debug and refactor, cus constraints is wrong and my chat vie
 
 Aug, 4, 2019  ------ Plan for today is to design inbox scene and add functionality for it and also design setting page.
 I'll try today - tommorow upload design of our app (it would take some time, cus we don't have appropriate design in figma, so need to do) 
+
+Aug, 5, 2019  ------ Plan for today is to save user profile and make push notification or other cool stuff !!! Don't have time to learn figma, so until i'll learn i can't upload it . So let's get started !!! 
