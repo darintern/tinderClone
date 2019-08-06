@@ -25,3 +25,5 @@ Aug, 4, 2019  ------ Plan for today is to design inbox scene and add functionali
 I'll try today - tommorow upload design of our app (it would take some time, cus we don't have appropriate design in figma, so need to do) 
 
 Aug, 5, 2019  ------ Plan for today is to save user profile and make some features or other cool stuff !!! Don't have time to learn figma, so until i'll learn i can't upload it . So let's get started !!! 
+
+Aug, 6, 2019  ------ Plan for today is to refactor, bug fixes and real time update feature. 
