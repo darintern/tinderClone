@@ -36,7 +36,8 @@ class PeopleViewController: UIViewController {
     
     func setupSearchController() {
         searchController.searchBar.tintColor = .white
-        searchController.dimsBackgroundDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
+//        searchController.definesPresentationContext = true
         searchController.searchBar.placeholder = "Search users ..."
         searchController.searchResultsUpdater = self
         navigationItem.hidesSearchBarWhenScrolling = false

@@ -100,6 +100,8 @@ class PeopleTableViewCell: UITableViewCell {
         if inboxChangedOnlineHandle != nil {
             refOnline.removeObserver(withHandle: inboxChangedOnlineHandle)
         }
+        
+        onlineStatusView.backgroundColor = .red
     }
     
     

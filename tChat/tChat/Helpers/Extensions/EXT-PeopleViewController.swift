@@ -43,7 +43,6 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         if let cell = tableView.cellForRow(at: indexPath) as? PeopleTableViewCell {
             let chatVC = ChatViewController()
             chatVC.imagePartner = cell.profileImageView.image!
@@ -52,6 +51,8 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISe
             chatVC.partnerId = cell.user.uid
             self.navigationController?.pushViewController(chatVC, animated: true)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
+        searchController.dismiss(animated: false)
     }
     
     

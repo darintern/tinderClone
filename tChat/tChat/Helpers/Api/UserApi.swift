@@ -30,16 +30,14 @@ class UserApi {
     
     func saveUserProfile(dict: [String: Any], onSuccess: @escaping() -> Void, onError: @escaping(_ error: String) -> Void) {
         
-        let ref = Ref().databaseSpecificUser(uid: currentUserId).updateChildValues(dict) { (error, dataRef) in
+        let ref = Ref().databaseSpecificUser(uid: currentUserId)
+        ref.updateChildValues(dict) { (error, dataRef) in
             if error != nil {
                 onError(error!.localizedDescription)
                 return
             }
             onSuccess()
         }
-        
-        
-        
     }
     
     func observeUsers(onSuccess: @escaping(UserCompletion)) {

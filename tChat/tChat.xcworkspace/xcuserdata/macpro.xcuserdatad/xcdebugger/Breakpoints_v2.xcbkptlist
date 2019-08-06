@@ -147,5 +147,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tChat/Helpers/Extensions/EXT-PeopleViewController.swift"
+            timestampString = "586763598.633813"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tChat/Helpers/Api/UserApi.swift"
+            timestampString = "586763598.6339149"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "saveUserProfile(dict:onSuccess:onError:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tChat/Helpers/Api/UserApi.swift"
+            timestampString = "586763598.633981"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "saveUserProfile(dict:onSuccess:onError:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tChat.UserApi.saveUserProfile(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, onSuccess: () -&gt; (), onError: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "tChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Helpers/Api/UserApi.swift"
+                  timestampString = "586763599.075123"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;, __C.FIRDatabaseReference) -&gt; () in tChat.UserApi.saveUserProfile(dict: Swift.Dictionary&lt;Swift.String, Any&gt;, onSuccess: () -&gt; (), onError: (Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "tChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Helpers/Api/UserApi.swift"
+                  timestampString = "586763599.079761"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "244">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

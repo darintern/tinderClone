@@ -33,7 +33,7 @@ let IDENTIFIER_CELL_PROFILE = "ProfileTableViewCell"
 
 
 class Ref {
-    let databaseRoot: DatabaseReference = Database.database().reference()
+    let databaseRoot: DatabaseReference = Database.database().reference().root
     
     var databaseUsers: DatabaseReference {
         return databaseRoot.child(REF_USER)
