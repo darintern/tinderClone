@@ -199,10 +199,6 @@ extension ChatViewController {
                 self.messages.append(message)
                 self.sortMessages()
             }
-            Api.Message.recieveMessage(from: self.partnerId, to: Api.User.currentUserId) { (message) in
-                self.messages.append(message)
-                self.sortMessages()
-            }
         }
     }
     

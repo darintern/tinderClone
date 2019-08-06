@@ -49,4 +49,10 @@ class Message {
         
         return message
     }
+    
+    static func hash(forMembers members: [String]) -> String {
+        let hash = members[0].hashString ^ members[1].hashString
+        let memberHash = String(hash)
+        return memberHash
+    }
 }
