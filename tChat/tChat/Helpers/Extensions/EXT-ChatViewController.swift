@@ -108,6 +108,8 @@ extension ChatViewController {
     func setupTableView() {
         chatTableView.delegate = self
         chatTableView.dataSource = self
+        chatTableView.allowsSelection = false
+        chatTableView.keyboardDismissMode = .interactive
         chatTableView.backgroundColor = .white
         chatTableView.separatorStyle = .none
         chatTableView.tableFooterView = UIView()
@@ -127,6 +129,33 @@ extension ChatViewController {
         setupInputMessageMicBtn()
         setupInputMessageSearchTextView()
         setupInputMessageSendBtn()
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc func adjustForKeyboard(notification: Notification) {
+        let userInfo = notification.userInfo!
+        let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            inputMessageView.snp.makeConstraints { (make) in
+                make.bottom.equalTo(view.safeAreaLayoutGuide).priority(1000)
+            }
+        } else {
+            if #available(iOS 11.0, *) {
+                let bottomConstraintValueForInputMessageView = -keyboardViewEndFrame.height + view.safeAreaInsets.bottom
+                inputMessageView.snp.makeConstraints { (make) in
+                    make.bottom.equalTo(bottomConstraintValueForInputMessageView).priority(1000)
+                }
+            } else {
+                inputMessageView.snp.makeConstraints { (make) in
+                    make.bottom.equalTo(-keyboardViewEndFrame.height).priority(1000)
+                }
+            }
+        }
+        view.layoutIfNeeded()
     }
     
     func setupInputMessageAttachmentBtn() {
@@ -221,7 +250,7 @@ extension ChatViewController {
             make.top.equalTo(separatorView.snp.bottom)
             make.left.equalTo(view.safeAreaLayoutGuide)
             make.right.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).priority(750)
             make.height.equalTo(50)
         }
         inputMessageAttachmentBtn.snp.makeConstraints { (make) in
@@ -286,11 +315,6 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return height
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    
 }
 
 
