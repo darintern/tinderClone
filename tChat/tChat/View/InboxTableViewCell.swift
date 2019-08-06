@@ -42,6 +42,7 @@ class InboxTableViewCell: UITableViewCell {
     var onlineStatusView = UIView()
     var inboxChangedOnlineHandle: DatabaseHandle!
     var inboxChangedProfileHandle: DatabaseHandle!
+    var inboxChangedMessageHandle: DatabaseHandle!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -95,6 +96,19 @@ class InboxTableViewCell: UITableViewCell {
                 self.controller.sortedInbox()
             }
         }
+        
+        let refMessage = Ref().databaseInboxInfo(from: Api.User.currentUserId, to: inbox.user.uid)
+        
+        if inboxChangedMessageHandle != nil {
+            refMessage.removeObserver(withHandle: inboxChangedMessageHandle)
+        }
+        
+        inboxChangedMessageHandle = refMessage.observe(.childChanged) { (snapshot) in
+            if let snap = snapshot.value {
+                self.inbox.updateData(key: snapshot.key, value: snap)
+                self.controller.sortedInbox()
+            }
+        }
     }
     
     override func prepareForReuse() {
@@ -106,7 +120,12 @@ class InboxTableViewCell: UITableViewCell {
         
         let refUser = Ref().databaseSpecificUser(uid: inbox.user.uid)
         if inboxChangedProfileHandle != nil {
-            refOnline.removeObserver(withHandle: inboxChangedProfileHandle)
+            refUser.removeObserver(withHandle: inboxChangedProfileHandle)
+        }
+        
+        let refMessage = Ref().databaseInboxInfo(from: Api.User.currentUserId, to: inbox.user.uid)
+        if inboxChangedMessageHandle != nil {
+            refMessage.removeObserver(withHandle: inboxChangedMessageHandle)
         }
     }
     

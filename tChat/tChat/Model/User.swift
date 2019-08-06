@@ -37,10 +37,10 @@ class User {
     
     func updateData(key: String, value: String) {
         switch key {
-            case "username": self.username = value; break
-            case "email": self.email = value; break
-            case "profileImageUrl": self.profileImageUrl = value; break
-            case "status": self.status = value; break
+            case "username": self.username = value
+            case "email": self.email = value
+            case "profileImageUrl": self.profileImageUrl = value
+            case "status": self.status = value
             default: break
         }
     }
