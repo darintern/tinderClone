@@ -34,6 +34,7 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_USERS, for: indexPath) as! PeopleTableViewCell
         let user = searchController.isActive ? searchResults[indexPath.row] : users[indexPath.row]
+        cell.controller = self
         cell.loadData(user)
         return cell
     }

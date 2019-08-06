@@ -12,6 +12,7 @@ import Firebase
 
 class PeopleTableViewCell: UITableViewCell {
     var user: User!
+    var controller: PeopleViewController!
     var onlineStatusView = UIView()
     let profileImageView: UIImageView = {
         let iv = UIImageView()
@@ -37,7 +38,8 @@ class PeopleTableViewCell: UITableViewCell {
         return chatIconIV
     }()
     var inboxChangedOnlineHandle: DatabaseHandle!
-    
+    var inboxChangedProfileHandle: DatabaseHandle!
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupViews()
@@ -92,6 +94,19 @@ class PeopleTableViewCell: UITableViewCell {
                 }
             }
         }
+        
+        let refUser = Ref().databaseSpecificUser(uid: user.uid)
+        
+        if inboxChangedProfileHandle != nil {
+            refUser.removeObserver(withHandle: inboxChangedProfileHandle)
+        }
+        
+        inboxChangedProfileHandle = refUser.observe(.childChanged) { (snapshot) in
+            if let snap = snapshot.value as? String {
+                self.user.updateData(key: snapshot.key, value: snap)
+                self.controller.peopleTableView.reloadData()
+            }
+        }
     }
     
     override func prepareForReuse() {
@@ -99,6 +114,11 @@ class PeopleTableViewCell: UITableViewCell {
         let refOnline = Ref().databaseIsOnline(uid: self.user.uid)
         if inboxChangedOnlineHandle != nil {
             refOnline.removeObserver(withHandle: inboxChangedOnlineHandle)
+        }
+        
+        let refUser = Ref().databaseSpecificUser(uid: user.uid)
+        if inboxChangedProfileHandle != nil {
+            refOnline.removeObserver(withHandle: inboxChangedProfileHandle)
         }
         
         onlineStatusView.backgroundColor = .red
