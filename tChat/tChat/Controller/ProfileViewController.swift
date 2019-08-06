@@ -58,16 +58,16 @@ class ProfileViewController: UIViewController {
         }
         
         Api.User.saveUserProfile(dict: dict, onSuccess: {
-//            if let img = self.image {
-//                StorageService.saveProfilePhoto(image: img, uid: Api.User.currentUserId, onSuccess: {
-//                    ProgressHUD.showSuccess()
-//                }) { (errorMessage) in
-//                    ProgressHUD.showError(errorMessage)
-//                }
-//            }
-//            else {
-//                ProgressHUD.showSuccess()
-//            }
+            if let img = self.image {
+                StorageService.saveProfilePhoto(image: img, uid: Api.User.currentUserId, onSuccess: {
+                    ProgressHUD.showSuccess()
+                }) { (errorMessage) in
+                    ProgressHUD.showError(errorMessage)
+                }
+            }
+            else {
+                ProgressHUD.showSuccess()
+            }
             ProgressHUD.showSuccess()
         }) { (error) in
             ProgressHUD.showError(error)

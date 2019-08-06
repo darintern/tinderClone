@@ -75,6 +75,14 @@ class MessagesViewController: UIViewController {
         if let currentUser = Auth.auth().currentUser, let photoUrl = currentUser.photoURL {
             avatarImageView.loadImage(photoUrl.absoluteString)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateProfile), name: Notification.Name(rawValue: "updateProfilePhoto"), object: nil)
+    }
+    
+    @objc func updateProfile() {
+        if let currentUser = Auth.auth().currentUser, let photoUrl = currentUser.photoURL {
+            avatarImageView.loadImage(photoUrl.absoluteString)
+        }
     }
     
     
