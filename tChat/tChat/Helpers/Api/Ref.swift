@@ -30,6 +30,7 @@ let IDENTIFIER_CELL_USERS = "UsersTableViewCell"
 let IDENTIFIER_CELL_CHAT = "ChatTableViewCell"
 let IDENTIFIER_CELL_MESSAGES = "InboxTableViewCell"
 let IDENTIFIER_CELL_PROFILE = "ProfileTableViewCell"
+let IDENTIFIER_CELL_PROFILE_USER_DATA = "UserProfileDataTableViewCell"
 
 
 class Ref {

@@ -44,17 +44,24 @@ class ProfileViewController: UIViewController {
     
     @objc func saveBtnDidTaped() {
         ProgressHUD.show("Loading...")
+        let usernameIndexPath = IndexPath(row: 0, section: 0)
+        let emailIndexPath = IndexPath(row: 1, section: 0)
+        let statusIndexPath = IndexPath(row: 2, section: 0)
+        let usernameCell = profileTableView.cellForRow(at: usernameIndexPath) as! ProfileTableViewCell
+        let emailCell = profileTableView.cellForRow(at: emailIndexPath) as! ProfileTableViewCell
+        let statusCell = profileTableView.cellForRow(at: statusIndexPath) as! ProfileTableViewCell
+        
         var dict = Dictionary<String, Any>()
-        if !username.isEmpty {
-            dict["username"] = username
+        if let usernameValue = usernameCell.dataTextField.text, !usernameValue.isEmpty {
+            dict["username"] = usernameValue
         }
         
-        if !email.isEmpty {
-            dict["email"] = email
+        if let emailValue = emailCell.dataTextField.text, !emailValue.isEmpty {
+            dict["email"] = emailValue
         }
         
-        if !status.isEmpty {
-            dict["status"] = status
+        if let statusValue = statusCell.dataTextField.text, !statusValue.isEmpty {
+            dict["status"] = statusValue
         }
         
         Api.User.saveUserProfile(dict: dict, onSuccess: {
@@ -77,16 +84,11 @@ class ProfileViewController: UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
-    @objc func logoutBtnDidTaped() {
-        Api.User.isOnline(bool: false)
-        Api.User.logout()
-    }
 
     func setupProfileTableView() {
         profileTableView.delegate = self
         profileTableView.dataSource = self
-        profileTableView.register(UITableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_PROFILE)
+        profileTableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_PROFILE)
         profileTableView.tableHeaderView = containerView
         view.addSubview(profileTableView)
         setupAvatar()

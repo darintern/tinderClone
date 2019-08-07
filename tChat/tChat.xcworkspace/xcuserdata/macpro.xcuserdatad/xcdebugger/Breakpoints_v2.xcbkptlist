@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Controller/ChatViewController.swift"
-            timestampString = "586860831.703151"
+            timestampString = "586879833.764416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Controller/ChatViewController.swift"
-            timestampString = "586860831.703228"
+            timestampString = "586879833.764531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Controller/ChatViewController.swift"
-            timestampString = "586860831.703281"
+            timestampString = "586879833.764604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Extensions/EXT-ChatViewController.swift"
-            timestampString = "586860831.70337"
+            timestampString = "586879833.764743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "196"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Extensions/EXT-ChatViewController.swift"
-            timestampString = "586860831.703433"
+            timestampString = "586879833.764824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Extensions/EXT-PeopleViewController.swift"
-            timestampString = "586804013.178171"
+            timestampString = "586877185.455791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Api/UserApi.swift"
-            timestampString = "586804013.1783071"
+            timestampString = "586879833.764906"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Api/UserApi.swift"
-            timestampString = "586804013.178463"
+            timestampString = "586879833.76498"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -186,7 +186,7 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Helpers/Api/UserApi.swift"
-                  timestampString = "586763599.075123"
+                  timestampString = "586879834.29098"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "34"
@@ -201,12 +201,60 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Helpers/Api/UserApi.swift"
-                  timestampString = "586763599.079761"
+                  timestampString = "586879834.293915"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "35"
                   endingLineNumber = "35"
                   offsetFromSymbolStart = "244">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "tChat/Controller/ProfileViewController.swift"
+            timestampString = "586879833.7650369"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "saveBtnDidTaped()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "tChat.ProfileViewController.saveBtnDidTaped() -&gt; ()"
+                  moduleName = "tChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Controller/ProfileViewController.swift"
+                  timestampString = "586879834.3011661"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "4078">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in tChat.ProfileViewController.saveBtnDidTaped() -&gt; ()"
+                  moduleName = "tChat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Controller/ProfileViewController.swift"
+                  timestampString = "586879834.303844"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "89">
                </Location>
             </Locations>
          </BreakpointContent>

@@ -45,35 +45,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_PROFILE, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_PROFILE, for: indexPath) as! ProfileTableViewCell
         if indexPath.section == 0 {
-            let textField = UITextField()
-            textField.text = sectionZero[indexPath.row]
-            cell.addSubview(textField)
-            textField.snp.makeConstraints { (make) in
-                make.top.bottom.equalToSuperview()
-                make.left.equalToSuperview().offset(15)
-                make.right.equalToSuperview().offset(-15)
-            }
+            cell.dataTextField.isHidden = false
+            cell.dataTextField.text = sectionZero[indexPath.row]
         } else if indexPath.section == 1 || indexPath.section == 2 {
+            cell.label.isHidden = false
             cell.accessoryType = .disclosureIndicator
-            let label = UILabel()
-            label.text = indexPath.section == 1 ? sectionOne[indexPath.row] : sectionTwo[indexPath.row]
-            cell.addSubview(label)
-            label.snp.makeConstraints { (make) in
-                make.top.bottom.equalToSuperview()
-                make.left.equalToSuperview().offset(15)
-                make.right.equalToSuperview().offset(-15)
-            }
+            cell.label.text = indexPath.section == 1 ? sectionOne[indexPath.row] : sectionTwo[indexPath.row]
         } else if indexPath.section == 3 {
-            let btn = UIButton()
-            btn.setTitle("Logout", for: .normal)
-            btn.addTarget(self, action: #selector(logoutBtnDidTaped), for: .touchUpInside)
-            btn.setTitleColor(.red, for: .normal)
-            cell.addSubview(btn)
-            btn.snp.makeConstraints { (make) in
-                make.centerX.centerY.equalToSuperview()
-            }
+            cell.btn.isHidden = false
         }
         return cell
         
