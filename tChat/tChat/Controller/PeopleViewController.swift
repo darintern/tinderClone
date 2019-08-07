@@ -45,9 +45,23 @@ class PeopleViewController: UIViewController {
     }
     
     func setupViews() {
+        setupNavigationBar()
+        setupTableView()
+    }
+    
+    func setupNavigationBar() {
         self.navigationItem.title = "People"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        
+        let location = UIBarButtonItem(image: UIImage(named: "icon-location"), style: .plain, target: self, action: #selector(locationDidTaped))
+        self.navigationItem.leftBarButtonItem = location
+    }
+    
+    @objc func locationDidTaped() {
+        let usersAroundVC = UsersAroundViewController()
+        self.navigationController?.pushViewController(usersAroundVC, animated: true)
+    }
+    
+    func setupTableView() {
         peopleTableView.delegate = self
         peopleTableView.tableFooterView = UIView()
         peopleTableView.dataSource = self
