@@ -97,7 +97,8 @@ class InboxTableViewCell: UITableViewCell {
             }
         }
         
-        let refMessage = Ref().databaseInboxInfo(from: Api.User.currentUserId, to: inbox.user.uid)
+        let channelId = Message.hash(forMembers: [Api.User.currentUserId, inbox.user.uid])
+        let refMessage = Database.database().reference().child(REF_INBOX).child(Api.User.currentUserId).child(channelId)
         
         if inboxChangedMessageHandle != nil {
             refMessage.removeObserver(withHandle: inboxChangedMessageHandle)
@@ -123,7 +124,8 @@ class InboxTableViewCell: UITableViewCell {
             refUser.removeObserver(withHandle: inboxChangedProfileHandle)
         }
         
-        let refMessage = Ref().databaseInboxInfo(from: Api.User.currentUserId, to: inbox.user.uid)
+        let channelId = Message.hash(forMembers: [Api.User.currentUserId, inbox.user.uid])
+        let refMessage = Database.database().reference().child(REF_INBOX).child(Api.User.currentUserId).child(channelId)
         if inboxChangedMessageHandle != nil {
             refMessage.removeObserver(withHandle: inboxChangedMessageHandle)
         }

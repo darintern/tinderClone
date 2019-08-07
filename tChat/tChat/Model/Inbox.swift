@@ -13,22 +13,24 @@ class Inbox {
     var read: Bool
     var date: Double
     var text: String
+    var channel: String
     
-    init(user: User, read: Bool, date: Double, text: String) {
+    init(user: User, read: Bool, date: Double, text: String, channel: String) {
         self.date = date
         self.user = user
         self.read = read
         self.text = text
+        self.channel = channel
     }
     
-    static func transformInbox(dict: [String: Any], user: User) -> Inbox? {
+    static func transformInbox(dict: [String: Any], channel: String, user: User) -> Inbox? {
         guard let text = dict["text"] as? String,
             let read = dict["read"] as? Bool,
             let date = dict["date"] as? Double else {
                 return nil
         }
         
-        let inbox = Inbox(user: user, read: read, date: date, text: text)
+        let inbox = Inbox(user: user, read: read, date: date, text: text, channel: channel)
         
         return inbox
     }
