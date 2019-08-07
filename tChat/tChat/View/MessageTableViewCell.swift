@@ -19,7 +19,9 @@ class MessageTableViewCell: UITableViewCell {
     var activityIndicatorView = UIActivityIndicatorView()
     var playButton = UIButton()
     var onlineStatusView = UIView()
+    var headerTimeLabel =  UILabel()
     var widthConstraintForBubble = 250
+    
     
     var playerLayer: AVPlayerLayer?
     var player: AVPlayer?
@@ -126,13 +128,39 @@ class MessageTableViewCell: UITableViewCell {
         let date = Date(timeIntervalSince1970: message.date)
         let dateString = timeAgoSinceDate(date, currentDate: Date(), numericDates: true)
         dateMsgLbl.text = dateString
+        self.formatHeaderTimeLabel(time: date) { (text) in
+            self.headerTimeLabel.text = text
+        }
         
     }
     
+    func formatHeaderTimeLabel(time: Date, completion: @escaping (String) -> ()) {
+        var text = ""
+        let currentDate = Date()
+        let currentDateString = currentDate.toString(dateFormat: "yyyyMMdd")
+        let pastDateString = time.toString(dateFormat: "yyyyMMdd")
+        if pastDateString.elementsEqual(currentDateString) == true {
+            text = time.toString(dateFormat: "HH:mm a") + ", Today"
+        } else {
+            text = time.toString(dateFormat: "dd/MM/yyyy")
+        }
+        
+        completion(text)
+    }
+    
     func setupViews() {
+        setupHeaderTimeLabel()
+        setupBubleMsgView()
         setupPartnerProfileImageView()
         setupOnlineStatusView()
-        setupBubleMsgView()
+    }
+    
+    func setupHeaderTimeLabel() {
+        headerTimeLabel.text = "Label"
+        headerTimeLabel.font = UIFont.systemFont(ofSize: 12)
+        headerTimeLabel.textColor = .gray
+        headerTimeLabel.textAlignment = .center
+        addSubview(headerTimeLabel)
     }
     
     func setupPartnerProfileImageView() {
@@ -197,6 +225,10 @@ class MessageTableViewCell: UITableViewCell {
     }
     
     func createConstraints() {
+        headerTimeLabel.snp.makeConstraints { (make) in
+            make.top.right.left.equalToSuperview()
+            make.height.equalTo(20)
+        }
         partnerProfileImageView.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
             make.bottom.equalToSuperview().offset(-12)
@@ -207,9 +239,9 @@ class MessageTableViewCell: UITableViewCell {
             make.height.width.equalTo(15)
         }
         bubbleMsgView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(12)
+            make.top.equalTo(headerTimeLabel.snp.bottom)
             make.right.equalToSuperview().offset(-8).priority(750)
-            make.bottom.equalToSuperview().offset(-12)
+            make.bottom.equalToSuperview()
             make.left.equalToSuperview().offset(55).priority(750)
         }
         textMsgLbl.snp.makeConstraints { (make) in

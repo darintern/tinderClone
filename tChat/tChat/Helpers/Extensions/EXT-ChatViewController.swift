@@ -316,6 +316,7 @@ extension ChatViewController {
 
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
@@ -325,6 +326,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         cell.playButton.isHidden = messages[indexPath.row].videoUrl == ""
         let uid = Api.User.currentUserId
         cell.configureCell(uid: uid, message: messages[indexPath.row], image: imagePartner)
+        cell.headerTimeLabel.isHidden = indexPath.row % 3 == 0 ? false : true
         return cell
     }
     
