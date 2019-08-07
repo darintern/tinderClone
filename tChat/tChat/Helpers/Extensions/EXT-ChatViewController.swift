@@ -115,6 +115,36 @@ extension ChatViewController {
         chatTableView.tableFooterView = UIView()
         chatTableView.register(MessageTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_CHAT)
         view.addSubview(chatTableView)
+        
+        if #available(iOS 10.0, *){
+            chatTableView.refreshControl = refreshControl
+        } else {
+            chatTableView.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(loadMore), for: .valueChanged)
+    }
+    
+    @objc func loadMore() {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            Api.Message.loadMore(lastMessageKey: self.lastMessageKey, from: Api.User.currentUserId, to: self.partnerId) { (messagesArray, lastMessagesKey) in
+                if messagesArray.isEmpty {
+                    self.refreshControl.endRefreshing()
+                    return
+                }
+                self.messages.append(contentsOf: messagesArray)
+                self.messages = self.messages.sorted(by: { $0.date < $1.date })
+                self.lastMessageKey = lastMessagesKey
+                self.chatTableView.reloadData()
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
+    
+    func scrollToBottom() {
+        if messages.count > 0 {
+            let indexPath = IndexPath(row: messages.count - 1, section: 0)
+            chatTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
     
     func setupSeparatorView() {
@@ -204,9 +234,10 @@ extension ChatViewController {
     
     func sortMessages() {
         messages = self.messages.sorted(by: { $0.date < $1.date })
+        lastMessageKey = messages.first!.id
         DispatchQueue.main.async {
             self.chatTableView.reloadData()
-            self.chatTableView.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom, animated: true)
+            self.scrollToBottom()
         }
         
     }

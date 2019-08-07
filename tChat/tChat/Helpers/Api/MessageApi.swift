@@ -41,11 +41,41 @@ class MessageApi {
     func recieveMessage(from: String, to: String, onSuccess: @escaping(Message) -> Void) {
         let channelId = Message.hash(forMembers: [from, to])
         let ref = Database.database().reference().child("feedMessages").child(channelId)
-        ref.observe(.childAdded) { (snapshot) in
+        ref.queryOrderedByKey().queryLimited(toLast: 5).observe(.childAdded) { (snapshot) in
             if let dict = snapshot.value as? Dictionary<String, Any> {
                 if let message = Message.transformMessage(dict: dict, keyId: snapshot.key) {
                     onSuccess(message)
                 }
+            }
+        }
+    }
+    
+    func loadMore(lastMessageKey: String?, from: String, to: String, onSuccess: @escaping([Message], String) -> Void) {
+        if lastMessageKey != nil {
+            let channelId = Message.hash(forMembers: [from, to])
+            let ref = Database.database().reference().child("feedMessages").child(channelId)
+            ref.queryOrderedByKey().queryEnding(atValue: lastMessageKey).queryLimited(toLast: 3).observeSingleEvent(of: .value) { (snapshot) in
+                guard let first = snapshot.children.allObjects.first as? DataSnapshot else {
+                    return
+                }
+                
+                guard let allObjects = snapshot.children.allObjects as? [DataSnapshot] else {
+                    return
+                }
+                
+                var messages = [Message]()
+                
+                allObjects.forEach({ (dataSnapshot) in
+                    if let dict = dataSnapshot.value as? Dictionary<String, Any> {
+                        if let message = Message.transformMessage(dict: dict, keyId: snapshot.key) {
+                            if dataSnapshot.key != lastMessageKey {
+                                messages.append(message)
+                            }
+                        }
+                    }
+                })
+                onSuccess(messages, first.key)
+                
             }
         }
     }

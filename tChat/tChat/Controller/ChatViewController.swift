@@ -33,6 +33,8 @@ class ChatViewController: UIViewController {
     var lastTimeOnline = ""
     var isTyping = false
     var timer = Timer()
+    var refreshControl = UIRefreshControl()
+    var lastMessageKey: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
