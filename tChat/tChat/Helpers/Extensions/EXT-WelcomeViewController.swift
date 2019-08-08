@@ -75,7 +75,7 @@ extension WelcomeViewController {
         createAccountBtn.layer.cornerRadius = 5
         createAccountBtn.backgroundColor = .black
         createAccountBtn.clipsToBounds = true
-        createAccountBtn.addTarget(self, action: Selector("moveToSignUpPage"), for: .touchUpInside)
+        createAccountBtn.addTarget(self, action: #selector(moveToSignUpPage), for: .touchUpInside)
         view.addSubview(createAccountBtn)
     }
     
@@ -153,7 +153,6 @@ extension WelcomeViewController {
     
     @objc func moveToSignUpPage() {
         let signUpPage = SignUpViewController()
-//        present(signUpPage, animated: true, completion: nil)
         navigationController?.pushViewController(signUpPage, animated: true)
     }
 }
