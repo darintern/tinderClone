@@ -29,3 +29,5 @@ Aug, 5, 2019  ------ Plan for today is to save user profile and make some featur
 Aug, 6, 2019  ------ Plan for today is to refactor, bug fixes and real time update feature. 
 
 Aug, 7, 2019  ------ Plan for today is to make pagination in inbox and chat scenes, group messages by date and begining of people nearby me. A lot of stuff to do, so let's get started.
+
+Aug, 8, 2019  ------ Plan for today is to make people nearby me scene and fix some bugs.
