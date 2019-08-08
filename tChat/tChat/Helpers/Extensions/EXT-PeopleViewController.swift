@@ -9,9 +9,8 @@
 import Foundation
 import UIKit
 
-extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
+extension PeopleViewController: UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        //        print(searchController.searchBar.text)
         if searchController.searchBar.text == nil || searchController.searchBar.text!.isEmpty {
             view.endEditing(true)
         } else {

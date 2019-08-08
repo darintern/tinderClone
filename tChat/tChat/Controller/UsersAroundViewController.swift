@@ -11,7 +11,6 @@ import UIKit
 class UsersAroundViewController: UIViewController {
     var slider = UISlider()
     var distanceLabel = UILabel()
-    var mainColor = UIColor.rgbColor(r: 93, g: 79, b: 141, alpha: 1)
     var genderSegmentedControl = UISegmentedControl()
     var showMapBtn = UIButton()
     var usersAroundCollectionView: UICollectionView = {
@@ -48,14 +47,14 @@ class UsersAroundViewController: UIViewController {
         slider.maximumValue = 999
         slider.value = Float(50)
         slider.isContinuous = true
-        slider.tintColor = mainColor
+        slider.tintColor = PURPLE_COLOR
         slider.addTarget(self, action: #selector(sliderValueChanged(slider:event:)), for: .valueChanged)
     }
     
     func setupDistanceLabel() {
         distanceLabel.text = String(500)
         distanceLabel.font = UIFont.systemFont(ofSize: 13)
-        distanceLabel.textColor = mainColor
+        distanceLabel.textColor = PURPLE_COLOR
     }
     
     func setupGenderSegmentedControl() {
@@ -64,7 +63,7 @@ class UsersAroundViewController: UIViewController {
         genderSegmentedControl.selectedSegmentIndex = 0
     
         // Style the Segmented Control
-        genderSegmentedControl.tintColor = mainColor
+        genderSegmentedControl.tintColor = PURPLE_COLOR
         
         // Add this custom Segmented Control to our view
         self.view.addSubview(genderSegmentedControl)

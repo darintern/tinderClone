@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 
+let PURPLE_COLOR = UIColor.rgbColor(r: 93, g: 79, b: 141, alpha: 1)
 let REF_USER = "users"
 let REF_MESSAGE = "messages"
 let REF_INBOX = "inbox"

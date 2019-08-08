@@ -13,6 +13,7 @@ class ProfileTableViewCell: UITableViewCell {
     var dataTextField = UITextField()
     var label = UILabel()
     let btn = UIButton()
+    var segmentedControl = UISegmentedControl(items: ["Male", "Female"])
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,6 +27,7 @@ class ProfileTableViewCell: UITableViewCell {
     
     func setupViews() {
         setupDataTextField()
+        setupSegmentedControl()
         setupBtn()
         setupLabel()
     }
@@ -33,6 +35,13 @@ class ProfileTableViewCell: UITableViewCell {
     func setupDataTextField() {
         dataTextField.isHidden = true
         addSubview(dataTextField)
+    }
+    
+    func setupSegmentedControl() {
+        segmentedControl.isHidden = true
+        segmentedControl.tintColor = PURPLE_COLOR
+        segmentedControl.selectedSegmentIndex = 0
+        addSubview(segmentedControl)
     }
     
     func setupLabel() {
@@ -61,6 +70,12 @@ class ProfileTableViewCell: UITableViewCell {
             make.top.bottom.equalToSuperview()
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
+        }
+        segmentedControl.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-10)
+            make.top.equalToSuperview().offset(10)
         }
     }
     

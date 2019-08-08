@@ -24,7 +24,7 @@ extension ProfileViewController {
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -37,8 +37,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         } else if section == 1 {
             return 2
         } else if section == 2 {
-            return 1
+            return 2
         } else if section == 3 {
+            return 1
+        } else if section == 4 {
             return 1
         }
         return 0
@@ -48,19 +50,35 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_PROFILE, for: indexPath) as! ProfileTableViewCell
         if indexPath.section == 0 {
             cell.dataTextField.isHidden = false
-            cell.dataTextField.text = sectionZero[indexPath.row]
-        } else if indexPath.section == 1 || indexPath.section == 2 {
+            if indexPath.section == 0 {
+                cell.dataTextField.text = sectionZero[indexPath.row]
+            }
+//            else {
+//                cell.dataTextField.text = sectionZero[indexPath.row]
+//            }
+        } else if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                cell.dataTextField.isHidden = false
+                if let age = age {
+                    cell.dataTextField.text = "\(age)"
+                } else {
+                    cell.dataTextField.placeholder = "Optional"
+                }
+            } else {
+                cell.segmentedControl.isHidden = false
+                if let isMale = isMale {
+                    cell.segmentedControl.selectedSegmentIndex = (isMale) ? 0 : 1
+                }
+            }
+        } else if indexPath.section == 2 || indexPath.section == 3 {
             cell.label.isHidden = false
             cell.accessoryType = .disclosureIndicator
-            cell.label.text = indexPath.section == 1 ? sectionOne[indexPath.row] : sectionTwo[indexPath.row]
-        } else if indexPath.section == 3 {
+            cell.label.text = indexPath.section == 2 ? sectionOne[indexPath.row] : sectionTwo[indexPath.row]
+        } else if indexPath.section == 4 {
             cell.btn.isHidden = false
         }
         return cell
-        
     }
-    
-    
 }
 
 extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {

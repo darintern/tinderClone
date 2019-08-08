@@ -14,6 +14,8 @@ class User {
     var email: String
     var profileImageUrl: String
     var status: String
+    var isMale: Bool?
+    var age: Int?
     
     init(uid: String, username: String, email: String, profileImageUrl: String, status: String) {
         self.uid = uid
@@ -32,6 +34,12 @@ class User {
                 return nil
         }
         let user = User(uid: uid, username: username, email: email, profileImageUrl: profileImageUrl, status: status)
+        if let isMale = dict["isMale"] as? Bool {
+            user.isMale = isMale
+        }
+        if let age = dict["age"] as? String {
+            user.age = Int(age)
+        }
         return user
     }
     

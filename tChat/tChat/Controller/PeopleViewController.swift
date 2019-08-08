@@ -21,6 +21,7 @@ class PeopleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.definesPresentationContext = true
         observeUsers()
         setupViews()
         setupSearchController()
@@ -37,7 +38,9 @@ class PeopleViewController: UIViewController {
     func setupSearchController() {
         searchController.searchBar.tintColor = .white
         searchController.dimsBackgroundDuringPresentation = false
-//        searchController.definesPresentationContext = true
+        if let cancelButton = searchController.searchBar.value(forKey: "_cancelButton") as? UIButton {
+            cancelButton.isEnabled = true
+        }
         searchController.searchBar.placeholder = "Search users ..."
         searchController.searchResultsUpdater = self
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -53,6 +56,8 @@ class PeopleViewController: UIViewController {
         self.navigationItem.title = "People"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         let location = UIBarButtonItem(image: UIImage(named: "icon-location"), style: .plain, target: self, action: #selector(locationDidTaped))
+        navigationController?.navigationBar.isTranslucent = false
+        self.extendedLayoutIncludesOpaqueBars = true
         self.navigationItem.leftBarButtonItem = location
     }
     
