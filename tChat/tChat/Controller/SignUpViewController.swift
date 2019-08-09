@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 import ProgressHUD
 import CoreLocation
+import GeoFire
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
 
@@ -28,6 +30,8 @@ class SignUpViewController: UIViewController {
     var locationManager = CLLocationManager()
     var userLat = ""
     var userLong = ""
+    var geoFire: GeoFire!
+    var geoFireRef: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,6 +177,9 @@ class SignUpViewController: UIViewController {
         self.signUp(onSuccess: {
             if !self.userLat.isEmpty && !self.userLong.isEmpty {
                 let location: CLLocation = CLLocation(latitude: CLLocationDegrees(Double(self.userLat)!), longitude: CLLocationDegrees(Double(self.userLong)!))
+                self.geoFireRef = Ref().databaseGeo
+                self.geoFire = GeoFire(firebaseRef: self.geoFireRef)
+                self.geoFire.setLocation(location, forKey: Api.User.currentUserId)
                 // send location to Firebase
             }
             // switch view

@@ -10,9 +10,12 @@ import Foundation
 import Firebase
 
 let PURPLE_COLOR = UIColor.rgbColor(r: 93, g: 79, b: 141, alpha: 1)
+
 let REF_USER = "users"
 let REF_MESSAGE = "messages"
 let REF_INBOX = "inbox"
+let REF_GEO = "Geolocs"
+
 let IS_ONLINE = "isOnline"
 let URL_STORAGE_ROOT = "gs://tchat-862a1.appspot.com"
 let STORAGE_PROGILE = "profile"
@@ -68,6 +71,10 @@ class Ref {
     
     func databaseIsOnline(uid: String) -> DatabaseReference {
         return databaseUsers.child(uid).child(IS_ONLINE)
+    }
+    
+    var databaseGeo: DatabaseReference {
+        return databaseRoot.child(REF_GEO)
     }
     
     // Storage Ref

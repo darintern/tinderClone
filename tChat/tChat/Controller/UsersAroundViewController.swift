@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import CoreLocation
+import GeoFire
+import ProgressHUD
 
 class UsersAroundViewController: UIViewController {
     var slider = UISlider()
@@ -18,6 +22,16 @@ class UsersAroundViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collectionView
     }()
+    var locationManager = CLLocationManager()
+    var userLat = ""
+    var userLong = ""
+    var geoFire: GeoFire!
+    var geoFireRef: DatabaseReference!
+    var myQuery: GFQuery!
+    var queryHandle: DatabaseHandle!
+    var distance: Double = 500
+    var users: [User] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -26,10 +40,25 @@ class UsersAroundViewController: UIViewController {
     }
     
     func setupViews() {
+        configureLocationManager()
         setupNavigationBar()
         setupGenderSegmentedControl()
         setupShowMapBtn()
         setupUsersAroundCollectionView()
+    }
+    
+    func configureLocationManager() {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.pausesLocationUpdatesAutomatically = true
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+        
+        self.geoFireRef = Ref().databaseGeo
+        self.geoFire = GeoFire(firebaseRef: self.geoFireRef)
     }
     
     func setupNavigationBar() {
@@ -100,6 +129,36 @@ class UsersAroundViewController: UIViewController {
         }
     }
     
+    func findUsers() {
+        
+        if queryHandle != nil, myQuery != nil {
+            myQuery.removeObserver(withFirebaseHandle: queryHandle)
+            myQuery = nil
+            queryHandle = nil
+        }
+        
+        guard let userLat = UserDefaults.standard.value(forKey: "current_location_latitude") as? String,
+            let userLong = UserDefaults.standard.value(forKey: "current_location_longitude") as? String, let geoFire = geoFire else {
+                return
+        }
+        
+        self.users.removeAll()
+        
+        let location: CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
+        myQuery = geoFire.query(at: location, withRadius: distance)
+        queryHandle = myQuery.observe(.keyEntered) { (key, location) in
+            if key != Api.User.currentUserId {
+                Api.User.getUserInfoSingleEvent(uid: key, onSuccess: { (user) in
+                    if self.users.contains(user) {
+                        return
+                    }
+                    self.users.append(user)
+                    self.usersAroundCollectionView.reloadData()
+                })
+            }
+        }
+    }
+    
     @objc func sliderValueChanged(slider: UISlider, event: UIEvent) {
         
     }
@@ -107,21 +166,19 @@ class UsersAroundViewController: UIViewController {
     @objc func refreshDidTaped() {
         
     }
-    
 }
 
 
 extension UsersAroundViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.users.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IDENTIFIER_CELL_USERS_AROUND, for: indexPath) as! UserAroundCollectionViewCell
-        cell.avatar.image = UIImage(named: "taylor_swift")
-        cell.ageLabel.text = "29"
-        cell.distanceLabel.text = "500 km"
-        cell.backgroundColor = .red
+        let user = users[indexPath.row]
+        cell.controller = self
+        cell.loadData(user)
         return cell
     }
     
@@ -144,6 +201,10 @@ class UserAroundCollectionViewCell: UICollectionViewCell {
     var ageLabel = UILabel()
     var distanceLabel = UILabel()
     var helperImageView = UIImageView()
+    var user: User!
+    var inboxChangedOnlineHandle: DatabaseHandle!
+    var inboxChangedProfileHandle: DatabaseHandle!
+    var controller: UsersAroundViewController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -208,6 +269,102 @@ class UserAroundCollectionViewCell: UICollectionViewCell {
         helperImageView.snp.makeConstraints { (make) in
             make.height.equalTo(26)
             make.left.right.bottom.equalToSuperview()
+        }
+    }
+    
+    func loadData(_ user: User) {
+        self.user = user
+        avatar.loadImage(user.profileImageUrl)
+        if let age = user.age {
+            self.ageLabel.text = "\(age)"
+        } else {
+            self.ageLabel.text = ""
+        }
+        
+        let refOnline = Ref().databaseIsOnline(uid: user.uid)
+        refOnline.observeSingleEvent(of: .value) { (snapshot) in
+            if let snap = snapshot.value as? Dictionary<String, Any> {
+                if let active = snap["online"] as? Bool {
+                    self.onlineStatusView.backgroundColor = active == true ? .green : .red
+                }
+            }
+        }
+        if inboxChangedOnlineHandle != nil {
+            refOnline.removeObserver(withHandle: inboxChangedOnlineHandle)
+        }
+        
+        inboxChangedOnlineHandle = refOnline.observe(.childChanged) { (snapshot) in
+            if let snap = snapshot.value {
+                if snapshot.key == "online" {
+                    self.onlineStatusView.backgroundColor = (snap as! Bool) == true ? .green : .red
+                }
+            }
+        }
+        
+        let refUser = Ref().databaseSpecificUser(uid: user.uid)
+        
+        if inboxChangedProfileHandle != nil {
+            refUser.removeObserver(withHandle: inboxChangedProfileHandle)
+        }
+        
+        inboxChangedProfileHandle = refUser.observe(.childChanged) { (snapshot) in
+            if let snap = snapshot.value as? String {
+                self.user.updateData(key: snapshot.key, value: snap)
+                self.controller.usersAroundCollectionView.reloadData()
+            }
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        let refOnline = Ref().databaseIsOnline(uid: self.user.uid)
+        if inboxChangedOnlineHandle != nil {
+            refOnline.removeObserver(withHandle: inboxChangedOnlineHandle)
+        }
+        
+        let refUser = Ref().databaseSpecificUser(uid: user.uid)
+        if inboxChangedProfileHandle != nil {
+            refUser.removeObserver(withHandle: inboxChangedProfileHandle)
+        }
+        
+        onlineStatusView.backgroundColor = .red
+    }
+    
+}
+
+
+extension UsersAroundViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if (status == .authorizedAlways) || (status == .authorizedWhenInUse) {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        ProgressHUD.showError("\(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager , didUpdateLocations locations: [CLLocation]) {
+        locationManager.stopUpdatingLocation()
+        locationManager.delegate = nil
+        
+        let updatedLocation: CLLocation = locations.first!
+        let newCordinate: CLLocationCoordinate2D = updatedLocation.coordinate
+        
+        // update location
+        let userDefaults = UserDefaults.standard
+        userDefaults.set("\(newCordinate.latitude)", forKey: "current_location_latitude")
+        userDefaults.set("\(newCordinate.longitude)", forKey: "current_location_longitude")
+        userDefaults.synchronize()
+        
+        if let userLat = UserDefaults.standard.value(forKey: "current_location_latitude") as? String,
+            let userLong = UserDefaults.standard.value(forKey: "current_location_longitude") as? String{
+            let location: CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
+            self.geoFire.setLocation(location, forKey: Api.User.currentUserId) { (error) in
+                if error == nil {
+                    // Find Users
+                    self.findUsers()
+                }
+            }
         }
     }
 }

@@ -118,7 +118,7 @@ class PeopleTableViewCell: UITableViewCell {
         
         let refUser = Ref().databaseSpecificUser(uid: user.uid)
         if inboxChangedProfileHandle != nil {
-            refOnline.removeObserver(withHandle: inboxChangedProfileHandle)
+            refUser.removeObserver(withHandle: inboxChangedProfileHandle)
         }
         
         onlineStatusView.backgroundColor = .red
