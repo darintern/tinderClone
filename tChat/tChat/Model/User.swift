@@ -16,6 +16,8 @@ class User {
     var status: String
     var isMale: Bool?
     var age: Int?
+    var latitude = ""
+    var longitude = ""
     
     init(uid: String, username: String, email: String, profileImageUrl: String, status: String) {
         self.uid = uid
@@ -26,11 +28,11 @@ class User {
     }
     
     static func transformUser(dict: [String: Any]) -> User? {
-        guard let email = dict["email"] as? String,
-            let username = dict["username"] as? String,
-            let profileImageUrl = dict["profileImageUrl"] as? String,
-            let status = dict["status"] as? String,
-            let uid = dict["uid"] as? String else {
+        guard let email = dict[EMAIL] as? String,
+            let username = dict[USERNAME] as? String,
+            let profileImageUrl = dict[PROFILE_IMAGE_URL] as? String,
+            let status = dict[STATUS] as? String,
+            let uid = dict[UID] as? String else {
                 return nil
         }
         let user = User(uid: uid, username: username, email: email, profileImageUrl: profileImageUrl, status: status)
@@ -39,6 +41,12 @@ class User {
         }
         if let age = dict["age"] as? String {
             user.age = Int(age)
+        }
+        if let latitude = dict[LATITUDE] as? String {
+            user.latitude = latitude
+        }
+        if let longitude = dict[LONGITUDE] as? String {
+            user.longitude = longitude
         }
         return user
     }

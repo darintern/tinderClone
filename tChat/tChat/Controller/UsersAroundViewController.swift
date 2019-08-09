@@ -32,6 +32,7 @@ class UsersAroundViewController: UIViewController {
     var queryHandle: DatabaseHandle!
     var distance: Double = 500
     var users: [User] = []
+    var currentLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()

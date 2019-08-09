@@ -24,7 +24,7 @@ extension UsersAroundViewController: UICollectionViewDelegate, UICollectionViewD
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IDENTIFIER_CELL_USERS_AROUND, for: indexPath) as! UserAroundCollectionViewCell
         let user = users[indexPath.row]
         cell.controller = self
-        cell.loadData(user)
+        cell.loadData(user, currentLocation: currentLocation)
         return cell
     }
     
@@ -60,7 +60,7 @@ extension UsersAroundViewController: CLLocationManagerDelegate {
         
         let updatedLocation: CLLocation = locations.first!
         let newCordinate: CLLocationCoordinate2D = updatedLocation.coordinate
-        
+        self.currentLocation = updatedLocation
         // update location
         let userDefaults = UserDefaults.standard
         userDefaults.set("\(newCordinate.latitude)", forKey: "current_location_latitude")
@@ -70,6 +70,7 @@ extension UsersAroundViewController: CLLocationManagerDelegate {
         if let userLat = UserDefaults.standard.value(forKey: "current_location_latitude") as? String,
             let userLong = UserDefaults.standard.value(forKey: "current_location_longitude") as? String{
             let location: CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
+            Ref().databaseSpecificUser(uid: Api.User.currentUserId).updateChildValues([LONGITUDE: userLong, LATITUDE: userLat])
             self.geoFire.setLocation(location, forKey: Api.User.currentUserId) { (error) in
                 if error == nil {
                     // Find Users

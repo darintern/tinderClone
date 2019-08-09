@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import SnapKit
+import CoreLocation
 
 class UserAroundCollectionViewCell: UICollectionViewCell {
     var avatar = UIImageView()
@@ -87,7 +88,7 @@ class UserAroundCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func loadData(_ user: User) {
+    func loadData(_ user: User, currentLocation: CLLocation?) {
         self.user = user
         avatar.loadImage(user.profileImageUrl)
         if let age = user.age {
@@ -127,6 +128,17 @@ class UserAroundCollectionViewCell: UICollectionViewCell {
                 self.user.updateData(key: snapshot.key, value: snap)
                 self.controller.usersAroundCollectionView.reloadData()
             }
+        }
+        
+        guard let _ = currentLocation else {
+            return
+        }
+        if !user.latitude.isEmpty && !user.longitude.isEmpty {
+            let userLocation = CLLocation(latitude: Double(user.latitude)!, longitude: Double(user.longitude)!)
+            let distanceInKm: CLLocationDistance = userLocation.distance(from: currentLocation!) / 1000
+            distanceLabel.text = String(format: "%.2f", distanceInKm)
+        } else {
+            distanceLabel.text = ""
         }
     }
     
