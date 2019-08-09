@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import ProgressHUD
+import CoreLocation
 
 class SignUpViewController: UIViewController {
 
@@ -24,6 +25,9 @@ class SignUpViewController: UIViewController {
     var signUpBtn: UIButton!
     var alreadyHaveAccountBtn: UIButton!
     var image = UIImage(named: "Aibol")
+    var locationManager = CLLocationManager()
+    var userLat = ""
+    var userLong = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,7 @@ class SignUpViewController: UIViewController {
     }
     
     func setupViews() {
+        configureLocationManager()
         setupCloseBtn()
         setupTitleLabel()
         setupAvatar()
@@ -44,7 +49,6 @@ class SignUpViewController: UIViewController {
         setupPasswordTextField()
         setupSignUpBtn()
         setupAlreadyHaveAccountBtn()
-        
     }
     
     func constraintsForCloseBtn() {
@@ -159,7 +163,18 @@ class SignUpViewController: UIViewController {
     @objc func signUpDidTaped() {
         self.view.endEditing(true)
         self.validateFields()
+        
+        if let userLat = UserDefaults.standard.value(forKey: "current_location_latitude") as? String,
+            let userLong = UserDefaults.standard.value(forKey: "current_location_longitude") as? String{
+            self.userLong = userLong
+            self.userLat = userLat
+        }
+        
         self.signUp(onSuccess: {
+            if !self.userLat.isEmpty && !self.userLong.isEmpty {
+                let location: CLLocation = CLLocation(latitude: CLLocationDegrees(Double(self.userLat)!), longitude: CLLocationDegrees(Double(self.userLong)!))
+                // send location to Firebase
+            }
             // switch view
             (UIApplication.shared.delegate as! AppDelegate).confugureInitialViewController()
         }) { (errorMessage) in            
