@@ -74,14 +74,14 @@ class UsersAroundViewController: UIViewController {
         slider.frame = CGRect(x: 0, y: 0, width: 200, height: 20)
         slider.minimumValue = 1
         slider.maximumValue = 999
-        slider.value = Float(50)
+        slider.value = Float(distance)
         slider.isContinuous = true
         slider.tintColor = PURPLE_COLOR
         slider.addTarget(self, action: #selector(sliderValueChanged(slider:event:)), for: .valueChanged)
     }
     
     func setupDistanceLabel() {
-        distanceLabel.text = String(500)
+        distanceLabel.text = "\(Int(distance)) km"
         distanceLabel.font = UIFont.systemFont(ofSize: 13)
         distanceLabel.textColor = PURPLE_COLOR
     }
@@ -152,7 +152,22 @@ class UsersAroundViewController: UIViewController {
                     if self.users.contains(user) {
                         return
                     }
-                    self.users.append(user)
+                    if user.isMale == nil {
+                        return
+                    }
+                    switch self.genderSegmentedControl.selectedSegmentIndex {
+                        case 0:
+                            if user.isMale! {
+                                self.users.append(user)
+                            }
+                        case 1:
+                            if !user.isMale! {
+                                self.users.append(user)
+                            }
+                        case 2:
+                            self.users.append(user)
+                        default: break
+                    }
                     self.usersAroundCollectionView.reloadData()
                 })
             }
@@ -160,11 +175,19 @@ class UsersAroundViewController: UIViewController {
     }
     
     @objc func sliderValueChanged(slider: UISlider, event: UIEvent) {
-        
+        if let touchEvent = event.allTouches?.first {
+            distance = Double(slider.value)
+            distanceLabel.text = "\(Int(distance))"
+            switch touchEvent.phase {
+            case .ended:
+                findUsers()
+            default: print("default")
+            }
+        }
     }
     
     @objc func refreshDidTaped() {
-        
+        findUsers()
     }
 }
 
