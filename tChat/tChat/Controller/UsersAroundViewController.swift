@@ -105,6 +105,7 @@ class UsersAroundViewController: UIViewController {
     func setupShowMapBtn() {
         showMapBtn.setImage(UIImage(named: "icon-showmap"), for: .normal)
         showMapBtn.setTitle("Btn", for: .normal)
+        showMapBtn.addTarget(self, action: #selector(moveToMap), for: .touchUpInside)
         self.view.addSubview(showMapBtn)
     }
     
@@ -198,5 +199,10 @@ class UsersAroundViewController: UIViewController {
     
     @objc func refreshDidTaped() {
         findUsers()
+    }
+    
+    @objc func moveToMap() {
+        let mapVC = MapViewController()
+        self.navigationController?.pushViewController(mapVC, animated: true)
     }
 }
