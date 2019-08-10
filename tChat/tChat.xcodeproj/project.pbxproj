@@ -34,6 +34,7 @@
 		8E9664F522FDB76900EDE93E /* UserAroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664F422FDB76900EDE93E /* UserAroundCollectionViewCell.swift */; };
 		8E9664F722FDB7BD00EDE93E /* EXT-UsersAroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664F622FDB7BD00EDE93E /* EXT-UsersAroundViewController.swift */; };
 		8E9664F922FEE4A800EDE93E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664F822FEE4A800EDE93E /* MapViewController.swift */; };
+		8E9664FB22FEECA700EDE93E /* UserAnnotaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664FA22FEECA700EDE93E /* UserAnnotaion.swift */; };
 		8ECDE50722F08529009AC4EF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50622F08529009AC4EF /* ChatViewController.swift */; };
 		8ECDE50922F1CA7E009AC4EF /* MessageApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */; };
 		8ECDE52B22F338DD009AC4EF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE52A22F338DD009AC4EF /* Message.swift */; };
@@ -80,6 +81,7 @@
 		8E9664F422FDB76900EDE93E /* UserAroundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAroundCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E9664F622FDB7BD00EDE93E /* EXT-UsersAroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-UsersAroundViewController.swift"; sourceTree = "<group>"; };
 		8E9664F822FEE4A800EDE93E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		8E9664FA22FEECA700EDE93E /* UserAnnotaion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotaion.swift; sourceTree = "<group>"; };
 		8ECDE50622F08529009AC4EF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageApi.swift; sourceTree = "<group>"; };
 		8ECDE52A22F338DD009AC4EF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				8ECDE53622F6874F009AC4EF /* InboxTableViewCell.swift */,
 				8E9664F022FB045400EDE93E /* UserProfileDataTableViewCell.swift */,
 				8E9664F422FDB76900EDE93E /* UserAroundCollectionViewCell.swift */,
+				8E9664FA22FEECA700EDE93E /* UserAnnotaion.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				8E00C23522EAC0DC008C98D1 /* SignInViewController.swift in Sources */,
 				8E00C25922EF6F20008C98D1 /* User.swift in Sources */,
 				8ECDE53122F5B9B6009AC4EF /* EXT-PeopleViewController.swift in Sources */,
+				8E9664FB22FEECA700EDE93E /* UserAnnotaion.swift in Sources */,
 				8ECDE52B22F338DD009AC4EF /* Message.swift in Sources */,
 				8E00C24822EDC1BF008C98D1 /* EXT-WelcomeViewController.swift in Sources */,
 				8ECDE52D22F346A1009AC4EF /* MessageTableViewCell.swift in Sources */,

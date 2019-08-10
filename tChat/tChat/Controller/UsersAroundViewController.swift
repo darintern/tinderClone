@@ -203,6 +203,7 @@ class UsersAroundViewController: UIViewController {
     
     @objc func moveToMap() {
         let mapVC = MapViewController()
+        mapVC.users = users
         self.navigationController?.pushViewController(mapVC, animated: true)
     }
 }

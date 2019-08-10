@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class User {
     var uid: String
     var username: String
     var email: String
     var profileImageUrl: String
+    var profileImage: UIImage?
     var status: String
     var isMale: Bool?
     var age: Int?
