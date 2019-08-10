@@ -15,6 +15,9 @@ import CoreLocation
 class MapViewController: UIViewController {
     var mapView = MKMapView()
     var backBtn = UIButton()
+    var transportTypeSegmentedControl: UISegmentedControl!
+    var currentTransportType =  MKDirectionsTransportType.automobile
+    var currentRoute: MKRoute?
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -37,6 +40,7 @@ class MapViewController: UIViewController {
     func setupViews() {
         setupMapView()
         setupBackBtn()
+        setupTransportTypeSegmentedControl()
         addAnotation()
     }
     
@@ -53,6 +57,15 @@ class MapViewController: UIViewController {
         view.addSubview(mapView)
     }
     
+    func setupTransportTypeSegmentedControl() {
+        transportTypeSegmentedControl = UISegmentedControl(items: ["Car", "Walking"])
+        transportTypeSegmentedControl.selectedSegmentIndex = 0
+        transportTypeSegmentedControl.tintColor = PURPLE_COLOR
+        transportTypeSegmentedControl.isHidden = true
+        transportTypeSegmentedControl.addTarget(self, action: #selector(showDirection(coordinate:)), for: .valueChanged)
+        view.addSubview(transportTypeSegmentedControl)
+    }
+    
     func createConstraints() {
         mapView.snp.makeConstraints { (make) in
             make.top.bottom.left.right.equalToSuperview()
@@ -60,6 +73,10 @@ class MapViewController: UIViewController {
         backBtn.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
             make.left.equalTo(view.safeAreaLayoutGuide).offset(10)
+        }
+        transportTypeSegmentedControl.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-15)
+            make.bottom.equalToSuperview().offset(-20)
         }
     }
     
@@ -85,9 +102,53 @@ class MapViewController: UIViewController {
     @objc func backBtnDidTaped() {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func showDirection(coordinate: CLLocationCoordinate2D) {
+        switch transportTypeSegmentedControl.selectedSegmentIndex {
+        case 0:
+            currentTransportType = .automobile
+        case 1:
+            currentTransportType = .walking
+        default:
+            break
+        }
+        transportTypeSegmentedControl.isHidden = false
+        let directionRequest = MKDirections.Request()
+        directionRequest.source = .forCurrentLocation()
+        let destinationPlacemark = MKPlacemark(coordinate: coordinate)
+        directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
+        directionRequest.transportType = self.currentTransportType
+        
+        let directions = MKDirections(request: directionRequest)
+        directions.calculate { (routeResponse, error) in
+            guard let routeResponse = routeResponse else {
+                print("\(error?.localizedDescription)")
+                return
+            }
+            let route = routeResponse.routes[0]
+            self.currentRoute = route
+            self.mapView.removeOverlays(self.mapView.overlays)
+            self.mapView.addOverlay(route.polyline, level: .aboveRoads)
+            let rect = route.polyline.boundingMapRect
+            self.mapView.setRegion(.init(rect), animated: true)
+        }
+        
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = (self.currentTransportType == .automobile) ? PURPLE_COLOR : .orange
+        renderer.lineWidth = 3
+        return renderer
+    }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if let coordinate = view.annotation?.coordinate {
+            showDirection(coordinate: coordinate)
+        }
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "MyPin"
         var annotationView: MKAnnotationView!
