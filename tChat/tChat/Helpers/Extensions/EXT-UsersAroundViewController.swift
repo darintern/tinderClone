@@ -20,6 +20,14 @@ extension UsersAroundViewController: UICollectionViewDelegate, UICollectionViewD
         return self.users.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? UserAroundCollectionViewCell{
+            let detailVc = DetailViewController()
+            detailVc.user = cell.user
+            self.navigationController?.pushViewController(detailVc, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IDENTIFIER_CELL_USERS_AROUND, for: indexPath) as! UserAroundCollectionViewCell
         let user = users[indexPath.row]
