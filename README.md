@@ -33,3 +33,5 @@ Aug, 7, 2019  ------ Plan for today is to make pagination in inbox and chat scen
 Aug, 8, 2019  ------ Plan for today is to make people nearby me scene and fix some bugs.
 
 Aug, 9, 2019  ------ Plan for today is to finish people nearby me scene, cus yesterday i was thinking about its logic and realized. So Ready, Steady, Go !!!
+
+Aug, 10, 2019  ------ Plan for today is People nearby Me in Map and User Detail View. And may be social authentication if there's time !!!
