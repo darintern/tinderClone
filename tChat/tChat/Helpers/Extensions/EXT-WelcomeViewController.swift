@@ -10,8 +10,9 @@ import UIKit
 import FBSDKLoginKit
 import ProgressHUD
 import Firebase
+import GoogleSignIn
 
-extension WelcomeViewController {
+extension WelcomeViewController: GIDSignInDelegate, GIDSignInUIDelegate {
     
     func setupHeaderTitle() {
         titleLabel = UILabel()
@@ -47,7 +48,6 @@ extension WelcomeViewController {
         signInFacebookBtn.imageEdgeInsets = UIEdgeInsets(top: 12, left: -15, bottom: 12, right: 0)
         
         signInFacebookBtn.addTarget(self, action: #selector(facebookBtnDidTaped), for: .touchUpInside)
-        
         view.addSubview(signInFacebookBtn)
     }
     
@@ -62,6 +62,10 @@ extension WelcomeViewController {
         signInGoogleBtn.tintColor = .white
         signInGoogleBtn.clipsToBounds = true
         signInGoogleBtn.setImage(UIImage(named: "icon-google"), for: .normal)
+        
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.uiDelegate = self
+        signInGoogleBtn.addTarget(self, action: #selector(googleBtnDidTaped), for: .touchUpInside)
         view.addSubview(signInGoogleBtn)
     }
     
@@ -179,23 +183,55 @@ extension WelcomeViewController {
                     ProgressHUD.showError(error.localizedDescription)
                 }
                 if let userData = result {
-                    let dict: Dictionary<String, Any> = [
-                        UID               : userData.user.uid,
-                        EMAIL             : userData.user.email,
-                        USERNAME          : userData.user.displayName,
-                        PROFILE_IMAGE_URL : userData.user.photoURL!.absoluteString,
-                        STATUS            : "Welcome to Tinder"
-                    ]
-                    Ref().databaseSpecificUser(uid: userData.user.uid).updateChildValues(dict, withCompletionBlock: { (error, ref) in
-                        if error == nil {
-                            Api.User.isOnline(bool: true)
-                            (UIApplication.shared.delegate as! AppDelegate).confugureInitialViewController()
-                        } else {
-                            ProgressHUD.showError(error!.localizedDescription)
-                        }
-                    })
+                    self.handleFbGoogleLogic(userData: userData)
                 }
             })
         }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if error != nil {
+            return
+        }
+        guard let authentication = user.authentication else {
+            return
+        }
+        
+        let credentials = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        Auth.auth().signInAndRetrieveData(with: credentials) { (result, error) in
+            if let error = error {
+                ProgressHUD.showError(error.localizedDescription)
+            }
+            if let userData = result {
+                self.handleFbGoogleLogic(userData: userData)
+            }
+        }
+        
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        ProgressHUD.showError(error.localizedDescription)
+    }
+    
+    @objc func googleBtnDidTaped() {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
+    func handleFbGoogleLogic(userData: AuthDataResult) {
+        let dict: Dictionary<String, Any> = [
+            UID               : userData.user.uid,
+            EMAIL             : userData.user.email,
+            USERNAME          : userData.user.displayName,
+            PROFILE_IMAGE_URL : (userData.user.photoURL == nil ) ? "" : userData.user.photoURL!.absoluteString,
+            STATUS            : "Welcome to Tinder"
+        ]
+        Ref().databaseSpecificUser(uid: userData.user.uid).updateChildValues(dict, withCompletionBlock: { (error, ref) in
+            if error == nil {
+                Api.User.isOnline(bool: true)
+                (UIApplication.shared.delegate as! AppDelegate).confugureInitialViewController()
+            } else {
+                ProgressHUD.showError(error!.localizedDescription)
+            }
+        })
     }
 }

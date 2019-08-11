@@ -12,6 +12,7 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseAuth
 import SnapKit
+import GoogleSignIn
 import ProgressHUD
 
 class UserApi {
@@ -74,6 +75,18 @@ class UserApi {
     
     func logout() {
         do {
+            Api.User.isOnline(bool: false)
+            if let providerData = Auth.auth().currentUser?.providerData {
+                let userInfo = providerData[0]
+                switch userInfo.providerID {
+                case "google.com":
+                    GIDSignIn.sharedInstance()?.signOut()
+                default:
+                    break
+                }
+            }
+                
+                
             try Auth.auth().signOut()
         }
         catch let error {

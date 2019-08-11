@@ -287,6 +287,7 @@
 				8E00C21222E9FE29008C98D1 /* Frameworks */,
 				8E00C21322E9FE29008C98D1 /* Resources */,
 				4F4034964CB0A322C23F91AC /* [CP] Embed Pods Frameworks */,
+				144AE17391B4FD84D70279CE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -344,6 +345,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		144AE17391B4FD84D70279CE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tChat/Pods-tChat-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tChat/Pods-tChat-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tChat/Pods-tChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		390E59E64396B9B134B49C31 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
