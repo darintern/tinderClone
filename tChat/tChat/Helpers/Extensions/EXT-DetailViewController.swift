@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 extension DetailViewController {
     func setupAvatarImageView() {
@@ -69,6 +70,10 @@ extension DetailViewController {
     
     func setupDetailTableView() {
         detailTableView.contentInsetAdjustmentBehavior = .never
+        detailTableView.register(DetailMapTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_DETAIL)
+        detailTableView.delegate = self
+        detailTableView.dataSource = self
+        detailTableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         view.addSubview(detailTableView)
     }
     
@@ -122,4 +127,82 @@ extension DetailViewController {
     @objc func backBtnDidTaped() {
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+
+extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            cell.imageView?.image = UIImage(named: "phone")
+            cell.textLabel?.text = "123456789"
+            cell.selectionStyle = .none
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            cell.imageView?.image = UIImage(named: "map-1")
+            if !user.latitude.isEmpty && !user.longitude.isEmpty {
+                let location = CLLocation(latitude: CLLocationDegrees(Double(user.latitude)!), longitude: CLLocationDegrees(Double(user.longitude)!))
+                let geocoder = CLGeocoder()
+                geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                    if error == nil, let placemarkArray = placemarks, placemarkArray.count > 0 {
+                        if let placemark = placemarkArray.last {
+                            var text = ""
+                            if let thoroughFare = placemark.thoroughfare {
+                                text = "\(thoroughFare)"
+                                cell.textLabel?.text = text
+                            }
+                            if let postalCode = placemark.postalCode {
+                                text = text + " " + postalCode
+                                cell.textLabel?.text = text
+                            }
+                            if let locality = placemark.locality {
+                                text = text + " "  + locality
+                                cell.textLabel?.text = text
+                            }
+                            if let country = placemark.country {
+                                text = text + " "  + country
+                                cell.textLabel?.text = text
+                            }
+                        }
+                    } else {
+                        print("\(error?.localizedDescription)")
+                    }
+                }
+            }
+            cell.selectionStyle = .none
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            cell.textLabel?.text = "\(user.status)"
+            cell.selectionStyle = .none
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_DETAIL, for: indexPath) as! DetailMapTableViewCell
+            if !user.latitude.isEmpty && !user.longitude.isEmpty {
+                let location = CLLocation(latitude: CLLocationDegrees(Double(user.latitude)!), longitude: CLLocationDegrees(Double(user.longitude)!))
+                cell.controller = self
+                cell.configure(location: location)
+            }
+            cell.selectionStyle = .none
+            return cell
+        default:
+            break
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 3 {
+            return 300
+        }
+        return 44
+    }
+    
+    
 }

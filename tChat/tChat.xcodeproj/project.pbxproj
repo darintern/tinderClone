@@ -37,6 +37,7 @@
 		8E9664FB22FEECA700EDE93E /* UserAnnotaion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664FA22FEECA700EDE93E /* UserAnnotaion.swift */; };
 		8E9664FD22FF17D400EDE93E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664FC22FF17D400EDE93E /* DetailViewController.swift */; };
 		8E9664FF22FF33EB00EDE93E /* EXT-DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664FE22FF33EB00EDE93E /* EXT-DetailViewController.swift */; };
+		8E96650122FFD0C600EDE93E /* DetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96650022FFD0C600EDE93E /* DetailMapTableViewCell.swift */; };
 		8ECDE50722F08529009AC4EF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50622F08529009AC4EF /* ChatViewController.swift */; };
 		8ECDE50922F1CA7E009AC4EF /* MessageApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */; };
 		8ECDE52B22F338DD009AC4EF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE52A22F338DD009AC4EF /* Message.swift */; };
@@ -86,6 +87,7 @@
 		8E9664FA22FEECA700EDE93E /* UserAnnotaion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotaion.swift; sourceTree = "<group>"; };
 		8E9664FC22FF17D400EDE93E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8E9664FE22FF33EB00EDE93E /* EXT-DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-DetailViewController.swift"; sourceTree = "<group>"; };
+		8E96650022FFD0C600EDE93E /* DetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapTableViewCell.swift; sourceTree = "<group>"; };
 		8ECDE50622F08529009AC4EF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageApi.swift; sourceTree = "<group>"; };
 		8ECDE52A22F338DD009AC4EF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				8E9664F022FB045400EDE93E /* UserProfileDataTableViewCell.swift */,
 				8E9664F422FDB76900EDE93E /* UserAroundCollectionViewCell.swift */,
 				8E9664FA22FEECA700EDE93E /* UserAnnotaion.swift */,
+				8E96650022FFD0C600EDE93E /* DetailMapTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -244,8 +247,8 @@
 				8ECDE53822F6881B009AC4EF /* EXT-MessagesViewController.swift */,
 				8ECDE53C22F6EE3A009AC4EF /* EXT-ProfileViewController.swift */,
 				8E9664F622FDB7BD00EDE93E /* EXT-UsersAroundViewController.swift */,
-				8E00C25C22EF7477008C98D1 /* Extension.swift */,
 				8E9664FE22FF33EB00EDE93E /* EXT-DetailViewController.swift */,
+				8E00C25C22EF7477008C98D1 /* Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				8E00C25722EF0F73008C98D1 /* Ref.swift in Sources */,
 				8E00C25322EEFB52008C98D1 /* UserApi.swift in Sources */,
 				8E00C24B22EDC67B008C98D1 /* EXT-SignUpViewController.swift in Sources */,
+				8E96650122FFD0C600EDE93E /* DetailMapTableViewCell.swift in Sources */,
 				8E00C24D22EDC68A008C98D1 /* EXT-SignInViewController.swift in Sources */,
 				8E9664F122FB045500EDE93E /* UserProfileDataTableViewCell.swift in Sources */,
 				8E9664F322FB22E100EDE93E /* UsersAroundViewController.swift in Sources */,
