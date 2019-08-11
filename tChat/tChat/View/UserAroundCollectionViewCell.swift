@@ -6,10 +6,11 @@
 //  Copyright © 2019 Aibol Tungatarov. All rights reserved.
 //
 
-import Foundation
-import Firebase
+import UIKit
 import SnapKit
+import Firebase
 import CoreLocation
+
 
 class UserAroundCollectionViewCell: UICollectionViewCell {
     var avatar = UIImageView()
@@ -22,10 +23,14 @@ class UserAroundCollectionViewCell: UICollectionViewCell {
     var inboxChangedProfileHandle: DatabaseHandle!
     var controller: UsersAroundViewController!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupViews()
         createConstraints()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     func setupViews() {
