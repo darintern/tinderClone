@@ -35,6 +35,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
             chatVC.imagePartner = cell.profileImageView.image!
             chatVC.partnerUsername = cell.usernameLbl.text!
             chatVC.partnerId = cell.user.uid
+            chatVC.partnerUser = cell.user
             self.navigationController?.pushViewController(chatVC, animated: true)
         }
     }

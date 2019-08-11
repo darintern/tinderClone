@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Api/UserApi.swift"
-            timestampString = "587052807.010406"
+            timestampString = "587225211.835357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "saveUserProfile(dict:onSuccess:onError:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Api/UserApi.swift"
-            timestampString = "587052807.0104541"
+            timestampString = "587225211.8354729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "saveUserProfile(dict:onSuccess:onError:)"
             landmarkType = "7">
             <Locations>
@@ -170,11 +170,11 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Helpers/Api/UserApi.swift"
-                  timestampString = "587131871.421827"
+                  timestampString = "587223133.02169"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
                   offsetFromSymbolStart = "232">
                </Location>
                <Location
@@ -185,11 +185,11 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Helpers/Api/UserApi.swift"
-                  timestampString = "587131871.424144"
+                  timestampString = "587223133.02407"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
                   offsetFromSymbolStart = "244">
                </Location>
             </Locations>
@@ -218,7 +218,7 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Controller/ProfileViewController.swift"
-                  timestampString = "587131871.429554"
+                  timestampString = "587223133.028846"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "80"
@@ -233,7 +233,7 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Controller/ProfileViewController.swift"
-                  timestampString = "587131871.431769"
+                  timestampString = "587223133.030789"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "81"
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Api/UserApi.swift"
-            timestampString = "587052807.010657"
+            timestampString = "587225211.835584"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "getUserInfoSingleEvent(uid:onSuccess:)"
             landmarkType = "7">
          </BreakpointContent>
