@@ -51,5 +51,21 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
+    
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb761806024236048</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>761806024236048</string>
+    <key>FacebookDisplayName</key>
+    <string>tChat</string>
+    
 </dict>
 </plist>

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import ProgressHUD
+import Firebase
 
 extension WelcomeViewController {
     
@@ -42,6 +45,9 @@ extension WelcomeViewController {
         signInFacebookBtn.imageView?.contentMode = .scaleAspectFit
         signInFacebookBtn.tintColor = .white
         signInFacebookBtn.imageEdgeInsets = UIEdgeInsets(top: 12, left: -15, bottom: 12, right: 0)
+        
+        signInFacebookBtn.addTarget(self, action: #selector(facebookBtnDidTaped), for: .touchUpInside)
+        
         view.addSubview(signInFacebookBtn)
     }
     
@@ -154,5 +160,42 @@ extension WelcomeViewController {
     @objc func moveToSignUpPage() {
         let signUpPage = SignUpViewController()
         navigationController?.pushViewController(signUpPage, animated: true)
+    }
+    
+    @objc func facebookBtnDidTaped() {
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logIn(withReadPermissions: ["public_porfile", "email"], from: self) { (result, error) in
+            if let error = error {
+                ProgressHUD.showError(error.localizedDescription)
+            }
+            
+            guard let accessToken = FBSDKAccessToken.current() else {
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            Auth.auth().signInAndRetrieveData(with: credential, completion: { (result, error) in
+                if let error = error {
+                    ProgressHUD.showError(error.localizedDescription)
+                }
+                if let userData = result {
+                    let dict: Dictionary<String, Any> = [
+                        UID               : userData.user.uid,
+                        EMAIL             : userData.user.email,
+                        USERNAME          : userData.user.displayName,
+                        PROFILE_IMAGE_URL : userData.user.photoURL!.absoluteString,
+                        STATUS            : "Welcome to Tinder"
+                    ]
+                    Ref().databaseSpecificUser(uid: userData.user.uid).updateChildValues(dict, withCompletionBlock: { (error, ref) in
+                        if error == nil {
+                            Api.User.isOnline(bool: true)
+                            (UIApplication.shared.delegate as! AppDelegate).confugureInitialViewController()
+                        } else {
+                            ProgressHUD.showError(error!.localizedDescription)
+                        }
+                    })
+                }
+            })
+        }
     }
 }

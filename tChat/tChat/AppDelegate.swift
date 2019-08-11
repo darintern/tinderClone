@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,7 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         confugureInitialViewController()
         
+        FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let handled = FBSDKApplicationDelegate.sharedInstance()!.application(app, open: url, options: options)
+        return handled
     }
     
     func confugureInitialViewController() {
