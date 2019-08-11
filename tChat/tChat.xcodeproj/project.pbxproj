@@ -38,6 +38,7 @@
 		8E9664FD22FF17D400EDE93E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664FC22FF17D400EDE93E /* DetailViewController.swift */; };
 		8E9664FF22FF33EB00EDE93E /* EXT-DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664FE22FF33EB00EDE93E /* EXT-DetailViewController.swift */; };
 		8E96650122FFD0C600EDE93E /* DetailMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96650022FFD0C600EDE93E /* DetailMapTableViewCell.swift */; };
+		8E9665032300592000EDE93E /* RadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9665022300592000EDE93E /* RadarViewController.swift */; };
 		8ECDE50722F08529009AC4EF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50622F08529009AC4EF /* ChatViewController.swift */; };
 		8ECDE50922F1CA7E009AC4EF /* MessageApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */; };
 		8ECDE52B22F338DD009AC4EF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE52A22F338DD009AC4EF /* Message.swift */; };
@@ -88,6 +89,7 @@
 		8E9664FC22FF17D400EDE93E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		8E9664FE22FF33EB00EDE93E /* EXT-DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-DetailViewController.swift"; sourceTree = "<group>"; };
 		8E96650022FFD0C600EDE93E /* DetailMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapTableViewCell.swift; sourceTree = "<group>"; };
+		8E9665022300592000EDE93E /* RadarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarViewController.swift; sourceTree = "<group>"; };
 		8ECDE50622F08529009AC4EF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageApi.swift; sourceTree = "<group>"; };
 		8ECDE52A22F338DD009AC4EF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				8E9664F222FB22E100EDE93E /* UsersAroundViewController.swift */,
 				8E9664F822FEE4A800EDE93E /* MapViewController.swift */,
 				8E9664FC22FF17D400EDE93E /* DetailViewController.swift */,
+				8E9665022300592000EDE93E /* RadarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 			files = (
 				8E00C24522ED736F008C98D1 /* WelcomeViewController.swift in Sources */,
 				8E00C21B22E9FE29008C98D1 /* SignUpViewController.swift in Sources */,
+				8E9665032300592000EDE93E /* RadarViewController.swift in Sources */,
 				8E00C24F22EDC6A4008C98D1 /* EXT-ResetPasswordViewController.swift in Sources */,
 				8ECDE53B22F68E4B009AC4EF /* InboxApi.swift in Sources */,
 				8ECDE53522F67F80009AC4EF /* Inbox.swift in Sources */,

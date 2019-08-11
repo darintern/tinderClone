@@ -53,6 +53,7 @@ class MessagesViewController: UIViewController {
         self.navigationItem.title = "Messages"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         setupAvatarImageView()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-radar"), style: .plain, target: self, action: #selector(moveToRadarVC))
     }
     
     func setupTableView() {
@@ -130,5 +131,10 @@ class MessagesViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc func moveToRadarVC() {
+        let radarVC = RadarViewController()
+        self.navigationController?.pushViewController(radarVC, animated: true)
     }
 }
