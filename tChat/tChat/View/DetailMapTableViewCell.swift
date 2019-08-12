@@ -15,10 +15,15 @@ class DetailMapTableViewCell: UITableViewCell {
     var rightIconImageView = UIImageView()
     var mapView = MKMapView()
     var controller: DetailViewController!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setupViews()
-        createConstraints()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.setupViews()
+        self.createConstraints()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     func setupViews() {
