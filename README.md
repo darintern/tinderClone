@@ -37,3 +37,5 @@ Aug, 9, 2019  ------ Plan for today is to finish people nearby me scene, cus yes
 Aug, 10, 2019  ------ Plan for today is People nearby Me in Map and User Detail View. And may be social authentication if there's time !!!
 
 Aug, 11, 2019  ------ Plan for today is to finish User Detail View, add social auth and start tinder swipe and match scene !!!
+
+Aug, 12, 2019  ------ Plan for today is to work on Tinder swipe and match and fix some bugs ... There we go !!!
