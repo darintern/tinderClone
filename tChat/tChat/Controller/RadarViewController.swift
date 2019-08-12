@@ -32,6 +32,8 @@ class RadarViewController: UIViewController {
     var distance: Double = 500
     var users: [User] = []
     var cards: [Card] = []
+    var cardInitialLocationCenter: CGPoint!
+    var panInitialLocation: CGPoint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,6 +163,11 @@ class RadarViewController: UIViewController {
         cardStack.addSubview(card)
         cardStack.sendSubviewToBack(card)
         setupTransforms()
+        
+        if cards.count == 1 {
+            cardInitialLocationCenter = card.center
+            card.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(pan(gesture:))))
+        }
     }
     
     func setupTransforms() {
@@ -180,6 +187,50 @@ class RadarViewController: UIViewController {
             
             card.transform = transform
         }
+    }
+    
+    @objc func pan(gesture: UIPanGestureRecognizer) {
+        let card = gesture.view! as! Card
+        let translation = gesture.translation(in: cardStack)
+        
+        switch gesture.state {
+        case .began:
+            panInitialLocation = gesture.location(in: cardStack)
+        case .changed:
+            card.center.x = cardInitialLocationCenter.x + translation.x
+            card.center.y = cardInitialLocationCenter.y + translation.y
+        case .ended:
+            if translation.x > 75 {
+                UIView.animate(withDuration: 0.3, animations: {
+                    card.center = CGPoint(x: self.cardInitialLocationCenter.x + 1000, y: self.cardInitialLocationCenter.y + 1000)
+                }) { (bool) in
+                    // remove card
+                }
+                
+                return
+            }
+            else if translation.x < -75 {
+                UIView.animate(withDuration: 0.3, animations: {
+                    card.center = CGPoint(x: self.cardInitialLocationCenter.x - 1000, y: self.cardInitialLocationCenter.y + 1000)
+                }) { (bool) in
+                    // remove card
+                }
+                
+                return
+            }
+            
+            UIView.animate(withDuration: 0.3) {
+                card.center = self.cardInitialLocationCenter
+                if translation.x > 0 {
+                    // show like icon
+                } else {
+                    // show nope icon
+                }
+            }
+            
+        default: break
+        }
+        
     }
     
     @objc func nopeDidTaped() {
