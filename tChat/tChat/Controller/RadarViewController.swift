@@ -215,7 +215,10 @@ class RadarViewController: UIViewController {
                     card.center = CGPoint(x: self.cardInitialLocationCenter.x + 1000, y: self.cardInitialLocationCenter.y + 1000)
                 }) { (bool) in
                     // remove card
+                    card.removeFromSuperview()
                 }
+                
+                self.updateCards(card: card)
                 
                 return
             }
@@ -224,7 +227,10 @@ class RadarViewController: UIViewController {
                     card.center = CGPoint(x: self.cardInitialLocationCenter.x - 1000, y: self.cardInitialLocationCenter.y + 1000)
                 }) { (bool) in
                     // remove card
+                    card.removeFromSuperview()
                 }
+                
+                self.updateCards(card: card)
                 
                 return
             }
@@ -239,6 +245,31 @@ class RadarViewController: UIViewController {
         default: break
         }
         
+    }
+    
+    func updateCards(card: Card) {
+        for (index,c) in cards.enumerated() {
+            if c.user.uid == card.user.uid {
+                self.cards.remove(at: index)
+                self.users.remove(at: index)
+            }
+        }
+        
+        setupGestures()
+        setupTransforms()
+    }
+    
+    func setupGestures() {
+        for card in cards {
+            let gestures = card.gestureRecognizers ?? []
+            for g in gestures {
+                card.removeGestureRecognizer(g)
+            }
+        }
+        
+        if let firstCard = cards.first {
+            firstCard.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(pan(gesture:))))
+        }
     }
     
     func transform(view: UIView, for translation: CGPoint) -> CGAffineTransform {
@@ -284,6 +315,8 @@ class RadarViewController: UIViewController {
                 self.users.remove(at: index)
             }
         }
+        
+        self.setupGestures()
         
         CATransaction.setCompletionBlock {
             
