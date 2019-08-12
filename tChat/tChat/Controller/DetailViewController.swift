@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
     }
     
     func setupHeaderView() {
-        detailTableView.addSubview(headerView)
+        view.addSubview(headerView)
         setupAvatarImageView()
         setupAgeLabel()
         setupGenderImageView()

@@ -14,6 +14,7 @@ extension DetailViewController {
     func setupAvatarImageView() {
         avatarImageView.image = user.profileImage
         avatarImageView.contentMode = .scaleAspectFill
+        avatarImageView.clipsToBounds = true
         let frameGradient = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 350)
         avatarImageView.addBlackGradientLayer(frame: frameGradient, colors: [.clear, .black])
         headerView.addSubview(avatarImageView)
@@ -71,15 +72,16 @@ extension DetailViewController {
     func setupDetailTableView() {
         detailTableView.contentInsetAdjustmentBehavior = .never
         detailTableView.register(DetailMapTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_DETAIL)
+        detailTableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         detailTableView.delegate = self
         detailTableView.dataSource = self
-        detailTableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
         view.addSubview(detailTableView)
     }
     
     func createConstraints() {
         detailTableView.snp.makeConstraints { (make) in
-            make.right.left.top.bottom.equalToSuperview()
+            make.top.equalTo(headerView.snp.bottom)
+            make.right.left.bottom.equalToSuperview()
         }
         headerView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
@@ -101,16 +103,15 @@ extension DetailViewController {
         }
         ageLbl.snp.makeConstraints { (make) in
             make.left.equalTo(genderImageView.snp.right).offset(5)
-            make.centerX.equalTo(genderImageView)
+            make.bottom.equalToSuperview().offset(-15)
         }
         usernameLbl.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(15)
             make.bottom.equalToSuperview().offset(5)
         }
         sendBtn.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(20)
-            make.centerX.equalTo(genderImageView)
-            make.width.equalTo(110)
+            make.right.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-15)
             make.height.equalTo(30)
         }
     }

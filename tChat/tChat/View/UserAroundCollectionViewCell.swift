@@ -43,6 +43,7 @@ class UserAroundCollectionViewCell: UICollectionViewCell {
     
     func setupAvatar() {
         avatar.contentMode = .scaleAspectFill
+        avatar.clipsToBounds = true
         addSubview(avatar)
     }
     
@@ -63,12 +64,12 @@ class UserAroundCollectionViewCell: UICollectionViewCell {
         onlineStatusView.backgroundColor = .red
         onlineStatusView.layer.cornerRadius = 10/2
         onlineStatusView.clipsToBounds = true
-        addSubview(onlineStatusView)
+        avatar.addSubview(onlineStatusView)
     }
     
     func setupHelperImageView() {
         helperImageView.backgroundColor = UIColor.rgbColor(r: 0, g: 0, b: 0, alpha: 0.5)
-        addSubview(helperImageView)
+        avatar.addSubview(helperImageView)
     }
     
     func createConstraints() {
@@ -84,8 +85,8 @@ class UserAroundCollectionViewCell: UICollectionViewCell {
             make.bottom.equalToSuperview()
         }
         distanceLabel.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(6)
-            make.top.equalTo(ageLabel)
+            make.right.equalToSuperview().offset(-6)
+            make.bottom.equalToSuperview()
         }
         helperImageView.snp.makeConstraints { (make) in
             make.height.equalTo(26)

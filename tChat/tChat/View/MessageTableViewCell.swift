@@ -164,7 +164,8 @@ class MessageTableViewCell: UITableViewCell {
     }
     
     func setupPartnerProfileImageView() {
-        partnerProfileImageView.layer.cornerRadius = 16
+        partnerProfileImageView.layer.cornerRadius = 20
+        partnerProfileImageView.contentMode = .scaleAspectFill
         partnerProfileImageView.clipsToBounds = true
         addSubview(partnerProfileImageView)
     }
@@ -230,9 +231,9 @@ class MessageTableViewCell: UITableViewCell {
             make.height.equalTo(20)
         }
         partnerProfileImageView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(15)
+            make.left.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-12)
-            make.height.width.equalTo(32)
+            make.height.width.equalTo(40)
         }
         onlineStatusView.snp.makeConstraints { (make) in
             make.right.bottom.equalTo(partnerProfileImageView)

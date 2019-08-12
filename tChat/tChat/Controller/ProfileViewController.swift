@@ -113,6 +113,7 @@ class ProfileViewController: UIViewController {
         avatar.layer.cornerRadius = 40
         avatar.clipsToBounds = true
         avatar.isUserInteractionEnabled = true
+        avatar.contentMode = .scaleAspectFill
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(presentPicker))
         avatar.addGestureRecognizer(tapGesture)
         containerView.addSubview(avatar)
