@@ -15,6 +15,7 @@ let REF_USER = "users"
 let REF_MESSAGE = "messages"
 let REF_INBOX = "inbox"
 let REF_GEO = "Geolocs"
+let REF_ACTION = "action"
 
 let IS_ONLINE = "isOnline"
 let URL_STORAGE_ROOT = "gs://tchat-862a1.appspot.com"
@@ -78,6 +79,14 @@ class Ref {
     
     var databaseGeo: DatabaseReference {
         return databaseRoot.child(REF_GEO)
+    }
+    
+    var databaseAction: DatabaseReference {
+        return databaseRoot.child(REF_ACTION)
+    }
+    
+    func databaseActionForUser(uid: String) -> DatabaseReference {
+        return databaseAction.child(uid)
     }
     
     // Storage Ref

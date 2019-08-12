@@ -217,7 +217,7 @@ class RadarViewController: UIViewController {
                     // remove card
                     card.removeFromSuperview()
                 }
-                
+                self.saveToFirebase(like: true, card: card)
                 self.updateCards(card: card)
                 
                 return
@@ -229,7 +229,7 @@ class RadarViewController: UIViewController {
                     // remove card
                     card.removeFromSuperview()
                 }
-                
+                saveToFirebase(like: false, card: card)
                 self.updateCards(card: card)
                 
                 return
@@ -282,6 +282,7 @@ class RadarViewController: UIViewController {
         guard let firstCard = cards.first else {
             return
         }
+        saveToFirebase(like: false, card: firstCard)
         swipeAnimation(translation: -750, angle: 15)
         setupTransforms()
     }
@@ -290,8 +291,33 @@ class RadarViewController: UIViewController {
         guard let firstCard = cards.first else {
             return
         }
+        saveToFirebase(like: true, card: firstCard)
         swipeAnimation(translation: 750, angle: 15)
         setupTransforms()
+    }
+    
+    func saveToFirebase(like: Bool, card: Card) {
+        Ref().databaseActionForUser(uid: Api.User.currentUserId).updateChildValues([card.user.uid : like]) { (error, ref) in
+            if error == nil, like {
+                // check for match
+                self.checkIfMatch(for: card)
+            }
+        }
+    }
+    
+    func checkIfMatch(for card: Card) {
+        Ref().databaseActionForUser(uid: card.user.uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dict = snapshot.value as? [String: Bool] else { return }
+            if dict.keys.contains(Api.User.currentUserId) {
+                if dict[Api.User.currentUserId]! {
+                    // send push notification
+                    // has matched
+                    //                Api.User.getUserInfoSingleEvent(uid: Api.User.currentUserId, onSuccess: { (user) in
+                    //
+                    //                })
+                }
+            }
+        }
     }
     
     func swipeAnimation(translation: CGFloat, angle: CGFloat) {
