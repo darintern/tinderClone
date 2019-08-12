@@ -15,6 +15,7 @@ class Card: UIView {
     var usernameLbl = UILabel()
     var locationLbl = UILabel()
     var infoButton = UIButton()
+    var controller: RadarViewController!
     
     var user: User! {
         didSet {
@@ -90,6 +91,7 @@ class Card: UIView {
     
     func setupInfoBtn() {
         infoButton.setImage(UIImage(named: "info_icon"), for: .normal)
+        infoButton.addTarget(self, action: #selector(infoButtonDidTaped), for: .touchUpInside)
         addSubview(infoButton)
     }
     
@@ -109,5 +111,10 @@ class Card: UIView {
             make.right.bottom.equalToSuperview().offset(-20)
             make.height.width.equalTo(32)
         }
+    }
+    @objc func infoButtonDidTaped() {
+        let detailVc = DetailViewController()
+        detailVc.user = user
+        controller.navigationController?.pushViewController(detailVc, animated: true)
     }
 }

@@ -60,22 +60,31 @@ class RadarViewController: UIViewController {
         
         refreshImageView.image = UIImage(named: "refresh_circle")
         refreshImageView.contentMode = .scaleAspectFit
+        refreshImageView.isUserInteractionEnabled = true
         bottomStackView.addArrangedSubview(refreshImageView)
         
         nopeImageView.image = UIImage(named: "nope_circle")
         nopeImageView.contentMode = .scaleAspectFit
+        nopeImageView.isUserInteractionEnabled = true
+        let nopeTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(nopeDidTaped))
+        nopeImageView.addGestureRecognizer(nopeTapGestureRecognizer)
         bottomStackView.addArrangedSubview(nopeImageView)
         
         superLikeImageView.image = UIImage(named: "super_like_circle")
         superLikeImageView.contentMode = .scaleAspectFit
+        superLikeImageView.isUserInteractionEnabled = true
         bottomStackView.addArrangedSubview(superLikeImageView)
         
         likeImageView.image = UIImage(named: "like_circle")
         likeImageView.contentMode = .scaleAspectFit
+        likeImageView.isUserInteractionEnabled = true
+        let likeTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(likeDidTaped))
+        likeImageView.addGestureRecognizer(likeTapGestureRecognizer)
         bottomStackView.addArrangedSubview(likeImageView)
         
         boostImageView.image = UIImage(named: "boost_circle")
         boostImageView.contentMode = .scaleAspectFit
+        boostImageView.isUserInteractionEnabled = true
         bottomStackView.addArrangedSubview(boostImageView)
         
         bottomStackView.distribution = .fillEqually
@@ -147,6 +156,7 @@ class RadarViewController: UIViewController {
         let card = Card()
         card.frame = CGRect(x: 0, y: 0, width: cardStack.bounds.width, height: cardStack.bounds.height)
         card.user = user
+        card.controller = self
         self.cards.append(card)
         cardStack.addSubview(card)
         cardStack.sendSubviewToBack(card)
@@ -170,6 +180,54 @@ class RadarViewController: UIViewController {
             
             card.transform = transform
         }
+    }
+    
+    @objc func nopeDidTaped() {
+        guard let firstCard = cards.first else {
+            return
+        }
+        swipeAnimation(translation: -750, angle: 15)
+        setupTransforms()
+    }
+    
+    @objc func likeDidTaped() {
+        guard let firstCard = cards.first else {
+            return
+        }
+        swipeAnimation(translation: 750, angle: 15)
+        setupTransforms()
+    }
+    
+    func swipeAnimation(translation: CGFloat, angle: CGFloat) {
+        let duration = 0.5
+        let translationAnimation = CABasicAnimation(keyPath: "position.x")
+        translationAnimation.toValue = translation
+        translationAnimation.duration = duration
+        translationAnimation.fillMode = .forwards
+        translationAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        translationAnimation.isRemovedOnCompletion = false
+        
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = angle * CGFloat.pi / 180
+        rotationAnimation.duration = duration
+        guard let firstCard = cards.first else {
+            return
+        }
+        for (index, c) in self.cards.enumerated() {
+            if c.user.uid == firstCard.user.uid {
+                self.cards.remove(at: index)
+                self.users.remove(at: index)
+            }
+        }
+        
+        CATransaction.setCompletionBlock {
+            
+            firstCard.removeFromSuperview()
+        }
+        firstCard.layer.add(translationAnimation, forKey: "translation")
+        firstCard.layer.add(rotationAnimation, forKey: "rotation")
+        
+        CATransaction.commit()
     }
     
 }
