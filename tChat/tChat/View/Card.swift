@@ -15,6 +15,10 @@ class Card: UIView {
     var usernameLbl = UILabel()
     var locationLbl = UILabel()
     var infoButton = UIButton()
+    var likeView = UIView()
+    var likeLabel = UILabel()
+    var nopeView = UIView()
+    var nopeLabel = UILabel()
     var controller: RadarViewController!
     
     var user: User! {
@@ -63,6 +67,8 @@ class Card: UIView {
     
     func setupViews() {
         setupPhotoImageView()
+        setupLikeView()
+        setupNopeView()
         setupUsernameLbl()
         setupLocationLbl()
         setupInfoBtn()
@@ -75,6 +81,28 @@ class Card: UIView {
         photoImageView.layer.cornerRadius = 10
         photoImageView.clipsToBounds = true
         addSubview(photoImageView)
+    }
+    
+    func setupLikeView() {
+        likeView.layer.borderWidth = 3
+        likeView.layer.cornerRadius = 5
+        likeView.clipsToBounds = true
+        likeView.layer.borderColor = UIColor(red: 0.101, green: 0.737, blue: 0.611, alpha: 1).cgColor
+        addSubview(likeView)
+        likeLabel.attributedText = NSAttributedString(string: "LIKE", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 45)])
+        likeLabel.textColor = UIColor(red: 0.101, green: 0.737, blue: 0.611, alpha: 1)
+        likeView.addSubview(likeLabel)
+    }
+    
+    func setupNopeView() {
+        nopeView.layer.borderWidth = 3
+        nopeView.layer.cornerRadius = 5
+        nopeView.clipsToBounds = true
+        nopeView.layer.borderColor = UIColor(red: 0.9, green: 0.29, blue: 0.23, alpha: 1).cgColor
+        addSubview(nopeView)
+        nopeLabel.attributedText = NSAttributedString(string: "NOPE", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 45)])
+        nopeLabel.textColor = UIColor(red: 0.9, green: 0.29, blue: 0.23, alpha: 1)
+        nopeView.addSubview(nopeLabel)
     }
     
     func setupUsernameLbl() {
@@ -98,6 +126,26 @@ class Card: UIView {
     func createConstraints() {
         photoImageView.snp.makeConstraints { (make) in
             make.top.bottom.left.right.equalToSuperview()
+        }
+        likeView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(20)
+            make.left.equalToSuperview().offset(10)
+            make.height.equalTo(40)
+        }
+        likeLabel.snp.makeConstraints { (make) in
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(8)
+            make.right.equalToSuperview().offset(-8)
+        }
+        nopeView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-10)
+            make.height.equalTo(40)
+        }
+        nopeLabel.snp.makeConstraints { (make) in
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(8)
+            make.right.equalToSuperview().offset(-8)
         }
         locationLbl.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(20)
