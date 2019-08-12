@@ -199,6 +199,16 @@ class RadarViewController: UIViewController {
         case .changed:
             card.center.x = cardInitialLocationCenter.x + translation.x
             card.center.y = cardInitialLocationCenter.y + translation.y
+            if translation.x > 0 {
+                // show like icon
+                card.likeView.alpha = abs(translation.x * 2) / self.cardStack.bounds.midX
+                card.nopeView.alpha = 0
+            } else {
+                // show nope icon
+                card.nopeView.alpha = abs(translation.x * 2) / self.cardStack.bounds.midX
+                card.likeView.alpha = 0
+            }
+            card.transform = self.transform(view: card, for: translation)
         case .ended:
             if translation.x > 75 {
                 UIView.animate(withDuration: 0.3, animations: {
@@ -221,16 +231,20 @@ class RadarViewController: UIViewController {
             
             UIView.animate(withDuration: 0.3) {
                 card.center = self.cardInitialLocationCenter
-                if translation.x > 0 {
-                    // show like icon
-                } else {
-                    // show nope icon
-                }
+                card.likeView.alpha = 0
+                card.nopeView.alpha = 0
+                card.transform = CGAffineTransform.identity
             }
             
         default: break
         }
         
+    }
+    
+    func transform(view: UIView, for translation: CGPoint) -> CGAffineTransform {
+        let moveBy = CGAffineTransform(translationX: translation.x, y: translation.y)
+        let rotation = -translation.x / (view.frame.width / 2)
+        return moveBy.rotated(by: rotation)
     }
     
     @objc func nopeDidTaped() {

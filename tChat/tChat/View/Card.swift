@@ -87,9 +87,14 @@ class Card: UIView {
         likeView.layer.borderWidth = 3
         likeView.layer.cornerRadius = 5
         likeView.clipsToBounds = true
+        likeView.backgroundColor = .white
         likeView.layer.borderColor = UIColor(red: 0.101, green: 0.737, blue: 0.611, alpha: 1).cgColor
+        likeView.transform = CGAffineTransform(rotationAngle: -.pi/8)
+        likeView.alpha = 0
         addSubview(likeView)
-        likeLabel.attributedText = NSAttributedString(string: "LIKE", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 45)])
+        likeLabel.addCharacterSpacing()
+        likeLabel.attributedText = NSAttributedString(string: "LIKE", attributes:
+            [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 45)])
         likeLabel.textColor = UIColor(red: 0.101, green: 0.737, blue: 0.611, alpha: 1)
         likeView.addSubview(likeLabel)
     }
@@ -98,9 +103,13 @@ class Card: UIView {
         nopeView.layer.borderWidth = 3
         nopeView.layer.cornerRadius = 5
         nopeView.clipsToBounds = true
+        nopeView.backgroundColor = .white
+        nopeView.transform = CGAffineTransform(rotationAngle: .pi/8)
+        nopeView.alpha = 0
         nopeView.layer.borderColor = UIColor(red: 0.9, green: 0.29, blue: 0.23, alpha: 1).cgColor
         addSubview(nopeView)
-        nopeLabel.attributedText = NSAttributedString(string: "NOPE", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 45)])
+        nopeLabel.addCharacterSpacing()
+        nopeLabel.attributedText = NSAttributedString(string: "NOPE", attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 45)])
         nopeLabel.textColor = UIColor(red: 0.9, green: 0.29, blue: 0.23, alpha: 1)
         nopeView.addSubview(nopeLabel)
     }
