@@ -19,10 +19,12 @@ class MainTabBarController: UITabBarController {
     
     func setupTabBar() {
         
-        let usersVC = UINavigationController(rootViewController: PeopleViewController())
-        usersVC.tabBarItem.title = "Users"
-        usersVC.tabBarItem.image = UIImage(named: "icon_users")
+//        let usersVC = UINavigationController(rootViewController: PeopleViewController())
+//        usersVC.tabBarItem.title = "Users"
+//        usersVC.tabBarItem.image = UIImage(named: "icon_users")
         
+        let radarVC = UINavigationController(rootViewController: RadarViewController())
+        radarVC.tabBarItem.image = UIImage(named: "icon-radar")
         
         let messagesVC = UINavigationController(rootViewController: MessagesViewController())
         messagesVC.tabBarItem.title = "Messages"
@@ -33,7 +35,10 @@ class MainTabBarController: UITabBarController {
         meVC.tabBarItem.title = "Me"
         meVC.tabBarItem.image = UIImage(named: "icon_profile")
         
-        viewControllers = [usersVC, messagesVC, meVC]
+        viewControllers = [meVC, radarVC, messagesVC]
+//        tabBarController?.selectedViewController = radarVC
+        self.selectedIndex = 1
+
         
     }
 //    
