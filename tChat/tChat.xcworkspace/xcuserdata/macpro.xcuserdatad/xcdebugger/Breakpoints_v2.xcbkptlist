@@ -170,7 +170,7 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Helpers/Api/UserApi.swift"
-                  timestampString = "587367653.066704"
+                  timestampString = "587392880.9401391"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "35"
@@ -185,7 +185,7 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Helpers/Api/UserApi.swift"
-                  timestampString = "587367653.069321"
+                  timestampString = "587392880.942956"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "36"
@@ -218,7 +218,7 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Controller/ProfileViewController.swift"
-                  timestampString = "587367653.075699"
+                  timestampString = "587392880.950157"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "80"
@@ -233,7 +233,7 @@
                   moduleName = "tChat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/macpro/Desktop/Tinder/tChat/tChat/Controller/ProfileViewController.swift"
-                  timestampString = "587367653.080689"
+                  timestampString = "587392880.953184"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "81"
@@ -278,17 +278,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "tChat/Controller/MainTabBarController.swift"
-            timestampString = "587367652.42129"
+            filePath = "Pods/EZSwipeController/EZSwipeController.swift"
+            timestampString = "587449068.5129319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "setupTabBar()"
-            landmarkType = "7">
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "StatusBarHeight"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

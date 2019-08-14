@@ -34,6 +34,14 @@ class RadarViewController: UIViewController {
     var cards: [Card] = []
     var cardInitialLocationCenter: CGPoint!
     var panInitialLocation: CGPoint!
+    var blurEffectView: UIVisualEffectView!
+    var sendMsgBtn = UIButton()
+    var keepSwipingBtn = UIButton()
+    var partnerMatchImageView = UIImageView()
+    var myMatchImageView = UIImageView()
+    var wrapperForText = UIView()
+    var titleImageView = UIImageView()
+    var subTextLbl = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +67,7 @@ class RadarViewController: UIViewController {
     func setupViews() {
         
         view.addSubview(cardStack)
-        
+
         refreshImageView.image = UIImage(named: "refresh_circle")
         refreshImageView.contentMode = .scaleAspectFit
         refreshImageView.isUserInteractionEnabled = true
@@ -92,6 +100,62 @@ class RadarViewController: UIViewController {
         bottomStackView.distribution = .fillEqually
         bottomStackView.axis = .horizontal
         view.addSubview(bottomStackView)
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+//        blurEffectView.alpha = 0
+//        blurEffectView.isHidden = true
+        
+        sendMsgBtn.setAttributedTitle(NSAttributedString(string: "SEND MESSAGE", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.white]), for: .normal)
+        sendMsgBtn.layer.borderColor = PURPLE_COLOR.cgColor
+        sendMsgBtn.backgroundColor = PURPLE_COLOR
+        sendMsgBtn.layer.borderWidth = 2
+        sendMsgBtn.layer.cornerRadius = 23
+        sendMsgBtn.clipsToBounds = true
+        blurEffectView.contentView.addSubview(sendMsgBtn)
+        
+        keepSwipingBtn.setAttributedTitle(NSAttributedString(string: "Keep Swiping", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.white]), for: .normal)
+        keepSwipingBtn.layer.borderColor = PURPLE_COLOR.cgColor
+        keepSwipingBtn.backgroundColor = .clear
+        keepSwipingBtn.layer.borderWidth = 2
+        keepSwipingBtn.layer.cornerRadius = 23
+        keepSwipingBtn.clipsToBounds = true
+        blurEffectView.contentView.addSubview(keepSwipingBtn)
+        
+        partnerMatchImageView.image = UIImage(named: "Aibol")
+        partnerMatchImageView.contentMode = .scaleAspectFill
+        partnerMatchImageView.layer.cornerRadius = 55
+        partnerMatchImageView.layer.borderWidth = 2
+        partnerMatchImageView.layer.borderColor = UIColor.white.cgColor
+        partnerMatchImageView.clipsToBounds = true
+        blurEffectView.contentView.addSubview(partnerMatchImageView)
+        
+        myMatchImageView.image = UIImage(named: "taylor_swift")
+        myMatchImageView.contentMode = .scaleAspectFill
+        myMatchImageView.layer.cornerRadius = 55
+        myMatchImageView.layer.borderWidth = 2
+        myMatchImageView.layer.borderColor = UIColor.white.cgColor
+        myMatchImageView.clipsToBounds = true
+        blurEffectView.contentView.addSubview(myMatchImageView)
+        
+        blurEffectView.contentView.addSubview(wrapperForText)
+        
+        titleImageView.image = UIImage(named: "itsamatch")
+        titleImageView.contentMode = .scaleAspectFill
+//        titleImageView.clipsToBounds = true
+        wrapperForText.addSubview(titleImageView)
+        
+        subTextLbl.text = "You and Kelly Kurk have liked each other"
+        subTextLbl.font = .systemFont(ofSize: 14)
+        subTextLbl.textAlignment = .center
+        subTextLbl.textColor = .white
+        wrapperForText.addSubview(subTextLbl)
+        
+        
+        
     }
     
     func createConstraints() {
@@ -105,6 +169,50 @@ class RadarViewController: UIViewController {
             make.left.equalTo(view.safeAreaLayoutGuide).offset(35)
             make.right.equalTo(view.safeAreaLayoutGuide).offset(-35)
             make.bottom.equalTo(bottomStackView.snp.top).offset(-20)
+        }
+        
+        wrapperForText.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(50)
+            make.right.equalToSuperview().offset(-50)
+            make.bottom.equalTo(myMatchImageView.snp.top).offset(-20)
+            make.height.equalTo(117)
+        }
+        
+        titleImageView.snp.makeConstraints { (make) in
+            make.top.right.left.equalToSuperview()
+            make.bottom.equalTo(subTextLbl.snp.top).offset(8)
+            make.height.equalTo(78)
+        }
+        
+        subTextLbl.snp.makeConstraints { (make) in
+            make.right.left.bottom.equalToSuperview()
+        }
+        
+        myMatchImageView.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(65)
+            make.width.height.equalTo(110)
+        }
+        
+        partnerMatchImageView.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-65)
+            make.left.equalTo(myMatchImageView.snp.right).offset(25)
+            make.width.height.equalTo(110)
+        }
+        
+        sendMsgBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(partnerMatchImageView.snp.bottom).offset(25)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(245)
+            make.height.equalTo(46)
+        }
+        
+        keepSwipingBtn.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(sendMsgBtn.snp.bottom).offset(12)
+            make.width.equalTo(245)
+            make.height.equalTo(46)
         }
     }
     
@@ -313,6 +421,7 @@ class RadarViewController: UIViewController {
                     print("Has matched")
                     // send push notification
                     // has matched
+                    self.blurEffectView.isHidden = false
                     //                Api.User.getUserInfoSingleEvent(uid: Api.User.currentUserId, onSuccess: { (user) in
                     //
                     //                })
