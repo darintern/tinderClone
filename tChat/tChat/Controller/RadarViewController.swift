@@ -193,7 +193,7 @@ class RadarViewController: UIViewController {
         wrapperForText.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(50)
             make.right.equalToSuperview().offset(-50)
-            make.bottom.equalTo(myMatchImageView.snp.top).offset(-20)
+            make.bottom.equalTo(myMatchImageView.snp.top).offset(-600)
             make.height.equalTo(117)
         }
         
@@ -209,26 +209,27 @@ class RadarViewController: UIViewController {
         
         myMatchImageView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.left.equalToSuperview().offset(65)
+            make.centerX.equalToSuperview().offset(200)
             make.width.height.equalTo(110)
         }
         
         partnerMatchImageView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(myMatchImageView.snp.right).offset(25)
+            make.centerX.equalToSuperview().offset(-200)
             make.width.height.equalTo(110)
         }
         
         sendMsgBtn.snp.makeConstraints { (make) in
             make.top.equalTo(partnerMatchImageView.snp.bottom).offset(25)
-            make.centerX.equalToSuperview()
+            make.centerX.equalToSuperview().offset(200)
             make.width.equalTo(245)
             make.height.equalTo(46)
         }
         
         keepSwipingBtn.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
             make.top.equalTo(sendMsgBtn.snp.bottom).offset(12)
+            make.centerX.equalToSuperview().offset(-200)
             make.width.equalTo(245)
             make.height.equalTo(46)
         }
@@ -436,6 +437,45 @@ class RadarViewController: UIViewController {
             guard let dict = snapshot.value as? [String: Bool] else { return }
             if dict.keys.contains(Api.User.currentUserId) {
                 if dict[Api.User.currentUserId]! {
+                    UIView.animate(withDuration: 0.45, animations: {
+                        self.blurEffectView.isHidden = false
+                        self.blurEffectView.alpha = 1
+                    }, completion: { (bool) in
+                        UIView.animate(withDuration: 0.45, delay: 0, options: .curveEaseIn ,animations: {
+                            self.wrapperForText.snp.updateConstraints { (make) in
+                                make.bottom.equalTo(self.myMatchImageView.snp.top).offset(-20)
+                            }
+                            
+                            self.sendMsgBtn.snp.updateConstraints({ (make) in
+                                make.centerX.equalToSuperview()
+                            })
+                            
+                            self.keepSwipingBtn.snp.updateConstraints({ (make) in
+                                make.centerX.equalToSuperview()
+                            })
+                            
+                            self.myMatchImageView.snp.updateConstraints({ (make) in
+                                make.centerX.equalToSuperview().offset(66.25)
+                            })
+                            self.myMatchImageView.transform.rotated(by: 4 * CGFloat.pi)
+                            
+                            self.partnerMatchImageView.snp.updateConstraints({ (make) in
+                                make.centerX.equalToSuperview().offset(-66.25)
+                            })
+                            self.partnerMatchImageView.transform.rotated(by: 4 * CGFloat.pi)
+
+                            self.view.layoutIfNeeded()
+                        }, completion: nil)
+                        
+                        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+                        rotateAnimation.fromValue = 0.0
+                        rotateAnimation.toValue = CGFloat(-.pi * 2.0)
+                        rotateAnimation.duration = 0.8
+                        self.myMatchImageView.layer.add(rotateAnimation, forKey: nil)
+                        
+                        rotateAnimation.toValue = CGFloat(.pi * 2.0)
+                        self.partnerMatchImageView.layer.add(rotateAnimation, forKey: nil)
+                    })
                     
                     self.matchedPartner = card.user
                     
@@ -449,9 +489,6 @@ class RadarViewController: UIViewController {
                     })
                     
                     self.subTextLbl.text = "You and \(card.user.username) have liked each other"
-                    
-                    self.blurEffectView.isHidden = false
-                    self.blurEffectView.alpha = 1
                     
                     
                     
