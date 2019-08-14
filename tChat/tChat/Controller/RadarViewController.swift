@@ -40,7 +40,7 @@ class RadarViewController: UIViewController {
     var partnerMatchImageView = UIImageView()
     var myMatchImageView = UIImageView()
     var wrapperForText = UIView()
-    var titleImageView = UIImageView()
+    var titleTextLabel = UILabel()
     var subTextLbl = UILabel()
     var matchedPartner: User!
     
@@ -146,16 +146,19 @@ class RadarViewController: UIViewController {
         
         blurEffectView.contentView.addSubview(wrapperForText)
         
-        titleImageView.image = UIImage(named: "itsamatch")
-        titleImageView.contentMode = .scaleAspectFill
-//        titleImageView.clipsToBounds = true
-        wrapperForText.addSubview(titleImageView)
+        titleTextLabel.text = "It's a Match"
+        titleTextLabel.textAlignment = .center
+        titleTextLabel.textColor = .white
+        titleTextLabel.font = UIFont(name: Fonts.hipster, size: 60)
         
         subTextLbl.text = "You and Kelly Kurk have liked each other"
+        subTextLbl.lineBreakMode = .byWordWrapping
         subTextLbl.font = .systemFont(ofSize: 14)
-        subTextLbl.textAlignment = .center
         subTextLbl.textColor = .white
+        subTextLbl.textAlignment = .center
         subTextLbl.numberOfLines = 0
+        
+        wrapperForText.addSubview(titleTextLabel)
         wrapperForText.addSubview(subTextLbl)
         
         
@@ -163,8 +166,11 @@ class RadarViewController: UIViewController {
     }
     
     @objc func dissmissblur() {
-        blurEffectView.alpha = 0
-        blurEffectView.isHidden = true
+        UIView.animate(withDuration: 0.45, animations: {
+            self.blurEffectView.alpha = 0
+        }) { (bool) in
+            self.blurEffectView.isHidden = true
+        }
     }
     
     @objc func moveToPartnerChat() {
@@ -197,14 +203,14 @@ class RadarViewController: UIViewController {
             make.height.equalTo(117)
         }
         
-        titleImageView.snp.makeConstraints { (make) in
+        titleTextLabel.snp.makeConstraints { (make) in
             make.top.right.left.equalToSuperview()
-            make.bottom.equalTo(subTextLbl.snp.top).offset(8)
-            make.height.equalTo(78)
+            make.bottom.equalTo(subTextLbl.snp.top).offset(-8)
         }
         
         subTextLbl.snp.makeConstraints { (make) in
-            make.right.left.bottom.equalToSuperview()
+            make.bottom.left.right.equalToSuperview()
+            make.height.equalTo(35)
         }
         
         myMatchImageView.snp.makeConstraints { (make) in

@@ -29,6 +29,7 @@
 		8E00C25722EF0F73008C98D1 /* Ref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25622EF0F73008C98D1 /* Ref.swift */; };
 		8E00C25922EF6F20008C98D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25822EF6F20008C98D1 /* User.swift */; };
 		8E00C25D22EF7477008C98D1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25C22EF7477008C98D1 /* Extension.swift */; };
+		8E20317C2304769D003B7850 /* Hipster Script W00 Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E20317B2304769D003B7850 /* Hipster Script W00 Regular.ttf */; };
 		8E9664F122FB045500EDE93E /* UserProfileDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664F022FB045400EDE93E /* UserProfileDataTableViewCell.swift */; };
 		8E9664F322FB22E100EDE93E /* UsersAroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664F222FB22E100EDE93E /* UsersAroundViewController.swift */; };
 		8E9664F522FDB76900EDE93E /* UserAroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664F422FDB76900EDE93E /* UserAroundCollectionViewCell.swift */; };
@@ -81,6 +82,7 @@
 		8E00C25622EF0F73008C98D1 /* Ref.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ref.swift; sourceTree = "<group>"; };
 		8E00C25822EF6F20008C98D1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8E00C25C22EF7477008C98D1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		8E20317B2304769D003B7850 /* Hipster Script W00 Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hipster Script W00 Regular.ttf"; sourceTree = "<group>"; };
 		8E9664F022FB045400EDE93E /* UserProfileDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDataTableViewCell.swift; sourceTree = "<group>"; };
 		8E9664F222FB22E100EDE93E /* UsersAroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAroundViewController.swift; sourceTree = "<group>"; };
 		8E9664F422FDB76900EDE93E /* UserAroundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAroundCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		8E00C23022EAB540008C98D1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				8E20317A23047678003B7850 /* New Group */,
 				8E00C21F22E9FE2A008C98D1 /* Assets.xcassets */,
 			);
 			name = Assets;
@@ -257,6 +260,14 @@
 				8E00C25C22EF7477008C98D1 /* Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8E20317A23047678003B7850 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				8E20317B2304769D003B7850 /* Hipster Script W00 Regular.ttf */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		8ECDE50522EFF967009AC4EF /* Api */ = {
@@ -345,6 +356,7 @@
 				8E00C22322E9FE2A008C98D1 /* LaunchScreen.storyboard in Resources */,
 				8E00C22B22E9FECB008C98D1 /* GoogleService-Info.plist in Resources */,
 				8E00C22022E9FE2A008C98D1 /* Assets.xcassets in Resources */,
+				8E20317C2304769D003B7850 /* Hipster Script W00 Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

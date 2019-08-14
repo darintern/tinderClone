@@ -114,3 +114,7 @@ class Ref {
     }
     
 }
+
+struct Fonts {
+    static let hipster = "HipsterScriptW00-Regular"
+}
