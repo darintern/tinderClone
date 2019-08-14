@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class User {
+class User: NSObject {
     var uid: String
     var username: String
     var email: String
@@ -50,6 +50,11 @@ class User {
         if let longitude = dict[LONGITUDE] as? String {
             user.longitude = longitude
         }
+        
+        let profileImageView = UIImageView()
+        profileImageView.sd_setImage(with: URL(string: profileImageUrl), placeholderImage: UIImage(named: "Aibol"), options: .continueInBackground, completed: nil)
+        user.profileImage = profileImageView.image
+
         return user
     }
     
@@ -65,7 +70,7 @@ class User {
 }
 
 
-extension User: Equatable {
+extension User {
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.uid == rhs.uid
     }

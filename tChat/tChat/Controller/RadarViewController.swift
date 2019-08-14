@@ -42,6 +42,7 @@ class RadarViewController: UIViewController {
     var wrapperForText = UIView()
     var titleImageView = UIImageView()
     var subTextLbl = UILabel()
+    var matchedPartner: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,8 +107,8 @@ class RadarViewController: UIViewController {
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
-//        blurEffectView.alpha = 0
-//        blurEffectView.isHidden = true
+        blurEffectView.alpha = 0
+        blurEffectView.isHidden = true
         
         sendMsgBtn.setAttributedTitle(NSAttributedString(string: "SEND MESSAGE", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.white]), for: .normal)
         sendMsgBtn.layer.borderColor = PURPLE_COLOR.cgColor
@@ -115,6 +116,7 @@ class RadarViewController: UIViewController {
         sendMsgBtn.layer.borderWidth = 2
         sendMsgBtn.layer.cornerRadius = 23
         sendMsgBtn.clipsToBounds = true
+        sendMsgBtn.addTarget(self, action: #selector(moveToPartnerChat), for: .touchUpInside)
         blurEffectView.contentView.addSubview(sendMsgBtn)
         
         keepSwipingBtn.setAttributedTitle(NSAttributedString(string: "Keep Swiping", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.white]), for: .normal)
@@ -152,10 +154,20 @@ class RadarViewController: UIViewController {
         subTextLbl.font = .systemFont(ofSize: 14)
         subTextLbl.textAlignment = .center
         subTextLbl.textColor = .white
+        subTextLbl.numberOfLines = 0
         wrapperForText.addSubview(subTextLbl)
         
         
         
+    }
+    
+    @objc func moveToPartnerChat() {
+        let chatVC = ChatViewController()
+        chatVC.imagePartner = matchedPartner.profileImage!
+        chatVC.partnerUsername = matchedPartner.username
+        chatVC.partnerId = matchedPartner.uid
+        chatVC.partnerUser = matchedPartner
+        self.navigationController?.pushViewController(chatVC, animated: true)
     }
     
     func createConstraints() {
@@ -196,7 +208,6 @@ class RadarViewController: UIViewController {
         
         partnerMatchImageView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.right.equalToSuperview().offset(-65)
             make.left.equalTo(myMatchImageView.snp.right).offset(25)
             make.width.height.equalTo(110)
         }
@@ -418,10 +429,25 @@ class RadarViewController: UIViewController {
             guard let dict = snapshot.value as? [String: Bool] else { return }
             if dict.keys.contains(Api.User.currentUserId) {
                 if dict[Api.User.currentUserId]! {
-                    print("Has matched")
-                    // send push notification
-                    // has matched
+                    
+                    self.matchedPartner = card.user
+                    
+                    if let partnerImage = card.user.profileImage {
+                        self.partnerMatchImageView.image = partnerImage
+                    }
+                    Api.User.getUserInfoSingleEvent(uid: Api.User.currentUserId, onSuccess: { (user) in
+                        if let myImage = user.profileImage {
+                            self.myMatchImageView.image = myImage
+                        }
+                    })
+                    
+                    self.subTextLbl.text = "You and \(card.user.username) have liked each other"
+                    
                     self.blurEffectView.isHidden = false
+                    self.blurEffectView.alpha = 1
+                    
+                    
+                    
                     //                Api.User.getUserInfoSingleEvent(uid: Api.User.currentUserId, onSuccess: { (user) in
                     //
                     //                })
