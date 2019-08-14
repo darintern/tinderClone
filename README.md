@@ -41,3 +41,5 @@ Aug, 11, 2019  ------ Plan for today is to finish User Detail View, add social a
 Aug, 12, 2019  ------ Plan for today is to work on Tinder swipe and match and fix some bugs ... There we go !!!
 
 Aug, 13, 2019  ------ Plan for today is to work on Match scene and fix bugs on the go and little bit refactor .
+
+Aug, 14, 2019  ------ Plan for today is same as yesterday, because yestarday i was exploring EZSwipeController pod and found it buggy .
