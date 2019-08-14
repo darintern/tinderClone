@@ -215,14 +215,14 @@ class RadarViewController: UIViewController {
         
         myMatchImageView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
-            make.centerX.equalToSuperview().offset(200)
+            make.centerX.equalToSuperview().offset(300)
             make.width.height.equalTo(110)
         }
         
         partnerMatchImageView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.left.equalTo(myMatchImageView.snp.right).offset(25)
-            make.centerX.equalToSuperview().offset(-200)
+            make.centerX.equalToSuperview().offset(-300)
             make.width.height.equalTo(110)
         }
         
@@ -452,14 +452,6 @@ class RadarViewController: UIViewController {
                                 make.bottom.equalTo(self.myMatchImageView.snp.top).offset(-20)
                             }
                             
-                            self.sendMsgBtn.snp.updateConstraints({ (make) in
-                                make.centerX.equalToSuperview()
-                            })
-                            
-                            self.keepSwipingBtn.snp.updateConstraints({ (make) in
-                                make.centerX.equalToSuperview()
-                            })
-                            
                             self.myMatchImageView.snp.updateConstraints({ (make) in
                                 make.centerX.equalToSuperview().offset(66.25)
                             })
@@ -481,6 +473,20 @@ class RadarViewController: UIViewController {
                         
                         rotateAnimation.toValue = CGFloat(.pi * 2.0)
                         self.partnerMatchImageView.layer.add(rotateAnimation, forKey: nil)
+                        
+                        
+                        UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 0.4, initialSpringVelocity: 10, options: .curveEaseIn, animations: {
+                            self.sendMsgBtn.snp.updateConstraints({ (make) in
+                                make.centerX.equalToSuperview()
+                            })
+                            
+                            self.keepSwipingBtn.snp.updateConstraints({ (make) in
+                                make.centerX.equalToSuperview()
+                            })
+                            
+                            self.view.layoutIfNeeded()
+                            
+                        }, completion: nil)
                     })
                     
                     self.matchedPartner = card.user
