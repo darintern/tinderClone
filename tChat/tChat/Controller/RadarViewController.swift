@@ -125,6 +125,7 @@ class RadarViewController: UIViewController {
         keepSwipingBtn.layer.borderWidth = 2
         keepSwipingBtn.layer.cornerRadius = 23
         keepSwipingBtn.clipsToBounds = true
+        keepSwipingBtn.addTarget(self, action: #selector(dissmissblur), for: .touchUpInside)
         blurEffectView.contentView.addSubview(keepSwipingBtn)
         
         partnerMatchImageView.image = UIImage(named: "Aibol")
@@ -161,7 +162,13 @@ class RadarViewController: UIViewController {
         
     }
     
+    @objc func dissmissblur() {
+        blurEffectView.alpha = 0
+        blurEffectView.isHidden = true
+    }
+    
     @objc func moveToPartnerChat() {
+        dissmissblur()
         let chatVC = ChatViewController()
         chatVC.imagePartner = matchedPartner.profileImage!
         chatVC.partnerUsername = matchedPartner.username
