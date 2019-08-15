@@ -20,7 +20,13 @@ class MainController: UIViewController {
         setupSlideScrollView()
         self.view.addSubview(scrollView)
         
+        let radarBtn = UIButton()
+        radarBtn.setImage(UIImage(named: "icon-radar"), for: .normal)
+        radarBtn.addTarget(self, action: #selector(moveToRadarPage), for: .touchUpInside)
+        radarBtn.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_messages"), style: .plain, target: self, action: #selector(moveToMessagesPage))
+        self.navigationItem.titleView = radarBtn
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_profile"), style: .plain, target: self, action: #selector(moveToProfilePage))
         createConstraints()
     }
@@ -50,6 +56,10 @@ class MainController: UIViewController {
     
     @objc func moveToProfilePage() {
         scrollView.setContentOffset(CGPoint(x: view.frame.width * 0, y: 0), animated: true)
+    }
+    
+    @objc func moveToRadarPage() {
+        scrollView.setContentOffset(CGPoint(x: view.frame.width * 1, y: 0), animated: true)
     }
     
     
