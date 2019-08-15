@@ -10,7 +10,14 @@ import UIKit
 import SnapKit
 
 class ContainerViewController: UIViewController {
-    var segmentedControl = TinderLikeSegmentedControl()
+    var items = [UIImage(named: "icon-radar"), UIImage(named: "icon-radar")]
+    lazy var segmentedControl: TinderLikeSegmentedControl = {
+        var control = TinderLikeSegmentedControl(items: items)
+        control.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
+        control.selectedSegmentIndex = 0
+        control.addTarget(self, action: #selector(switchTabs), for: .valueChanged)
+        return control
+    }()
     var contentView = UIView()
     var currentViewController: UIViewController?
     
@@ -19,6 +26,7 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupViews()
         createConstaints()
     }
@@ -38,6 +46,8 @@ class ContainerViewController: UIViewController {
     }
     
     func setupViews() {
+        displayCurrentTab(segmentedControl.selectedSegmentIndex)
+        self.navigationItem.titleView = segmentedControl
         self.view.addSubview(contentView)
     }
     

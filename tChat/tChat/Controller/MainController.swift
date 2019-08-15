@@ -12,7 +12,7 @@ import SnapKit
 
 class MainController: UIViewController {
     private var scrollView = UIScrollView()
-    private var controllers = [ProfileViewController(), RadarViewController() , MessagesViewController() ]
+    private var controllers = [ProfileViewController(), ContainerViewController() , MessagesViewController() ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
