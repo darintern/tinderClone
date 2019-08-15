@@ -43,3 +43,5 @@ Aug, 12, 2019  ------ Plan for today is to work on Tinder swipe and match and fi
 Aug, 13, 2019  ------ Plan for today is to work on Match scene and fix bugs on the go and little bit refactor .
 
 Aug, 14, 2019  ------ Plan for today is same as yesterday, because yestarday i was exploring EZSwipeController pod and found it buggy .
+
+Aug, 15, 2019  ------ Closed bunch of issues and learning Scroll View in order to provide Tinder Like Page Control to Main Nav Controller .
