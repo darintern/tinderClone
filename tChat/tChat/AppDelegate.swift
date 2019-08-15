@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())
         if Auth.auth().currentUser != nil {
-            window?.rootViewController = MainTabBarController()
+            window?.rootViewController = UINavigationController(rootViewController: MainController())
         }
         else {
             window?.rootViewController = UINavigationController(rootViewController: WelcomeViewController())

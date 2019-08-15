@@ -14,7 +14,7 @@
 		8E00C22B22E9FECB008C98D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E00C22A22E9FECB008C98D1 /* GoogleService-Info.plist */; };
 		8E00C23522EAC0DC008C98D1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23422EAC0DC008C98D1 /* SignInViewController.swift */; };
 		8E00C23722EAC3DB008C98D1 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23622EAC3DB008C98D1 /* ResetPasswordViewController.swift */; };
-		8E00C23B22EAEA42008C98D1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23A22EAEA42008C98D1 /* MainTabBarController.swift */; };
+		8E00C23B22EAEA42008C98D1 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23A22EAEA42008C98D1 /* MainController.swift */; };
 		8E00C23D22EAEA73008C98D1 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23C22EAEA73008C98D1 /* PeopleViewController.swift */; };
 		8E00C23F22EAEA96008C98D1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */; };
 		8E00C24122EAEAA1008C98D1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C24022EAEAA1008C98D1 /* ProfileViewController.swift */; };
@@ -67,7 +67,7 @@
 		8E00C22A22E9FECB008C98D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E00C23422EAC0DC008C98D1 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		8E00C23622EAC3DB008C98D1 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
-		8E00C23A22EAEA42008C98D1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8E00C23A22EAEA42008C98D1 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		8E00C23C22EAEA73008C98D1 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		8E00C24022EAEAA1008C98D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 				8E00C23422EAC0DC008C98D1 /* SignInViewController.swift */,
 				8E00C21A22E9FE29008C98D1 /* SignUpViewController.swift */,
 				8E00C23622EAC3DB008C98D1 /* ResetPasswordViewController.swift */,
-				8E00C23A22EAEA42008C98D1 /* MainTabBarController.swift */,
+				8E00C23A22EAEA42008C98D1 /* MainController.swift */,
 				8E00C23C22EAEA73008C98D1 /* PeopleViewController.swift */,
 				8E00C23E22EAEA96008C98D1 /* MessagesViewController.swift */,
 				8E00C24022EAEAA1008C98D1 /* ProfileViewController.swift */,
@@ -450,7 +450,7 @@
 				8E9664F122FB045500EDE93E /* UserProfileDataTableViewCell.swift in Sources */,
 				8E9664F322FB22E100EDE93E /* UsersAroundViewController.swift in Sources */,
 				8ECDE52F22F49A1B009AC4EF /* EXT-ChatViewController.swift in Sources */,
-				8E00C23B22EAEA42008C98D1 /* MainTabBarController.swift in Sources */,
+				8E00C23B22EAEA42008C98D1 /* MainController.swift in Sources */,
 				8E00C25122EEFB01008C98D1 /* Api.swift in Sources */,
 				8E00C25D22EF7477008C98D1 /* Extension.swift in Sources */,
 				8E00C23522EAC0DC008C98D1 /* SignInViewController.swift in Sources */,
