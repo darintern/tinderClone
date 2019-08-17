@@ -47,3 +47,5 @@ Aug, 14, 2019  ------ Plan for today is same as yesterday, because yestarday i w
 Aug, 15, 2019  ------ Closed bunch of issues and learning Scroll View in order to provide Tinder Like Page Control to Main Nav Controller .
 
 Aug, 16, 2019  ------ Stuck on tinder like segmented control and learning Scroll View. Struggling !!!
+
+Aug, 17, 2019  ------ Couldn't create tinder like segemented control, so i just leave this idea behind and today i learn kingfisher, core data and create new matches section in messagesVC. 
