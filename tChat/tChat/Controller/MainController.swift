@@ -12,6 +12,7 @@ import SnapKit
 
 class MainController: UIViewController {
     private var scrollView = UIScrollView()
+    private var lastContentOffset: CGFloat = 0
     private var controllers = [ProfileViewController(), RadarViewController() , UINavigationController(rootViewController: MessagesViewController()) ]
 
     override func viewDidLoad() {
@@ -92,5 +93,9 @@ class MainController: UIViewController {
 }
 
 extension MainController: UIScrollViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y != 0 {
+            scrollView.contentOffset.y = 0
+        }
+    }
 }
