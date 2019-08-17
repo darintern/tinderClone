@@ -87,6 +87,10 @@ class Ref {
         return databaseRoot.child(REF_ACTION)
     }
     
+    func databaseNewMatchesForUser(uid: String) -> DatabaseReference {
+        return databaseSpecificUser(uid: uid).child("matches")
+    }
+    
     func databaseActionForUser(uid: String) -> DatabaseReference {
         return databaseAction.child(uid)
     }

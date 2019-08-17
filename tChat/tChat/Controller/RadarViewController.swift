@@ -447,6 +447,9 @@ class RadarViewController: UIViewController {
                         self.blurEffectView.isHidden = false
                         self.blurEffectView.alpha = 1
                     }, completion: { (bool) in
+                        print("Match")
+                        Api.User.match(from: Api.User.currentUserId, to: card.user.uid, bool: true)
+                        Api.User.match(from: card.user.uid, to: Api.User.currentUserId, bool: true)
                         UIView.animate(withDuration: 0.45, delay: 0, options: .curveEaseIn ,animations: {
                             self.wrapperForText.snp.updateConstraints { (make) in
                                 make.bottom.equalTo(self.myMatchImageView.snp.top).offset(-20)

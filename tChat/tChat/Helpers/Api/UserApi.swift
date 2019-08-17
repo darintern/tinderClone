@@ -21,6 +21,14 @@ class UserApi {
         return Auth.auth().currentUser != nil ? Auth.auth().currentUser!.uid : ""
     }
     
+    func match(from: String,to: String, bool: Bool) {
+        let ref = Ref().databaseNewMatchesForUser(uid: from).child(to)
+        let dict: Dictionary<String, Any> = [
+            "match": bool
+        ]
+        ref.updateChildValues(dict)
+    }
+    
     func typing(from: String, to: String) {
         let ref = Ref().databaseIsOnline(uid: from)
         let dict: Dictionary<String, Any> = [
@@ -47,6 +55,17 @@ class UserApi {
                 if let user = User.transformUser(dict: dict) {
                     onSuccess(user)
                 }
+            }
+        }
+    }
+    
+    func observeNewMatchesForUser(uid: String, onSuccess: @escaping(UserCompletion)) {
+        Ref().databaseNewMatchesForUser(uid: uid).observe(.childAdded) { (snapshot) in
+            if let dict = snapshot.value as? Dictionary<String, Any> {
+                self.getUserInfoSingleEvent(uid: uid, onSuccess: { (user) in
+                    onSuccess(user)
+                })
+                
             }
         }
     }

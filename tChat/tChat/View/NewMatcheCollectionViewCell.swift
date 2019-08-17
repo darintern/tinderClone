@@ -23,6 +23,7 @@ class NewMatchCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(user: User) {
+        self.user = user
         self.usernameLbl.text = user.username
         self.userProfileImageView.image = user.profileImage
     }

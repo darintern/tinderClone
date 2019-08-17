@@ -81,4 +81,12 @@ extension MessagesViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 120)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? NewMatchCollectionViewCell{
+            let detailVc = DetailViewController()
+            detailVc.user = cell.user
+            self.navigationController?.pushViewController(detailVc, animated: true)
+        }
+    }
 }

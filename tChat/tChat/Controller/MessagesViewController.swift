@@ -28,7 +28,7 @@ class MessagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
-        observeUsers()
+        observeNewMatches()
         setupViews()
         createConstraints()
         observeInbox()
@@ -43,12 +43,14 @@ class MessagesViewController: UIViewController {
         }
     }
     
-    func observeUsers() {
-        Api.User.observeUsers { (user) in
+    func observeNewMatches() {
+        Api.User.observeNewMatchesForUser(uid: Api.User.currentUserId) { (user) in
             self.newMatches.append(user)
             self.newMatchesCollectionView.reloadData()
         }
     }
+    
+    
     
     func sortedInbox() {
         inboxArray = self.inboxArray.sorted(by: { $0.date > $1.date })
