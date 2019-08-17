@@ -13,15 +13,21 @@ import FirebaseAuth
 class MessagesViewController: UIViewController {
     var lastInboxDate: Double?
     var inboxArray = [Inbox]()
+    var newMatches = [User]()
     
     let messagesTableView = UITableView()
+    let newMatchesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        return cv
+    }()
     var avatarImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        observeUsers()
         setupViews()
-//        setLogoutBarBtn()
         createConstraints()
         observeInbox()
     }
@@ -32,6 +38,13 @@ class MessagesViewController: UIViewController {
                 self.inboxArray.append(inbox)
                 self.sortedInbox()
             }
+        }
+    }
+    
+    func observeUsers() {
+        Api.User.observeUsers { (user) in
+            self.newMatches.append(user)
+            self.newMatchesCollectionView.reloadData()
         }
     }
     
@@ -47,6 +60,13 @@ class MessagesViewController: UIViewController {
     func setupViews() {
         setupNavigationBar()
         setupTableView()
+        setupNewMatchesCollectionView()
+    }
+    
+    func setupNewMatchesCollectionView() {
+        newMatchesCollectionView.delegate = self
+        newMatchesCollectionView.dataSource = self
+        newMatchesCollectionView.register(NewMatchCollectionViewCell.self, forCellWithReuseIdentifier: IDENTIFIER_CELL_NEW_MATCH)
     }
     
     func setupNavigationBar() {
@@ -59,8 +79,10 @@ class MessagesViewController: UIViewController {
     func setupTableView() {
         messagesTableView.delegate = self
         messagesTableView.tableFooterView = UIView()
+        messagesTableView.backgroundColor = .white
         messagesTableView.dataSource = self
         messagesTableView.register(InboxTableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_MESSAGES)
+        messagesTableView.register(UITableViewCell.self, forCellReuseIdentifier: IDENTIFIER_CELL_DEFAULT)
         view.addSubview(messagesTableView)
     }
     

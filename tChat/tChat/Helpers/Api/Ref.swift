@@ -40,6 +40,8 @@ let IDENTIFIER_CELL_PROFILE = "ProfileTableViewCell"
 let IDENTIFIER_CELL_PROFILE_USER_DATA = "UserProfileDataTableViewCell"
 let IDENTIFIER_CELL_USERS_AROUND = "UsersAroundCollectionViewCell"
 let IDENTIFIER_CELL_DETAIL = "DetailMapTableViewCell"
+let IDENTIFIER_CELL_NEW_MATCH = "NewMatchCollectionViewCell"
+let IDENTIFIER_CELL_DEFAULT = "DefaultCell"
 
 
 class Ref {

@@ -21,7 +21,8 @@ class MainController: UIViewController {
         self.view.addSubview(scrollView)
         
         let radarBtn = UIButton()
-        radarBtn.setImage(UIImage(named: "icon_fire"), for: .normal)
+        let radarImg = UIImage(named: "icon_top")?.withRenderingMode(.alwaysTemplate)
+        radarBtn.setImage(radarImg, for: .normal)
         radarBtn.addTarget(self, action: #selector(moveToRadarPage), for: .touchUpInside)
         radarBtn.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         
