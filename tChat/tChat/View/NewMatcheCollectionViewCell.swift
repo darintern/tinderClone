@@ -28,6 +28,7 @@ class NewMatchCollectionViewCell: UICollectionViewCell {
     }
     
     func setupViews() {
+        usernameLbl.textAlignment = .center
         userProfileImageView.layer.cornerRadius = 40
         userProfileImageView.contentMode = .scaleAspectFill
         userProfileImageView.clipsToBounds = true

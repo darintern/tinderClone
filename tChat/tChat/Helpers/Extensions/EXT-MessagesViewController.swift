@@ -27,8 +27,7 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: IDENTIFIER_CELL_DEFAULT, for: indexPath)
             cell.addSubview(newMatchesCollectionView)
             newMatchesCollectionView.snp.makeConstraints { (make) in
-                make.top.bottom.equalTo(view.safeAreaLayoutGuide)
-                make.left.right.equalToSuperview()
+                make.top.left.right.bottom.equalToSuperview()
             }
             return cell
         } else {
@@ -43,18 +42,24 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0; //Choose your custom row height
+        if indexPath.section == 0 {
+            return 140.0
+        } else {
+            return 100.0
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let cell = tableView.cellForRow(at: indexPath) as? InboxTableViewCell {
-            let chatVC = ChatViewController()
-            chatVC.imagePartner = cell.profileImageView.image!
-            chatVC.partnerUsername = cell.usernameLbl.text!
-            chatVC.partnerId = cell.user.uid
-            chatVC.partnerUser = cell.user
-            self.navigationController?.pushViewController(chatVC, animated: true)
+        if indexPath.section == 1 {
+            if let cell = tableView.cellForRow(at: indexPath) as? InboxTableViewCell {
+                let chatVC = ChatViewController()
+                chatVC.imagePartner = cell.profileImageView.image!
+                chatVC.partnerUsername = cell.usernameLbl.text!
+                chatVC.partnerId = cell.user.uid
+                chatVC.partnerUser = cell.user
+                self.navigationController?.pushViewController(chatVC, animated: true)
+            }
         }
     }
 }
@@ -74,10 +79,6 @@ extension MessagesViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 100)
+        return CGSize(width: 80, height: 120)
     }
-    
-    
-    
-    
 }

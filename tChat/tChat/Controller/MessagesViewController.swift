@@ -18,6 +18,7 @@ class MessagesViewController: UIViewController {
     let messagesTableView = UITableView()
     let newMatchesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 0)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return cv
     }()
@@ -66,6 +67,7 @@ class MessagesViewController: UIViewController {
     func setupNewMatchesCollectionView() {
         newMatchesCollectionView.delegate = self
         newMatchesCollectionView.dataSource = self
+        newMatchesCollectionView.backgroundColor = .white
         newMatchesCollectionView.register(NewMatchCollectionViewCell.self, forCellWithReuseIdentifier: IDENTIFIER_CELL_NEW_MATCH)
     }
     
