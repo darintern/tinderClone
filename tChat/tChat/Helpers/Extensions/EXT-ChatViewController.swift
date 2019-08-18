@@ -94,7 +94,8 @@ extension ChatViewController {
             self.observeActivity()
             self.observeMessages()
         } else {
-            avatarImageView.loadImage(partnerUser.profileImageUrl) { (image) in
+            avatarImageView.loadImage(partnerUser.profileImageUrl)
+            if let image = avatarImageView.image {
                 self.imagePartner = image
                 self.observeActivity()
                 self.observeMessages()

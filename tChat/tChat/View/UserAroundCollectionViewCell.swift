@@ -97,7 +97,8 @@ class UserAroundCollectionViewCell: UICollectionViewCell {
     func loadData(_ user: User, currentLocation: CLLocation?) {
         self.user = user
         avatar.loadImage(user.profileImageUrl)
-        avatar.loadImage(user.profileImageUrl) { (image) in
+        avatar.loadImage(user.profileImageUrl)
+        if let image = avatar.image {
             user.profileImage = image
         }
         if let age = user.age {

@@ -23,7 +23,8 @@ class Card: UIView {
     
     var user: User! {
         didSet {
-            photoImageView.loadImage(user.profileImageUrl) { (image) in
+            photoImageView.loadImage(user.profileImageUrl)
+            if let image = photoImageView.image {
                 self.user.profileImage = image
             }
             

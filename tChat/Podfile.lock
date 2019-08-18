@@ -91,6 +91,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
+  - Kingfisher (5.1.1)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -111,6 +112,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GeoFire
   - GoogleSignIn
+  - Kingfisher
   - ProgressHUD
   - SDWebImage
   - SnapKit
@@ -134,6 +136,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GoogleUtilities
     - GTMSessionFetcher
+    - Kingfisher
     - leveldb-library
     - nanopb
     - ProgressHUD
@@ -158,12 +161,13 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  Kingfisher: 2558186963e5be42d98c5b110ccb3130148b77e4
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 2885d54c37845318485523f85ce7d6d44bd67d22
+PODFILE CHECKSUM: b8c0dac6e6024fb27a23f592327fc9eb3f76003e
 
 COCOAPODS: 1.7.4

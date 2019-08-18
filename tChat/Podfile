@@ -16,5 +16,7 @@ target 'tChat' do
 	pod 'GeoFire'
 	pod 'FBSDKLoginKit'
 	pod 'GoogleSignIn'
+	pod 'Kingfisher'
+
 
 end
