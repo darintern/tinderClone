@@ -30,6 +30,7 @@
 		8E00C25922EF6F20008C98D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25822EF6F20008C98D1 /* User.swift */; };
 		8E00C25D22EF7477008C98D1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E00C25C22EF7477008C98D1 /* Extension.swift */; };
 		8E20317C2304769D003B7850 /* Hipster Script W00 Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E20317B2304769D003B7850 /* Hipster Script W00 Regular.ttf */; };
+		8E41CFC9230B0A37001A2D5D /* EXT-RadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E41CFC8230B0A37001A2D5D /* EXT-RadarViewController.swift */; };
 		8E4C5D4D2306FEC1009A2CC1 /* NewMatcheCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C5D4C2306FEC1009A2CC1 /* NewMatcheCollectionViewCell.swift */; };
 		8E9664F122FB045500EDE93E /* UserProfileDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664F022FB045400EDE93E /* UserProfileDataTableViewCell.swift */; };
 		8E9664F322FB22E100EDE93E /* UsersAroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9664F222FB22E100EDE93E /* UsersAroundViewController.swift */; };
@@ -84,6 +85,7 @@
 		8E00C25822EF6F20008C98D1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8E00C25C22EF7477008C98D1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		8E20317B2304769D003B7850 /* Hipster Script W00 Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Hipster Script W00 Regular.ttf"; sourceTree = "<group>"; };
+		8E41CFC8230B0A37001A2D5D /* EXT-RadarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EXT-RadarViewController.swift"; sourceTree = "<group>"; };
 		8E4C5D4C2306FEC1009A2CC1 /* NewMatcheCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMatcheCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E9664F022FB045400EDE93E /* UserProfileDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDataTableViewCell.swift; sourceTree = "<group>"; };
 		8E9664F222FB22E100EDE93E /* UsersAroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAroundViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				8E9664F622FDB7BD00EDE93E /* EXT-UsersAroundViewController.swift */,
 				8E9664FE22FF33EB00EDE93E /* EXT-DetailViewController.swift */,
 				8E00C25C22EF7477008C98D1 /* Extension.swift */,
+				8E41CFC8230B0A37001A2D5D /* EXT-RadarViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				8E00C21922E9FE29008C98D1 /* AppDelegate.swift in Sources */,
 				8ECDE50922F1CA7E009AC4EF /* MessageApi.swift in Sources */,
 				8ECDE53322F5B9F0009AC4EF /* PeopleTableViewCell.swift in Sources */,
+				8E41CFC9230B0A37001A2D5D /* EXT-RadarViewController.swift in Sources */,
 				8ECDE53D22F6EE3A009AC4EF /* EXT-ProfileViewController.swift in Sources */,
 				8E00C25722EF0F73008C98D1 /* Ref.swift in Sources */,
 				8E00C25322EEFB52008C98D1 /* UserApi.swift in Sources */,
