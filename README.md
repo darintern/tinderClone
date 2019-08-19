@@ -51,3 +51,5 @@ Aug, 16, 2019  ------ Stuck on tinder like segmented control and learning Scroll
 Aug, 17, 2019  ------ Couldn't create tinder like segemented control, so i just leave this idea behind and today i learn kingfisher, core data and create new matches section in messagesVC. 
 
 Aug, 18, 2019  ------ Today i'm gonna learn about core data and prepare architecture of our core data and use kingfisher to cache images . Fix some bugs and redisgn some controls. And finally, let's go !!!!
+
+Aug, 19, 2019  ------ Today i want to finish learning core data, fix bugs , refactor code and decide should i use core data in project. Extra: I want to finish pointers topic and learn ARC in ios. Also want to start scroll view course on raywenderlich.com
