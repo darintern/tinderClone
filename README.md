@@ -53,3 +53,5 @@ Aug, 17, 2019  ------ Couldn't create tinder like segemented control, so i just 
 Aug, 18, 2019  ------ Today i'm gonna learn about core data and prepare architecture of our core data and use kingfisher to cache images . Fix some bugs and redisgn some controls. And finally, let's go !!!!
 
 Aug, 19, 2019  ------ Today i want to finish learning core data, fix bugs , refactor code and decide should i use core data in project. Extra: I want to finish pointers topic and learn ARC in ios. Also want to start scroll view course on raywenderlich.com
+
+Aug, 21, 2019  ------ Yesterday i had no internet, so today i'm gonna make launchScreen and learn intermediate core data and think about "how to integrate core data to project".
