@@ -13,8 +13,9 @@ import SnapKit
 class MainController: UIViewController {
     private var scrollView = UIScrollView()
     private var lastContentOffset: CGFloat = 0
-    private var controllers = [ProfileViewController(), RadarViewController() , UINavigationController(rootViewController: MessagesViewController()) ]
-
+    static let shared = MainController()
+    private var controllers = [ProfileViewController(), RadarViewController() ,UINavigationController(rootViewController: MessagesViewController()) ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
@@ -22,14 +23,17 @@ class MainController: UIViewController {
         self.view.addSubview(scrollView)
         
         let radarBtn = UIButton()
-        let radarImg = UIImage(named: "icon_top")?.withRenderingMode(.alwaysTemplate)
+        let radarImg = UIImage(named: "icon_top")?.withRenderingMode(.alwaysOriginal)
         radarBtn.setImage(radarImg, for: .normal)
         radarBtn.addTarget(self, action: #selector(moveToRadarPage), for: .touchUpInside)
-        radarBtn.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_messages"), style: .plain, target: self, action: #selector(moveToMessagesPage))
         self.navigationItem.titleView = radarBtn
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_profile"), style: .plain, target: self, action: #selector(moveToProfilePage))
+//        self.navigationController?.setViewControllers(controllers, animated: true)
+//        for i in 0 ..< controllers.count {
+//            self.addChild(controllers[i])
+//        }
         createConstraints()
     }
     

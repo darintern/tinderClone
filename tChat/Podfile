@@ -17,6 +17,7 @@ target 'tChat' do
 	pod 'FBSDKLoginKit'
 	pod 'GoogleSignIn'
 	pod 'Kingfisher'
+	pod 'lottie-ios'
 
 
 end

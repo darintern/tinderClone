@@ -77,6 +77,7 @@ extension RadarViewController {
         view.addSubview(blurEffectView)
         blurEffectView.alpha = 0
         blurEffectView.isHidden = true
+        setupWrapperForText()
         setupSendMsgBtn()
         setupKeepSwipingBtn()
         setupPartnerMatchImageView()
