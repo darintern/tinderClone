@@ -55,3 +55,6 @@ Aug, 18, 2019  ------ Today i'm gonna learn about core data and prepare architec
 Aug, 19, 2019  ------ Today i want to finish learning core data, fix bugs , refactor code and decide should i use core data in project. Extra: I want to finish pointers topic and learn ARC in ios. Also want to start scroll view course on raywenderlich.com
 
 Aug, 21, 2019  ------ Yesterday i had no internet, so today i'm gonna make launchScreen and learn intermediate core data and think about "how to integrate core data to project". UPD: Today i also haven't had internet, but it's fixed now. 
+
+Aug, 22, 2019 ------ Keep learning intermediate core data and core data stanford lecture. Also I wanna start to learn scroll view to get rid off bugs in project.
+
