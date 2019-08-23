@@ -34,6 +34,16 @@ class MessagesViewController: UIViewController {
         observeInbox()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
+    
     func observeInbox() {
         Api.Inbox.lastMessages(uid: Api.User.currentUserId) { (inbox) in
             if !self.inboxArray.contains(where: { $0.user.uid == inbox.user.uid}) {
@@ -100,7 +110,7 @@ class MessagesViewController: UIViewController {
         
         let leftBarBtn = UIBarButtonItem(customView: imagePartnerContainerView)
         navigationItem.leftBarButtonItem = leftBarBtn
-        
+
         if let currentUser = Auth.auth().currentUser, let photoUrl = currentUser.photoURL {
             avatarImageView.loadImage(photoUrl.absoluteString)
         }

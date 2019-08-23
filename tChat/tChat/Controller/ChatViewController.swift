@@ -35,24 +35,13 @@ class ChatViewController: UIViewController {
     var timer = Timer()
     var refreshControl = UIRefreshControl()
     var lastMessageKey: String?
+    var backBtn = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
         setupViews()
         createConstraints()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
-        MainController.shared.navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-        MainController.shared.navigationController?.navigationBar.isHidden = false
     }
     
     func setupViews() {

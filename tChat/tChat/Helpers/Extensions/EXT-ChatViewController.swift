@@ -16,8 +16,13 @@ extension ChatViewController {
     
     func setupNavigationBar() {
         navigationItem.largeTitleDisplayMode = .never
+        setupBackBtn()
         setupAvatarImageView()
         setupTopLabel(bool: false)
+    }
+    
+    func setupBackBtn() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: (UIImage(named: "back")?.withRenderingMode(.alwaysTemplate)), style: .plain, target: self, action: #selector(backBtnDidTaped))
     }
     
     func setupTopLabel(bool: Bool) {
@@ -164,6 +169,13 @@ extension ChatViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc func backBtnDidTaped() {
+        let mainVC = MainController()
+        mainVC.moveToMessagesPage()
+        let mainNavC = UINavigationController(rootViewController: mainVC)
+        present(mainNavC, animated: true, completion: nil)
     }
     
     @objc func adjustForKeyboard(notification: Notification) {

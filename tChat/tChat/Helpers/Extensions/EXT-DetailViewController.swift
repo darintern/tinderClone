@@ -66,6 +66,7 @@ extension DetailViewController {
     func setupUsernameLbl() {
         usernameLbl.font = .systemFont(ofSize: 35, weight: .medium)
         usernameLbl.textColor = .white
+        usernameLbl.text = user.username
         headerView.addSubview(usernameLbl)
     }
     
@@ -122,11 +123,14 @@ extension DetailViewController {
         chatVC.partnerUsername = usernameLbl.text!
         chatVC.partnerUser = user
         chatVC.partnerId = user.uid
-        self.navigationController?.pushViewController(chatVC, animated: true)
+        present(UINavigationController(rootViewController: chatVC), animated: true, completion: nil)
     }
     
     @objc func backBtnDidTaped() {
-        self.navigationController?.popViewController(animated: true)
+        let mainVC = MainController()
+        mainVC.moveToMessagesPage()
+        let mainNavC = UINavigationController(rootViewController: mainVC)
+        present(mainNavC, animated: true, completion: nil)
     }
 }
 

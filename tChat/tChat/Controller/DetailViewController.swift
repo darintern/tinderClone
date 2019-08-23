@@ -28,15 +28,10 @@ class DetailViewController: UIViewController {
         createConstraints()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        MainController.shared.navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        MainController.shared.navigationController?.navigationBar.isHidden = false
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.viewWillAppear(animated)
+//        self.navigationController?.navigationBar.isHidden = true
+//    }
     
     func setupViews() {
         setupDetailTableView()

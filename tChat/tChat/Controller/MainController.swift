@@ -11,10 +11,10 @@ import FirebaseAuth
 import SnapKit
 
 class MainController: UIViewController {
-    private var scrollView = UIScrollView()
+    var scrollView = UIScrollView()
     private var lastContentOffset: CGFloat = 0
     static let shared = MainController()
-    private var controllers = [ProfileViewController(), RadarViewController() ,UINavigationController(rootViewController: MessagesViewController()) ]
+    private var controllers = [ProfileViewController(), RadarViewController(), MessagesViewController()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,11 @@ class MainController: UIViewController {
 //            self.addChild(controllers[i])
 //        }
         createConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.moveToRadarPage()
     }
     
     func createConstraints() {

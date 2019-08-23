@@ -58,7 +58,8 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
                 chatVC.partnerUsername = cell.usernameLbl.text!
                 chatVC.partnerId = cell.user.uid
                 chatVC.partnerUser = cell.user
-                self.navigationController?.pushViewController(chatVC, animated: true)
+//                self.navigationController?.pushViewController(chatVC, animated: true)
+                present(UINavigationController(rootViewController: chatVC), animated: true, completion: nil)
             }
         }
     }
@@ -86,7 +87,8 @@ extension MessagesViewController: UICollectionViewDelegate, UICollectionViewData
         if let cell = collectionView.cellForItem(at: indexPath) as? NewMatchCollectionViewCell{
             let detailVc = DetailViewController()
             detailVc.user = cell.user
-            self.navigationController?.pushViewController(detailVc, animated: true)
+//            self.navigationController?.pushViewController(detailVc, animated: true)
+            present(detailVc, animated: true, completion: nil)
         }
     }
 }
