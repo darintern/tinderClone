@@ -58,3 +58,5 @@ Aug, 21, 2019  ------ Yesterday i had no internet, so today i'm gonna make launc
 
 Aug, 22, 2019 ------ Keep learning intermediate core data and core data stanford lecture. Also I wanna start to learn scroll view to get rid off bugs in project.
 
+Aug, 23, 2019 ------ Intermediate and advanced core data, then resolve issues, start full course about multithreading, keep watching scrollView course 
+
