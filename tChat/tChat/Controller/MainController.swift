@@ -22,13 +22,16 @@ class MainController: UIViewController {
         setupSlideScrollView()
         self.view.addSubview(scrollView)
         
-        let radarBtn = UIButton()
+        let imageView = UIImageView()
         let radarImg = UIImage(named: "icon_top")?.withRenderingMode(.alwaysOriginal)
-        radarBtn.setImage(radarImg, for: .normal)
-        radarBtn.addTarget(self, action: #selector(moveToRadarPage), for: .touchUpInside)
+        imageView.image = radarImg
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(moveToRadarPage)))
+        imageView.isUserInteractionEnabled = true
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_messages"), style: .plain, target: self, action: #selector(moveToMessagesPage))
-        self.navigationItem.titleView = radarBtn
+        self.navigationItem.titleView = imageView
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_profile"), style: .plain, target: self, action: #selector(moveToProfilePage))
 //        self.navigationController?.setViewControllers(controllers, animated: true)
 //        for i in 0 ..< controllers.count {
