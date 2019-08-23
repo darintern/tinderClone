@@ -156,7 +156,8 @@ extension RadarViewController {
 extension RadarViewController {
     func createConstraints() {
         bottomStackView.snp.makeConstraints { (make) in
-            make.bottom.right.left.equalTo(view.safeAreaLayoutGuide)
+            make.right.left.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
             make.height.equalTo(100)
         }
         
