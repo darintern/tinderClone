@@ -60,3 +60,5 @@ Aug, 22, 2019 ------ Keep learning intermediate core data and core data stanford
 
 Aug, 23, 2019 ------ Intermediate and advanced core data, then resolve issues, start full course about multithreading, keep watching scrollView course 
 
+Aug, 24, 2019 ------ Finish intermediate scrollView course and start in app purchases course. 
+
