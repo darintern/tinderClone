@@ -42,6 +42,7 @@ let IDENTIFIER_CELL_USERS_AROUND = "UsersAroundCollectionViewCell"
 let IDENTIFIER_CELL_DETAIL = "DetailMapTableViewCell"
 let IDENTIFIER_CELL_NEW_MATCH = "NewMatchCollectionViewCell"
 let IDENTIFIER_CELL_DEFAULT = "DefaultCell"
+let IDENTIFIER_CELL_LIKES = "MyLikesCollectionView"
 
 
 class Ref {
