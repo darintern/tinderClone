@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Match" representedClassName="Match" syncable="YES" codeGenerationType="class">
+        <attribute name="bool" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="uid" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="matches" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
+        <attribute name="date" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="from" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="incoming" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="read" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="to" attributeType="String" syncable="YES"/>
+        <attribute name="videoUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="messages" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="isMale" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profileImageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" attributeType="String" syncable="YES"/>
+        <attribute name="username" attributeType="String" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="user" inverseEntity="Match" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="user" inverseEntity="Message" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="210"/>
+        <element name="Message" positionX="-54" positionY="63" width="128" height="195"/>
+        <element name="Match" positionX="-36" positionY="90" width="128" height="90"/>
+    </elements>
+</model>
