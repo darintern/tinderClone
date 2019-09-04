@@ -64,5 +64,7 @@ Aug, 24, 2019 ------ Finish intermediate scrollView course and start in app purc
 
 Aug, 25, 2019 ------ Already finish scrollView course and start in app purchases course, launchScreen for project and consider doing custom segmented control to titleView for main screen.
 
+Aug, 27, 2019 ------ Implementing Core Data.
+
 
 
