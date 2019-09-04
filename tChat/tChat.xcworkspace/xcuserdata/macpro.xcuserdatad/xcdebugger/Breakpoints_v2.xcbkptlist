@@ -138,7 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Api/UserApi.swift"
+<<<<<<< HEAD
             timestampString = "588510197.2524689"
+=======
+            timestampString = "588183677.117656"
+>>>>>>> parent of 365c991... :star: new(tinderClone): gender comparison
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -154,7 +158,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "tChat/Helpers/Api/UserApi.swift"
+<<<<<<< HEAD
             timestampString = "588510197.252569"
+=======
+            timestampString = "588183677.11771"
+>>>>>>> parent of 365c991... :star: new(tinderClone): gender comparison
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"

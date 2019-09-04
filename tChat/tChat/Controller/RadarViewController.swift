@@ -14,7 +14,6 @@ import ProgressHUD
 
 class RadarViewController: UIViewController {
     
-    var currentUser: User!
     var cardStack = UIView()
     var likeImageView = UIImageView()
     var nopeImageView = UIImageView()
@@ -48,16 +47,9 @@ class RadarViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         title = "tChat"
-        setCurrentUser()
         setupViews()
         createConstraints()
         configureLocationManager()
-    }
-    
-    func setCurrentUser() {
-        Api.User.getUserInfoSingleEvent(uid: Api.User.currentUserId) { (user) in
-            self.currentUser = user
-        }
     }
     
     func setupViews() {
@@ -89,9 +81,6 @@ class RadarViewController: UIViewController {
                         return
                     }
                     if user.isMale == nil {
-                        return
-                    }
-                    if user.isMale == self.currentUser.isMale {
                         return
                     }
                     self.users.append(user)
