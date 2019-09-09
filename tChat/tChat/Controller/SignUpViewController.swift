@@ -181,11 +181,13 @@ class SignUpViewController: UIViewController {
                 self.geoFire = GeoFire(firebaseRef: self.geoFireRef)
                 self.geoFire.setLocation(location, forKey: Api.User.currentUserId)
                 // send location to Firebase
+                print("success")
             }
             // switch view
             (UIApplication.shared.delegate as! AppDelegate).confugureInitialViewController()
         }) { (errorMessage) in            
             ProgressHUD.showError(errorMessage)
+            print("error")
         }
     }
 }

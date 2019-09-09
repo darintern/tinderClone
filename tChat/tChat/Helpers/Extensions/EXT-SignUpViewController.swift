@@ -167,9 +167,11 @@ extension SignUpViewController {
         Api.User.signUp(withUsername: self.fullNameTextField.text!, email: self.emailAddressTextField.text!, password: self.passwordTextField.text!, image: self.image, onSuccess: {
             ProgressHUD.dismiss()
             Api.User.isOnline(bool: true)
+            print("success")
             onSuccess()
         }) { (err) in
             onError(err)
+            print("error")
         }
         
     }

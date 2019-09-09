@@ -60,10 +60,13 @@ class UserApi {
     }
     
     func observeNewMatchesForUser(uid: String, onSuccess: @escaping(UserCompletion)) {
-        Ref().databaseNewMatchesForUser(uid: uid).observe(.childAdded) { (snapshot) in
+        Ref().databaseNewMatchesForUser(uid: uid).observe(.value) { (snapshot) in
             if let dict = snapshot.value as? Dictionary<String, Any> {
-                self.getUserInfoSingleEvent(uid: uid, onSuccess: { (user) in
-                    onSuccess(user)
+                let partnerUid = Array(dict.keys)[0] // or .first
+                self.getUserInfoSingleEvent(uid: partnerUid, onSuccess: { (user) in
+                    if user.uid != Api.User.currentUserId {
+                        onSuccess(user)
+                    }
                 })
                 
             }

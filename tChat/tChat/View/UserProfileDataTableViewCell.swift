@@ -12,7 +12,7 @@ import UIKit
 class ProfileTableViewCell: UITableViewCell {
     var dataTextField = UITextField()
     var label = UILabel()
-    let btn = UIButton()
+    let logoutBtn = UIButton()
     var segmentedControl = UISegmentedControl(items: ["Male", "Female"])
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -50,11 +50,12 @@ class ProfileTableViewCell: UITableViewCell {
     }
     
     func setupBtn() {
-        btn.setTitle("Logout", for: .normal)
-        btn.addTarget(self, action: #selector(logoutBtnDidTaped), for: .touchUpInside)
-        btn.setTitleColor(.red, for: .normal)
-        btn.isHidden = true
-        addSubview(btn)
+        // logout
+        logoutBtn.setTitle("Logout", for: .normal)
+        logoutBtn.addTarget(self, action: #selector(logoutBtnDidTaped), for: .touchUpInside)
+        logoutBtn.setTitleColor(.red, for: .normal)
+        logoutBtn.isHidden = true
+        addSubview(logoutBtn)
     }
     
     func createConstraints() {
@@ -63,7 +64,7 @@ class ProfileTableViewCell: UITableViewCell {
             make.left.equalToSuperview().offset(15)
             make.right.equalToSuperview().offset(-15)
         }
-        btn.snp.makeConstraints { (make) in
+        logoutBtn.snp.makeConstraints { (make) in
             make.centerX.centerY.equalToSuperview()
         }
         label.snp.makeConstraints { (make) in

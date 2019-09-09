@@ -53,9 +53,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.section == 0 {
                 cell.dataTextField.text = sectionZero[indexPath.row]
             }
-//            else {
-//                cell.dataTextField.text = sectionZero[indexPath.row]
-//            }
         } else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 cell.dataTextField.isHidden = false
@@ -75,7 +72,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryType = .disclosureIndicator
             cell.label.text = indexPath.section == 2 ? sectionOne[indexPath.row] : sectionTwo[indexPath.row]
         } else if indexPath.section == 4 {
-            cell.btn.isHidden = false
+            cell.logoutBtn.isHidden = false
         }
         return cell
     }

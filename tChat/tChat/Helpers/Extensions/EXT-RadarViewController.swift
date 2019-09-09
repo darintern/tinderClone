@@ -303,7 +303,6 @@ extension RadarViewController {
                     self.subTextLbl.text = "You and \(card.user.username) have liked each other"
                     
                     
-                    
                     //                Api.User.getUserInfoSingleEvent(uid: Api.User.currentUserId, onSuccess: { (user) in
                     //
                     //                })
@@ -387,7 +386,8 @@ extension RadarViewController {
         chatVC.partnerUsername = matchedPartner.username
         chatVC.partnerId = matchedPartner.uid
         chatVC.partnerUser = matchedPartner
-        self.navigationController?.pushViewController(chatVC, animated: true)
+//        self.navigationController?.pushViewController(chatVC, animated: true)
+        self.present(UINavigationController(rootViewController: chatVC), animated: true, completion: nil)
     }
     
     @objc func pan(gesture: UIPanGestureRecognizer) {

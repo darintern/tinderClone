@@ -168,7 +168,7 @@ extension ChatViewController {
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     @objc func backBtnDidTaped() {
@@ -183,18 +183,22 @@ extension ChatViewController {
         let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         if notification.name == UIResponder.keyboardWillHideNotification {
-            inputMessageView.snp.makeConstraints { (make) in
-                make.bottom.equalTo(view.safeAreaLayoutGuide).priority(1000)
+            inputMessageView.snp.remakeConstraints { (make) in
+                make.top.equalTo(separatorView.snp.bottom)
+                make.left.equalTo(view.safeAreaLayoutGuide)
+                make.right.equalTo(view.safeAreaLayoutGuide)
+                make.height.equalTo(50)
+                make.bottom.equalTo(view.safeAreaLayoutGuide)
             }
         } else {
             if #available(iOS 11.0, *) {
-                let bottomConstraintValueForInputMessageView = -keyboardViewEndFrame.height + view.safeAreaInsets.bottom
+                let bottomConstraintValueForInputMessageView = -keyboardViewEndFrame.height
                 inputMessageView.snp.makeConstraints { (make) in
-                    make.bottom.equalTo(bottomConstraintValueForInputMessageView).priority(1000)
+                    make.bottom.equalTo(bottomConstraintValueForInputMessageView)
                 }
             } else {
                 inputMessageView.snp.makeConstraints { (make) in
-                    make.bottom.equalTo(-keyboardViewEndFrame.height).priority(1000)
+                    make.bottom.equalTo(-keyboardViewEndFrame.height)
                 }
             }
         }
@@ -290,8 +294,8 @@ extension ChatViewController {
             make.top.equalTo(separatorView.snp.bottom)
             make.left.equalTo(view.safeAreaLayoutGuide)
             make.right.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).priority(750)
             make.height.equalTo(50)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         inputMessageAttachmentBtn.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(5)

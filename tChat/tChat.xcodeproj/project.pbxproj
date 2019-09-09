@@ -44,7 +44,6 @@
 		8E9665032300592000EDE93E /* RadarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9665022300592000EDE93E /* RadarViewController.swift */; };
 		8E96650523006A4800EDE93E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E96650423006A4800EDE93E /* Card.swift */; };
 		8E9C99C62312F70900A56E46 /* MyLikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C99C52312F70900A56E46 /* MyLikesViewController.swift */; };
-		8E9C99C92314F78D00A56E46 /* tChat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E9C99C72314F78D00A56E46 /* tChat.xcdatamodeld */; };
 		8ECDE50722F08529009AC4EF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50622F08529009AC4EF /* ChatViewController.swift */; };
 		8ECDE50922F1CA7E009AC4EF /* MessageApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */; };
 		8ECDE52B22F338DD009AC4EF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE52A22F338DD009AC4EF /* Message.swift */; };
@@ -101,7 +100,6 @@
 		8E9665022300592000EDE93E /* RadarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarViewController.swift; sourceTree = "<group>"; };
 		8E96650423006A4800EDE93E /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		8E9C99C52312F70900A56E46 /* MyLikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLikesViewController.swift; sourceTree = "<group>"; };
-		8E9C99C82314F78D00A56E46 /* tChat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tChat.xcdatamodel; sourceTree = "<group>"; };
 		8ECDE50622F08529009AC4EF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8ECDE50822F1CA7E009AC4EF /* MessageApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageApi.swift; sourceTree = "<group>"; };
 		8ECDE52A22F338DD009AC4EF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 		8E00C21722E9FE29008C98D1 /* tChat */ = {
 			isa = PBXGroup;
 			children = (
-				8E9C99EB2315037700A56E46 /* New Group */,
 				8E00C24622EDC19B008C98D1 /* Helpers */,
 				8E00C23122EAB54C008C98D1 /* Storyboard */,
 				8E00C22F22EAB52F008C98D1 /* plist */,
@@ -278,14 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				8E20317B2304769D003B7850 /* Hipster Script W00 Regular.ttf */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		8E9C99EB2315037700A56E46 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				8E9C99C72314F78D00A56E46 /* tChat.xcdatamodeld */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -468,7 +457,6 @@
 				8E00C24B22EDC67B008C98D1 /* EXT-SignUpViewController.swift in Sources */,
 				8E96650122FFD0C600EDE93E /* DetailMapTableViewCell.swift in Sources */,
 				8E00C24D22EDC68A008C98D1 /* EXT-SignInViewController.swift in Sources */,
-				8E9C99C92314F78D00A56E46 /* tChat.xcdatamodeld in Sources */,
 				8E9664F122FB045500EDE93E /* UserProfileDataTableViewCell.swift in Sources */,
 				8E9664F322FB22E100EDE93E /* UsersAroundViewController.swift in Sources */,
 				8ECDE52F22F49A1B009AC4EF /* EXT-ChatViewController.swift in Sources */,
@@ -687,20 +675,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		8E9C99C72314F78D00A56E46 /* tChat.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8E9C99C82314F78D00A56E46 /* tChat.xcdatamodel */,
-			);
-			currentVersion = 8E9C99C82314F78D00A56E46 /* tChat.xcdatamodel */;
-			name = tChat.xcdatamodeld;
-			path = ../tChat.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 8E00C20D22E9FE29008C98D1 /* Project object */;
 }

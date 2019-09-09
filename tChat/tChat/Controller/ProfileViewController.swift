@@ -24,6 +24,7 @@ class ProfileViewController: UIViewController {
     var image: UIImage?
     var isMale: Bool?
     var age: Int?
+    var saveBtn = UIButton()
     
     var profileTableView = UITableView(frame: .zero, style: .grouped)
     override func viewDidLoad() {
@@ -35,13 +36,17 @@ class ProfileViewController: UIViewController {
     }
     
     func setupViews() {
-        setupNavBar()
         setupProfileTableView()
+        setupSaveBtn()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
-    func setupNavBar() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveBtnDidTaped))
+    func setupSaveBtn() {
+        saveBtn.setTitle("Save", for: .normal)
+        saveBtn.addTarget(self, action: #selector(saveBtnDidTaped), for: .touchUpInside)
+        saveBtn.setTitleColor(.blue, for: .normal)
+        saveBtn.backgroundColor = .red
+        view.addSubview(saveBtn)
     }
     
     @objc func saveBtnDidTaped() {
@@ -130,6 +135,11 @@ class ProfileViewController: UIViewController {
         avatar.snp.makeConstraints { (make) in
             make.centerY.centerX.equalToSuperview()
             make.height.width.equalTo(80)
+        }
+        saveBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(profileTableView.snp.bottom).offset(-50)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(50)
         }
     }
     
