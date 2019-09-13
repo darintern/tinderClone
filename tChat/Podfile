@@ -12,7 +12,6 @@ target 'tChat' do
 	pod 'Firebase/Storage'
 	pod 'SnapKit'
 	pod 'ProgressHUD'
-	pod 'SDWebImage'
 	pod 'GeoFire'
 	pod 'FBSDKLoginKit'
 	pod 'GoogleSignIn'

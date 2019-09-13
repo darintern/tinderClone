@@ -44,8 +44,9 @@ class ProfileViewController: UIViewController {
     func setupSaveBtn() {
         saveBtn.setTitle("Save", for: .normal)
         saveBtn.addTarget(self, action: #selector(saveBtnDidTaped), for: .touchUpInside)
-        saveBtn.setTitleColor(.blue, for: .normal)
-        saveBtn.backgroundColor = .red
+      
+        saveBtn.setTitleColor(.black, for: .normal)
+        saveBtn.backgroundColor = .green
         view.addSubview(saveBtn)
     }
     

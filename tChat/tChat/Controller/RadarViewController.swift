@@ -36,6 +36,7 @@ class RadarViewController: UIViewController {
     var blurEffectView: UIVisualEffectView!
     var sendMsgBtn = UIButton()
     var keepSwipingBtn = UIButton()
+    var currentUser: User!
     var partnerMatchImageView = UIImageView()
     var myMatchImageView = UIImageView()
     var wrapperForText = UIView()
@@ -48,6 +49,7 @@ class RadarViewController: UIViewController {
         view.backgroundColor = .white
         title = "tChat"
         setupViews()
+        setCurrentUser()
         createConstraints()
         configureLocationManager()
     }
@@ -56,6 +58,12 @@ class RadarViewController: UIViewController {
         setupCardStack()
         setupBottomStackView()
         setupBlurEffectView()
+    }
+    
+    func setCurrentUser() {
+        Api.User.getUserInfoSingleEvent(uid: Api.User.currentUserId) { (user) in
+            self.currentUser = user
+        }
     }
     
     func findUsers() {
@@ -81,6 +89,9 @@ class RadarViewController: UIViewController {
                         return
                     }
                     if user.isMale == nil {
+                        return
+                    }
+                    if user.isMale == self.currentUser.isMale {
                         return
                     }
                     self.users.append(user)
